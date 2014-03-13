@@ -26,6 +26,3 @@ sessionID.json
 *.waBackup
 # Wakanda Remote Model Cache
 *.waRemoteModel
-
-# Data folder and contents therein
-DataFolder*
