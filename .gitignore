@@ -26,3 +26,5 @@ sessionID.json
 *.waBackup
 # Wakanda Remote Model Cache
 *.waRemoteModel
+# Don't push around changed port numbers for this project
+/Settings.waSettings
