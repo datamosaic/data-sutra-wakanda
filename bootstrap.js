@@ -1,0 +1,1 @@
+﻿addHttpRequestHandler(      '/api/\.\*',      'API/AC.js',       'controller' );
