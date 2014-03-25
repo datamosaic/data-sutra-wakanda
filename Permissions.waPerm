@@ -7,4 +7,5 @@
 	<allow action="execute" groupName="Code" groupID="4FC25C2ED9B2496CABB896369E1A962B" resource="Model" temporaryForcePermissions="false" type="model"/>
 	<allow action="promote" groupName="Code" groupID="4FC25C2ED9B2496CABB896369E1A962B" resource="Model" temporaryForcePermissions="false" type="model"/>
 	<allow type="module" resource="ssjs" action="executeFromClient"/>
+	<allow type="module" resource="tempssjs/woop" action="executeFromClient"/>
 </permissions>
