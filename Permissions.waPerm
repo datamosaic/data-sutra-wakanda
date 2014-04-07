@@ -1,11 +1,4 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?><permissions>
-	<allow action="read" groupName="Code" groupID="4FC25C2ED9B2496CABB896369E1A962B" resource="Model" temporaryForcePermissions="false" type="model"/>
-	<allow action="create" groupName="Code" groupID="4FC25C2ED9B2496CABB896369E1A962B" resource="Model" temporaryForcePermissions="false" type="model"/>
-	<allow action="update" groupName="Code" groupID="4FC25C2ED9B2496CABB896369E1A962B" resource="Model" temporaryForcePermissions="false" type="model"/>
-	<allow action="remove" groupName="Code" groupID="4FC25C2ED9B2496CABB896369E1A962B" resource="Model" temporaryForcePermissions="false" type="model"/>
-	<allow action="describe" groupName="Code" groupID="4FC25C2ED9B2496CABB896369E1A962B" resource="Model" temporaryForcePermissions="false" type="model"/>
-	<allow action="execute" groupName="Code" groupID="4FC25C2ED9B2496CABB896369E1A962B" resource="Model" temporaryForcePermissions="false" type="model"/>
-	<allow action="promote" groupName="Code" groupID="4FC25C2ED9B2496CABB896369E1A962B" resource="Model" temporaryForcePermissions="false" type="model"/>
 	<allow type="module" resource="ssjs" action="executeFromClient"/>
 	<allow type="module" resource="tempssjs/woop" action="executeFromClient"/>
 </permissions>
