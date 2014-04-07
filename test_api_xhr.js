@@ -1,0 +1,1 @@
+﻿var xhr = require(FileSystemSync("EXTENSIONS_USER").path + "Modules/XHR");results = xhr.post("http://127.0.0.1:9001/api/", null, null); // base url, action url, paramsresults
