@@ -1,1 +1,1 @@
-﻿currentSession().promoteWith('Code');var entity = new ds.Organization;entity.name = "Data Mosaic";entity.save();ds.Organization.all();
+﻿currentSession().promoteWith('Code');//var entity = new ds.Organization;//entity.name = "Data Mosaic";//entity.save();ds.Organization.all();

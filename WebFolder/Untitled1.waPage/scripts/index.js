@@ -9,11 +9,11 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 
 	button1.click = function button1_click (event)// @startlock
 	{// @endlock
-		
 		debugger;
-		SSJS.controllerAsync(["some data"],
+		SSJS.controllerAsync(
 			{
 				onSuccess: function (data) {
+					debugger;
 					console.log(data);
 				}
 			}
