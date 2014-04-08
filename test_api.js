@@ -1,1 +1,1 @@
-﻿/** * TEST: do something with API locally (from same project) * use commonJS approach */ var AC = require(FileSystemSync("PROJECT").path + "API/AC.js"); AC.organization.getAll()
+﻿/*** TEST: do something with API locally (from same project)* use commonJS approach*/debugger;var AC = require(FileSystemSync("PROJECT").path + "API/AC.js");debugger;var x = AC.organization.getAll();x

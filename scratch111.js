@@ -1,1 +1,1 @@
-﻿currentSession().promoteWith('Code');//var entity = new ds.Organization;//entity.name = "Data Mosaic";//entity.save();ds.Organization.all();
+﻿// path to ac api from another projectvar path = (FileSystemSync("PROJECT").path.split('/').slice(0,path.length-2).join('/')) + '/AccessControl' + '/API/AC.js'path
