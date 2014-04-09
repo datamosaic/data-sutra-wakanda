@@ -1,1 +1,1 @@
-﻿addHttpRequestHandler(      '/api/\.\*',      'API/AC.js',       'controller' );addHttpRequestHandler(      '/security/\.\*',      'API/security.js',       'actions' );
+﻿addHttpRequestHandler(      '/api\.\*',      'API/AC.js',       'controller' );addHttpRequestHandler(      '/security\.\*',      'API/security_registry.js',       'actions' );
