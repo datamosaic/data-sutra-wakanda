@@ -1,1 +1,1 @@
-﻿addHttpRequestHandler(      '/api\.\*',      'API/AC.js',       'controller' );addHttpRequestHandler(      '/security\.\*',      'API/security_registry.js',       'actions' );
+﻿// external project API-accessaddHttpRequestHandler(      '/api\.\*',      'API/AC.js',       'controller' );// helper for all projects to get url and port for projectsaddHttpRequestHandler(      '/security\.\*',      'API/security_registry.js',       'actions' );
