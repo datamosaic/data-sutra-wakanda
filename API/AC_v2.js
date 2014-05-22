@@ -1,0 +1,1 @@
+﻿/** * AC API * @version 2 * @modified 2014 May 22 */var AC = new Object();/** * AC: public methods */AC.organization = {};AC.organization.getAll = function get() {	return "getAll";};AC.organization.removeAll = function remove() {	return "removeAll";};/** * Private functions, variables and CONSTANTS */function anonymous(xx) {	}module.exports = AC;
