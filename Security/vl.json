@@ -1,0 +1,10 @@
+{
+	"name": "VL",
+	"path": {
+		"server" : "http://stratosphere.kabootit.co/kb-valuelist/",
+		"developer" : "http://localhost:9202/"
+	},
+	"actions": [
+		
+	]
+}
