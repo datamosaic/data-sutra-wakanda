@@ -1,0 +1,14 @@
+{
+	"name": "AC",
+	"path": {
+		"server" : "http://stratosphere.kabootit.co/kb-acccess/",
+		"developer" : "http://localhost:9201/"
+	},
+	"actions": [
+		"organization.get",
+		"organization.getAll",
+		"organization.new",
+		"organization.delete",
+		"organization.duplicate"
+	]
+}
