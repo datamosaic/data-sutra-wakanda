@@ -1,0 +1,1 @@
+﻿// some variable that is instantiaed by Scripts/required.jskbLogin// test changing login paramvar LOGIN = require("./Security/login.js");LOGIN.authenticate('helo')//LOGIN

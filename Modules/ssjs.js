@@ -1,1 +1,1 @@
-﻿var xhr = require(FileSystemSync("EXTENSIONS_USER").path + "Modules/XHR");function example1 (request, response) {	var results;			results = xhr.post("http://127.0.0.1:9001/api/", null, null); // base url, action url, params	return results;	};
+﻿var LOGIN = require("../Security/login.js");exports.test = function test() {	if (LOGIN.valid) {		return "Valid";	}	else {		return "Invalid";	}}
