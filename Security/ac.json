@@ -1,7 +1,0 @@
-{
-	"name": "AC",
-	"path": {
-		"server" : "http://stratosphere.kabootit.co/kb-acccess/",
-		"developer" : "http://localhost:9201/"
-	}
-}
