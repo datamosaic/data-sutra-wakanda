@@ -1,0 +1,10 @@
+{
+	"name": "VL",
+	"path": {
+		"server": "http://xyz.kabootit.co/kb-valuelist/",
+		"developer": "http://localhost:xx02/"
+	},
+	"routes": [
+		
+	]
+}
