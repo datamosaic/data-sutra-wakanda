@@ -1,1 +1,0 @@
-﻿var LOGIN = require("../Security/login.js");exports.test = function test() {	if (LOGIN.valid) {		return "Valid";	}	else {		return "Invalid";	}}
