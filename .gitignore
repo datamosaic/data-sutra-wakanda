@@ -28,3 +28,4 @@ sessionID.json
 *.waRemoteModel
 # Don't push around changed port numbers for this project
 /Settings.waSettings
+/Security/vl.json
