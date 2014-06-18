@@ -1,0 +1,1 @@
+﻿var record = ds.User.createEntity()record.name = "troy";record.password = directory.computeHA1("troy", "bobo");record.save()ds.User.all()
