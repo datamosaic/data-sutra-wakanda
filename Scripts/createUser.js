@@ -1,1 +1,1 @@
-﻿var record = ds.User.createEntity()record.name = "troy";record.password = directory.computeHA1("troy", "bobo");record.name_first = "Mister";record.name_last = "Ed";record.save()ds.User.all()
+﻿if (false) {	var newValues = {		name: "troy",		password: "bobo",		name_first: "Mister",		name_last: "Ed"	}		var record = ds.User.createEntity()	record.name = newValues.name;	record.password = directory.computeHA1(newValues.name, newValues.password);	record.name_first = newValues.name_first;	record.name_last = newValues.name_last;	record.save()}ds.User.all()
