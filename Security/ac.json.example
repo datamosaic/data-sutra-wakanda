@@ -3,7 +3,7 @@
 	"path": {
 		"server": "http://xyz.kabootit.co/kb-acccess/",
 		"developer": "http://localhost:xx01/"
-	}
+	},
 	"routes": [
 		
 	]
