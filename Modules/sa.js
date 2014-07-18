@@ -1,0 +1,1 @@
+﻿exports.test = function() {	return "tst 123";}

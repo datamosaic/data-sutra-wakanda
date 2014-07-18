@@ -1,0 +1,1 @@
+﻿/** * SA API * @version 1 * @modified 2014 July 18 */var SA = new Object();SA.blah = {};/** * Get now * @public * @returns {Date} */SA.blah.getDate = function get() {	return new Date()};module.exports = SA;

@@ -1,0 +1,10 @@
+{
+	"name": "SA",
+	"path": {
+		"server": "http://xyz.kabootit.co/kb-staticassets/",
+		"developer": "http://localhost:xx03/"
+	},
+	"routes": [
+		
+	]
+}
