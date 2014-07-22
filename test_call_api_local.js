@@ -1,0 +1,1 @@
+﻿var x = SOLUTION.callAPI('SA.file.remove',['/Users/kabootit/Desktop/blah.txt','game']);x;

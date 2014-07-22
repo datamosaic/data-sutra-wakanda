@@ -1,0 +1,1 @@
+﻿/*** TEST: do something with API locally (from same project)* use commonJS approach*/var SA = require(FileSystemSync("PROJECT").path + "API/sa.js");// good callvar x = SA.file.move('/Users/kabootit/Desktop/blah.txt','game');x;
