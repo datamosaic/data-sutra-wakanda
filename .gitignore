@@ -29,3 +29,4 @@ sessionID.json
 # Don't push around changed port numbers for this project
 /Settings.waSettings
 /Security/ac.json
+/Kabootit/Security/ac.json
