@@ -15,4 +15,10 @@
   <folder path="./DataFolder/">
     <tag name="dataFolder"/>
   </folder>
+	<file path="./Kabootit/Startup/api.js">
+		<tag name="bootStrap"/>
+	</file>
+	<file path="./Kabootit/Startup/router.js">
+		<tag name="bootStrap"/>
+	</file>
 </project>
