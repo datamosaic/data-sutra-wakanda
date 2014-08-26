@@ -1,1 +1,66 @@
-﻿{	"toJSON": true,	"extraProperties": {		"version": "2",		"classes": {			"Group": {				"panelColor": "#eee",				"panel": {					"isOpen": "true",					"position": {						"X": 25,						"Y": 20					},					"pathVisible": true				}			}		},		"model": {			"scriptMode": "manual",			"workspaceLeft": 0,			"workspaceTop": 0		}	},	"dataClasses": [		{			"collectionName": "GroupCollection",			"className": "Group",			"attributes": [				{					"name": "ID",					"kind": "storage",					"type": "uuid",					"primKey": "true",					"identifying": true,					"autosequence": true,					"unique": true,					"autogenerate": true				},				{					"name": "test",					"scope": "public",					"type": "string",					"kind": "storage"				}			]		}	],	"type": []}
+
+{
+	"toJSON" : true,
+	"extraProperties" : 
+	{
+		"version" : "2",
+		"classes" : 
+		{
+			"Group" : 
+			{
+				"panelColor" : "#eee",
+				"panel" : 
+				{
+					"isOpen" : "true",
+					"pathVisible" : true,
+					"position" : 
+					{
+						"X" : 25,
+						"Y" : 20
+					}
+				}
+			}
+		},
+		"model" : 
+		{
+			"scriptMode" : "manual",
+			"workspaceLeft" : 0,
+			"workspaceTop" : 0
+		}
+	},
+	"dataClasses" : 
+	[
+		{
+			"name" : "Group",
+			"className" : "Group",
+			"collectionName" : "GroupCollection",
+			"scope" : "public",
+			"attributes" : 
+			[
+				{
+					"name" : "ID",
+					"kind" : "storage",
+					"scope" : "public",
+					"unique" : true,
+					"autosequence" : true,
+					"autogenerate" : true,
+					"type" : "uuid",
+					"indexKind" : "btree",
+					"identifying" : true
+				},
+				{
+					"name" : "test",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string"
+				}
+			],
+			"key" : 
+			[
+				{
+					"name" : "ID"
+				}
+			]
+		}
+	]
+}
