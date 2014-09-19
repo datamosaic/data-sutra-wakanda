@@ -21,4 +21,7 @@
 	<file path="./Kabootit/Startup/router.js">
 		<tag name="bootStrap"/>
 	</file>
+	<file path="./Kabootit/Startup/login.js">
+		<tag name="bootStrap"/>
+	</file>
 </project>
