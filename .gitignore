@@ -27,6 +27,5 @@ sessionID.json
 # Wakanda Remote Model Cache
 *.waRemoteModel
 # Don't push around changed port numbers for this project
-/Settings.waSettings
-/Security/ac.json
+/AC Settings.waSettings
 /Kabootit/Security/ac.json
