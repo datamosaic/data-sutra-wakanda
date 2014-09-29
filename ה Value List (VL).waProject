@@ -3,7 +3,7 @@
   <file path="./Model.waModel">
     <tag name="catalog"/>
   </file>
-  <file path="./Settings.waSettings">
+  <file path="./VL Settings.waSettings">
     <tag name="settings"/>
   </file>
   <file path="./Permissions.waPerm">
