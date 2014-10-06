@@ -1,0 +1,1 @@
+﻿/** * CODE API * @version 1 * @modified 2014 April 14 */var CODE = {	test : new Object()};/** * Get all organizations * @public * @returns {Array} */CODE.test.One = function get() {	return "hiya";};module.exports = CODE;

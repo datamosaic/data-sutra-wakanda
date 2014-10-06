@@ -1,0 +1,10 @@
+{
+	"name": "CODE",
+	"path": {
+		"server": "http://kb-resources.xyz.kabootit.co/",
+		"developer": "http://localhost:xx04/"
+	},
+	"routes": [
+		
+	]
+}
