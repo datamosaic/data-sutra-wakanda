@@ -1,0 +1,10 @@
+{
+	"name": "I18N",
+	"path": {
+		"server": "http://kb-i18n.xyz.kabootit.co/",
+		"developer": "http://localhost:xx06/"
+	},
+	"routes": [
+		
+	]
+}
