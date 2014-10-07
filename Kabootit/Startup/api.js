@@ -1,0 +1,1 @@
+﻿// external project API-accessaddHttpRequestHandler(      '(?:/kb-resources)?/api\.\*',      'Kabootit/API/code.js',       'acController' );

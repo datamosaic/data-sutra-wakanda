@@ -1,0 +1,10 @@
+{
+	"name": "WDGT",
+	"path": {
+		"server": "http://kb-widget.xyz.kabootit.co/",
+		"developer": "http://localhost:xx05/"
+	},
+	"routes": [
+		
+	]
+}
