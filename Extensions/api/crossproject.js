@@ -30,8 +30,8 @@ function external(method, args, version) {
 		var URL = require( (FileSystemSync("PROJECT").path.split('/').slice(0,FileSystemSync("PROJECT").path.split('/').length-2).join('/')) + '/Security/Kabootit/Security/registry.js' ).path(apiName,true);
 		
 		// get permitted actions (via xhr except for this one place)
-		var xhr = require(FileSystemSync("EXTENSIONS_USER").path + "Modules/XHR");
-		var results = xhr.post(
+//		var xhr = require(FileSystemSync("PROJECT").path + "Modules/XHR");
+		var results = XHR.post(
 				URL, 
 				"api/" + version + "/" + method,
 				{
