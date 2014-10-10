@@ -1,0 +1,10 @@
+{
+	"name": "RPT",
+	"path": {
+		"server": "http://kb-rpt.xyz.kabootit.co/",
+		"developer": "http://localhost:xx07/"
+	},
+	"routes": [
+		
+	]
+}
