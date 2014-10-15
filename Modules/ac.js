@@ -1,0 +1,1 @@
+﻿exports.login = function login (name,pass) {	if (!LOGIN.valid()) {		return loginByPassword(name,pass);	}};exports.logout = function logout () {	return LOGIN.logout();}exports.session = function session() {	return LOGIN.session();}exports.projects = function projects() {	var URLs = SECURITY.pathAll();	return URLs;}
