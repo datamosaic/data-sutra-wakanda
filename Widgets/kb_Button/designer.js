@@ -60,7 +60,6 @@
 		return img;
        }
 	
-	
 	setTimeout(function(){
 		
 		var img = getImg(widgetName);

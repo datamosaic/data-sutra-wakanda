@@ -1,4 +1,4 @@
-WAF.define('kb_Button', ['waf-core/widget'], function(widget) {
+WAF.define('kb_Button', ['waf-core/widget','kb_lib'], function(widget) {
 
 	
     var kb_Button = widget.create('kb_Button');
@@ -9,22 +9,6 @@ WAF.define('kb_Button', ['waf-core/widget'], function(widget) {
 		this.doMarkup();
 	};
 	
-	kb_Button.prototype.doMarkup = function doMarkup() {
-		var
-			template = '<button type="button" class="btn {{kbType}} {{kbSize}} {{kbBlock}} {{kbPull}}"  {{disabled}}>{{kbLabel}}</button>',
-			data = {
-				kbType		: this.kbType(),
-				kbSize		: this.kbSize(),
-				kbBlock		: this.kbBlock(),
-				kbLabel		: this.kbLabel(),
-				kbPull		: this.kbPull(),
-				disabled	: (this.kbDisabled()) ? 'disabled="disabled"' : null
-			};
-		$(this.node).attr("data-kb", this.merge(template,data));
-	};
-	
-
-
 	// properties
 	kb_Button.addProperty('kbTemplate', {
 	    type: "string",
@@ -50,7 +34,10 @@ WAF.define('kb_Button', ['waf-core/widget'], function(widget) {
 			'btn-danger'	: 'Danger',
 			'btn-link'		: 'Link'
 	    },
-	    bindable: false
+	    bindable: false,
+		onChange: function(newValue) {
+			this.doMarkup();
+		}
 	});
 	kb_Button.addProperty('kbSize', {
 	    type: "enum",
@@ -60,12 +47,18 @@ WAF.define('kb_Button', ['waf-core/widget'], function(widget) {
 			'btn-sm'	: 'Small',
 			'btn-xs'	: 'Extra-small'
 	    },
-	    bindable: false
+	    bindable: false,
+		onChange: function(newValue) {
+			this.doMarkup();
+		}
 	});
 	kb_Button.addProperty('kbBlock', { 
 	    type: 'boolean',
 	    defaultValue: false,
-	    bindable: false
+	    bindable: false,
+		onChange: function(newValue) {
+			this.doMarkup();
+		}
 	});
 	kb_Button.addProperty('kbPull', {
 	    type: "enum",
@@ -74,14 +67,51 @@ WAF.define('kb_Button', ['waf-core/widget'], function(widget) {
 			'pull-left'		: 'Left',
 			'pull-right'	: 'Right'
 	    },
-	    bindable: false
+	    bindable: false,
+		onChange: function(newValue) {
+			this.doMarkup();
+		}
 	});
 	kb_Button.addProperty('kbDisabled', { 
 	    type: 'boolean',
 	    defaultValue: false,
-	    bindable: false
+	    bindable: false,
+		onChange: function(newValue) {
+			this.doMarkup();
+		}
 	});
 
+	/**
+	 * doMarkup
+	 * store widget client markup in attr "data-kb"
+	 * 
+	 * TODO:
+	 * 		- add any data bindings
+	 *		- add required wakanda widget attr's(?)
+	 * 		- add event bindings
+	 */
+	kb_Button.prototype.doMarkup = function doMarkup() {
+		var
+			template = '<button id="{{id}}" data-lib="WAF" data-type="kb_Button" type="button" class="btn {{kbType}} {{kbSize}} {{kbBlock}} {{kbPull}}"  {{disabled}}>{{kbLabel}}</button>',
+			data = {
+				id			: "{{id}}", // picked up by builder because i can't attach an onChange to ID property
+				kbType		: this.kbType(),
+				kbSize		: this.kbSize(),
+				kbBlock		: (this.kbBlock()) ? 'btn-block' : null,
+				kbLabel		: this.kbLabel(),
+				kbPull		: this.kbPull(),
+				disabled	: (this.kbDisabled()) ? 'disabled="disabled"' : null
+			},
+			merge = this.merge(template,data);
+		// TODO: remove regex once switch to mustache (which handles null better)
+		merge = merge.replace(/false|null/g,"");
+		merge = merge.replace(/[ \t]{2,}/g," ");
+		merge = merge.replace(/[ ]\"[ ]/g,"\"");
+		
+		$(this.node).attr("data-kb", merge);
+		// testing...view in designer console
+		console.log(merge);
+	};
 
 	/**
 	 * Tim (lite): A tiny, secure JavaScript micro-templating script.
