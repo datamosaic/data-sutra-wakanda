@@ -1,1 +1,0 @@
-﻿function helloWorld() {	console.log("aaa");}

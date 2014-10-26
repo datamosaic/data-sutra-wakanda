@@ -1,12 +1,15 @@
-WAF.define('kb_Button', ['waf-core/widget','kb_lib'], function(widget) {
+WAF.define('kb_Button', ['waf-core/widget','kb'], function(widget,kb) {
 
 	
     var kb_Button = widget.create('kb_Button');
     kb_Button.inherit('waf-behavior/layout/container');
+	kb_Button.inherit('kb_lib');
     kb_Button.addClass('waf-ui-box');
 	
 	kb_Button.prototype.init = function init() {
 		this.doMarkup();
+
+		console.log(this.helloWorld());
 	};
 	
 	// properties
