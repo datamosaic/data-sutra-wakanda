@@ -1,1 +1,26 @@
-{    "name": "kb_lib",    "loadDependencies": [        {"id": "kb_lib/utils.js", "runtimeOnly":false, "version": "1.0.0", "path": "WIDGETS_CUSTOM"}    ]}
+{
+    "name": "kb_lib",
+    "studioName": "KB Lib",
+    "category": "Hidden",
+    "author": "Kabootit",
+    "contributors": [
+        "David Workman",
+        "Troy Elliott"
+    ],
+    "version": "1.0.0",
+    "copyright": "(c) 2014 Kabootit",
+    "repository": {
+        "type": "",
+        "url": ""
+    },
+    "keywords": ["wakanda", "widget", "kabootit"],
+    "engines": {"wakanda": ">= 9"},
+    "license": "Commercial",
+    "loadDependencies": [
+        {"id": "Widget_V2"},
+		{"id": "kb_lib/utils.js", "version": "1.0.0", "path": "WIDGETS_CUSTOM"},
+        {"id": "kb_lib/widget.js", "version": "1.0.0", "path": "WIDGETS_CUSTOM"},
+        {"id": "kb_lib/css/widget.css", "version": "1.0.0", "path": "WIDGETS_CUSTOM"},
+        {"id": "kb_lib/designer.js", "studioOnly": true, "version": "1.0.0", "path": "WIDGETS_CUSTOM"}
+    ]
+}

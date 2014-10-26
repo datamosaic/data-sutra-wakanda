@@ -22,6 +22,6 @@
         {"id": "kb_Button/widget.js", "version": "1.0.0", "path": "WIDGETS_CUSTOM"},
         {"id": "kb_Button/css/widget.css", "version": "1.0.0", "path": "WIDGETS_CUSTOM"},
         {"id": "kb_Button/designer.js", "studioOnly": true, "version": "1.0.0", "path": "WIDGETS_CUSTOM"},
-		{"id": "kb_lib/package.json", "runtimeOnly": true, "version": "1.0.0", "path": "WIDGETS_CUSTOM"}
+		{"id": "kb_lib/package.json", "version": "1.0.0", "path": "WIDGETS_CUSTOM"}
     ]
 }
