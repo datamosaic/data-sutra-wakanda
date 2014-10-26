@@ -12,6 +12,11 @@
         description: 'Mustache tag "widget" required',
         multiline: true 
     });
+    kb_Button.customizeProperty('kbLabel', {
+    	category: "Kabootit",
+        title: 'Label',
+        description: 'Label for input'
+    });
     kb_Button.customizeProperty('kbType', {
     	category: "Kabootit",
         title: 'Type',

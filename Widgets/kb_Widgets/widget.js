@@ -1,23 +1,23 @@
 
-WAF.define('kb_Form', ['waf-core/widget'], function(widget, kb_FormRow) {
+WAF.define('kb_Widgets', ['waf-core/widget'], function(widget, kb_WidgetsRow) {
 
-    var kb_Form = widget.create('kb_Form', {
+    var kb_Widgets = widget.create('kb_Widgets', {
         init: function() {
         	 
         }
     });
     
-    kb_Form.addClass('waf-ui-box');
+    kb_Widgets.addClass('waf-ui-box');
     
-    kb_Form.inherit('waf-behavior/layout/container');
+    kb_Widgets.inherit('waf-behavior/layout/container');
     
     // properties
-	kb_Form.addProperty('kbTitle', {
+	kb_Widgets.addProperty('kbTitle', {
 	    type: "string",
 	    bindable: false,
 	    onChange: function(newValue) {
             
-            this.node.innerHTML = '<div class="kb-label-form"><b>Form:</b> ' + this.kbTitle()  + '</div>';
+            this.node.innerHTML = '<div class="kb-label-Widgets"><b>Widgets:</b> ' + this.kbTitle()  + '</div>';
         
 		     var img =  $('div')
 			.filter(function() {
@@ -25,7 +25,7 @@ WAF.define('kb_Form', ['waf-core/widget'], function(widget, kb_FormRow) {
 			})
 			.find('button')
 			.filter(function() {
-				return $(this).text() == 'Form';
+				return $(this).text() == 'Widgets';
 			})
 			.css('background-image');
 	        
@@ -33,13 +33,13 @@ WAF.define('kb_Form', ['waf-core/widget'], function(widget, kb_FormRow) {
             
         }
 	});
-	kb_Form.addProperty('kbTemplate', {
+	kb_Widgets.addProperty('kbTemplate', {
 	    type: "string",
 	    bindable: false,
 		defaultValue: "{{{widgets}}}"
 	});
 
 
-    return kb_Form;
+    return kb_Widgets;
 
 });
