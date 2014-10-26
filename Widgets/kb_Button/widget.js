@@ -1,15 +1,12 @@
-WAF.define('kb_Button', ['waf-core/widget','kb'], function(widget,kb) {
+WAF.define('kb_Button', ['waf-core/widget', 'utils'], function(widget,utils) {
 
 	
     var kb_Button = widget.create('kb_Button');
     kb_Button.inherit('waf-behavior/layout/container');
-	kb_Button.inherit('kb_lib');
     kb_Button.addClass('waf-ui-box');
 	
 	kb_Button.prototype.init = function init() {
 		this.doMarkup();
-
-		console.log(this.helloWorld());
 	};
 	
 	// properties
@@ -105,7 +102,7 @@ WAF.define('kb_Button', ['waf-core/widget','kb'], function(widget,kb) {
 				kbPull		: this.kbPull(),
 				disabled	: (this.kbDisabled()) ? 'disabled="disabled"' : null
 			},
-			merge = this.merge(template,data);
+			merge = utils.merge(template,data);
 		// TODO: remove regex once switch to mustache (which handles null better)
 		merge = merge.replace(/false|null/g,"");
 		merge = merge.replace(/[ \t]{2,}/g," ");
@@ -115,52 +112,6 @@ WAF.define('kb_Button', ['waf-core/widget','kb'], function(widget,kb) {
 		// testing...view in designer console
 		console.log(merge);
 	};
-
-	/**
-	 * Tim (lite): A tiny, secure JavaScript micro-templating script.
-	 *   github.com/premasagar/tim
-	 *   
-	 * @param {String} template
-	 * @param {Object} data
-	 * 
-	 * @example 
-	 * 		CMS.markup.merge("Hello {{place}}", {place: "world"})
-	 * 			> Hello world
-	 * 		CMS.markup.merge("Hello {{place}}. My name is {{person.name}}.", { place: "Brighton", person: { name: "Prem" } })
-	 *			> Hello Brighton. My name is Prem.
-	 *
-	 * @properties={typeid:24,uuid:"E93C4B64-5AC4-4A50-A6EF-8506C5D07371"}
-	 */
-	kb_Button.prototype.merge = function merge(template, data){
-
-	    var start   = "{{",
-	        end     = "}}",
-	        path    = "[a-z0-9_][\\.a-z0-9_]*", // e.g. config.person.name
-	        pattern = new RegExp(start + "\\s*("+ path +")\\s*" + end, "gi"),
-	        undef; 
-
-	        // Merge data into the template string
-	        return template.replace(pattern, function(tag, token){
-	            path = 	token.split(".")
-	            var  	len = path.length,
-	                	lookup = data,
-	                	i = 0;
-
-	            for (; i < len; i++){
-	                lookup = lookup[path[i]];
-                
-	                // Property not found
-	                if (lookup === undef){
-	                    throw "tim: '" + path[i] + "' not found in " + tag;
-	                }
-                
-	                // Return the required value
-	                if (i === len - 1){
-	                    return lookup;
-	                }
-	            }
-	        });
-	}
 
     return kb_Button;
 
