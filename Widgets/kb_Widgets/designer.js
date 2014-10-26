@@ -3,8 +3,8 @@
 	var widgetName = "Widgets";
 
     /* Default width and height of your widget */
-    kb_Widgets.setWidth('400');
-    kb_Widgets.setHeight('500');
+    kb_Widgets.setWidth('300');
+    kb_Widgets.setHeight('400');
 
     /* Properties */
     // parent
@@ -55,7 +55,7 @@
 	
 	
     kb_Widgets.doAfter('init', function() {
-        this.node.innerHTML = '<div class="kb-label-Widgets"><b>Widgets:</b> ' + this.kbTitle()  + '</div>';
+        this.node.innerHTML = '<div class="kb-label-widgets"><b>Widgets:</b> ' + this.kbTitle()  + '</div>';
         
 	    var img =  getImg(widgetName);
         $(this.node).css('background', img + ' no-repeat');

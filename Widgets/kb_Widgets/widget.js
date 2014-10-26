@@ -17,7 +17,7 @@ WAF.define('kb_Widgets', ['waf-core/widget'], function(widget, kb_WidgetsRow) {
 	    bindable: false,
 	    onChange: function(newValue) {
             
-            this.node.innerHTML = '<div class="kb-label-Widgets"><b>Widgets:</b> ' + this.kbTitle()  + '</div>';
+            this.node.innerHTML = '<div class="kb-label-widgets"><b>Widgets:</b> ' + this.kbTitle()  + '</div>';
         
 		     var img =  $('div')
 			.filter(function() {

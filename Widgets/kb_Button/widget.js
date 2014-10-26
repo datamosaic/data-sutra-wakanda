@@ -35,6 +35,7 @@ WAF.define('kb_Button', ['waf-core/widget'], function(widget) {
 	    type: "string",
 	    bindable: false,
 		onChange: function(newValue) {
+			this.node.innerHTML = '<div class="kb-label-button"><b>Button: </b>' + this.kbLabel()  + '</div>';
 			this.doMarkup();
 		}
 	});
