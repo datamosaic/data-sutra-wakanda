@@ -66,7 +66,7 @@
 
 
     kb_Input.doAfter('init', function() {
-        this.node.innerHTML = '<div class="kb-label-input"><b>Input</b></div>';
+        this.node.innerHTML = '<div class="kb-label-input"><b>Input: </b>' + this.kbLabel()  + '</div>';
 
 	    var img =  getImg(widgetName);
         $(this.node).css('background', img + ' no-repeat');

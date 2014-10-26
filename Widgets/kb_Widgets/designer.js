@@ -1,20 +1,20 @@
-(function(kb_Form) {
+(function(kb_Widgets) {
 
-	var widgetName = "Form";
+	var widgetName = "Widgets";
 
     /* Default width and height of your widget */
-    kb_Form.setWidth('400');
-    kb_Form.setHeight('500');
+    kb_Widgets.setWidth('300');
+    kb_Widgets.setHeight('400');
 
     /* Properties */
     // parent
-    kb_Form.customizeProperty('kbTitle', {
+    kb_Widgets.customizeProperty('kbTitle', {
     	category: "Kabootit",
         title: 'Title',
-        description: 'Parent tag this kb_Form fits into'
+        description: 'Parent tag this kb_Widgets fits into'
     });
     //  template
-    kb_Form.customizeProperty('kbTemplate', {
+    kb_Widgets.customizeProperty('kbTemplate', {
     	category: "Kabootit",
         title: 'Template',
         description: 'Must include mustache tag = "widgets"',
@@ -54,8 +54,8 @@
 	}, 100);
 	
 	
-    kb_Form.doAfter('init', function() {
-        this.node.innerHTML = '<div class="kb-label-form"><b>Form:</b> ' + this.kbTitle()  + '</div>';
+    kb_Widgets.doAfter('init', function() {
+        this.node.innerHTML = '<div class="kb-label-widgets"><b>Widgets:</b> ' + this.kbTitle()  + '</div>';
         
 	    var img =  getImg(widgetName);
         $(this.node).css('background', img + ' no-repeat');

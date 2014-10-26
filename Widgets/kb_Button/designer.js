@@ -12,6 +12,11 @@
         description: 'Mustache tag "widget" required',
         multiline: true 
     });
+    kb_Button.customizeProperty('kbLabel', {
+    	category: "Kabootit",
+        title: 'Label',
+        description: 'Label for input'
+    });
     kb_Button.customizeProperty('kbType', {
     	category: "Kabootit",
         title: 'Type',
@@ -71,7 +76,7 @@
 	}, 100);
 	
     kb_Button.doAfter('init', function() {
-        this.node.innerHTML = '<div class="kb-label-button"><b>Button</b></div>';
+        this.node.innerHTML = '<div class="kb-label-button"><b>Button: </b>' + this.kbLabel()  + '</div>';
 
 	    var img =  getImg(widgetName);
         $(this.node).css('background', img + ' no-repeat');

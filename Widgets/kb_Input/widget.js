@@ -16,7 +16,10 @@ WAF.define('kb_Input', ['waf-core/widget'], function(widget) {
 	});
 	kb_Input.addProperty('kbLabel', {
 	    type: "string",
-	    bindable: false
+	    bindable: false,
+		onChange: function(newValue) {
+			this.node.innerHTML = '<div class="kb-label-input"><b>Input: </b>' + this.kbLabel()  + '</div>';
+		}
 	});
 	kb_Input.addProperty('kbPlaceholder', {
 	    type: "string",
