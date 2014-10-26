@@ -1,5 +1,8 @@
 (function(Button) {
     "use strict";
+	
+	var widgetName = "Button";
+	
     Button.setWidth(92);
     Button.setHeight(22);
 

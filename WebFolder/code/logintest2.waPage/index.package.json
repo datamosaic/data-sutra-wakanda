@@ -1,0 +1,48 @@
+{
+	"loadDependencies": [
+		{
+			"id": "Desktop_Core",
+			"type": "core",
+			"version": "1.0.0"
+		},
+		{
+			"id": "code/logintest2.waPage/scripts/index.js",
+			"path": "WEBFOLDER",
+			"type": "script"
+		},
+		{
+			"id": "Widget/tabView",
+			"type": "widget"
+		},
+		{
+			"id": "Widget/menuBar",
+			"type": "widget"
+		},
+		{
+			"id": "Widget/menuItem",
+			"type": "widget"
+		},
+		{
+			"id": "Widget/richText",
+			"type": "widget"
+		},
+		{
+			"id": "Widget/container",
+			"type": "widget"
+		},
+		{
+			"id": "Widget/textField",
+			"type": "widget"
+		},
+		{
+			"id": "Widget/label",
+			"type": "widget"
+		},
+		{
+			"id": "Widget/button",
+			"type": "widget"
+		}
+	],
+	"name": "WebFolder/logintest2.waPage/index.html",
+	"version": "1.0.0"
+}

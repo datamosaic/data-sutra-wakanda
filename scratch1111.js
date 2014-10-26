@@ -1,1 +1,1 @@
-﻿FileSystemSync("EXTENSIONS_USER");
+﻿directory.internalStore

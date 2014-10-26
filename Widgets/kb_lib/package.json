@@ -1,0 +1,1 @@
+{    "name": "kb_lib",    "loadDependencies": [        {"id": "kb_lib/designer.js", "runtimeOnly":true, "version": "1.0.0", "path": "WIDGETS_CUSTOM"}    ]}

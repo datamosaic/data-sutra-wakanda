@@ -1,0 +1,29 @@
+{
+    "name": "kb_Form",
+    "studioName": "Form",
+    "category": "Kabootit: Layout",
+    "iconPath": "/icons/ic_subtitles_black_24dp.png",
+    "author": "Kabootit",
+    "contributors": [
+        "David Workman",
+        "Troy Elliott"
+    ],
+    "version": "1.0.0",
+    "copyright": "(c) 2014 Kabootit",
+    "repository": {
+        "type": "",
+        "url": ""
+    },
+    "keywords": ["wakanda", "widget", "kabootit"],
+    "engines": {"wakanda": ">= 9"},
+    "license": "Commercial",
+    "externalWidgets": [
+        "kb_FormRow"
+    ],
+    "loadDependencies": [
+        {"id": "Widget_V2"},
+        {"id": "kb_Form/widget.js", "version": "1.0.0", "path": "WIDGETS_CUSTOM"},
+        {"id": "kb_Form/css/widget.css", "version": "1.0.0", "path": "WIDGETS_CUSTOM"},
+        {"id": "kb_Form/designer.js", "studioOnly": true, "version": "1.0.0", "path": "WIDGETS_CUSTOM"}
+    ]
+}
