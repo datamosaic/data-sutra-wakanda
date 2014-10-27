@@ -19,7 +19,6 @@ WAF.define('kb_Button', ['waf-core/widget', 'utils'], function(widget,utils) {
 	    type: "string",
 	    bindable: false,
 		onChange: function(newValue) {
-			this.node.innerHTML = '<div class="kb-label-button"><b>Button: </b>' + this.kbLabel()  + '</div>';
 			this.doMarkup();
 		}
 	});
@@ -92,9 +91,8 @@ WAF.define('kb_Button', ['waf-core/widget', 'utils'], function(widget,utils) {
 	 */
 	kb_Button.prototype.doMarkup = function doMarkup() {
 		var
-			template = '<button id="{{id}}" data-lib="WAF" data-type="kb_Button" type="button" class="btn {{kbType}} {{kbSize}} {{kbBlock}} {{kbPull}}"  {{disabled}}>{{kbLabel}}</button>',
+			template = '<button id="kb-id" data-lib="WAF" data-type="kb_Button" type="button" class="btn {{kbType}} {{kbSize}} {{kbBlock}} {{kbPull}}"  {{disabled}}>{{kbLabel}}</button>',
 			data = {
-				id			: "{{id}}", // picked up by builder because i can't attach an onChange to ID property
 				kbType		: this.kbType(),
 				kbSize		: this.kbSize(),
 				kbBlock		: (this.kbBlock()) ? 'btn-block' : null,
@@ -108,9 +106,10 @@ WAF.define('kb_Button', ['waf-core/widget', 'utils'], function(widget,utils) {
 		merge = merge.replace(/[ \t]{2,}/g," ");
 		merge = merge.replace(/[ ]\"[ ]/g,"\"");
 		
-		$(this.node).attr("data-kb", merge);
-		// testing...view in designer console
-		console.log(merge);
+		// merge = JSON.stringify(merge);
+		
+		this.node.innerHTML = '<div style="display:none;" kb-data=\'' + merge + '\'></div><div class="kb-label-button"><b>Button: </b>' + this.kbLabel()  + '</div>';
+		
 	};
 
     return kb_Button;

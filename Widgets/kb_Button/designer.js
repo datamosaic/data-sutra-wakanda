@@ -75,8 +75,9 @@
 	}, 100);
 	
     kb_Button.doAfter('init', function() {
-        this.node.innerHTML = '<div class="kb-label-button"><b>Button: </b>' + this.kbLabel()  + '</div>';
-
+        this.node.innerHTML = '<div kb-data=""></div><div class="kb-label-button"><b>Button: </b>' + this.kbLabel()  + '</div>';
+		// this.node.setAttribute('data-kb','some value');
+		console.log($(this.node));
 	    var img =  getImg(widgetName);
         $(this.node).css('background', img + ' no-repeat');
     });

@@ -45,7 +45,8 @@ WAF.define('kb_Page', ['waf-core/widget'], function(widget) {
 	       	"../serenity/"	: "Serenity",
 	       	"/mars"	: "Mars",
 	       	"../empowered/"	: "Empowered",
-	       	"../super/"	: "Super"
+	       	"../super/"	: "Super",
+			"/binary" : "Binary"
 	    },
 	    bindable: false
 	});
