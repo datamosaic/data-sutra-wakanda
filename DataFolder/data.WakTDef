@@ -1,1 +1,0 @@
-﻿[{"dataTableNum":1,"tableName":"People","dataTableID":"F7999594CCA34AA59011DDA44DBECB33","fields":[{"fieldName":"ID","posInRecord":1},{"fieldName":"name_first","posInRecord":2},{"fieldName":"name_last","posInRecord":3},{"fieldName":"date_birth","posInRecord":4},{"fieldName":"age","posInRecord":5}]}]
