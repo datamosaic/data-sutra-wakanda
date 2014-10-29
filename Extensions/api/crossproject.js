@@ -6,6 +6,10 @@
  * @return Whatever the call returns
  */
 function external(method, args, version) {
+	// direct require for xhr and security if for some reason not in global required
+	// require(FileSystemSync("PROJECT").path + "Resources/Modules/XHR.js");
+	// require( (FileSystemSync("PROJECT").path.split('/').slice(0,FileSystemSync("PROJECT").path.split('/').length-2).join('/')) + '/Security/Kabootit/Security/registry.js' )
+	
 	var callingProject = self.name.match(/\((.*)\)/)[1];
 	
 	// no version specified, use default version
@@ -27,10 +31,9 @@ function external(method, args, version) {
 		}
 		
 		// get server/port for external project
-		var URL = require( (FileSystemSync("PROJECT").path.split('/').slice(0,FileSystemSync("PROJECT").path.split('/').length-2).join('/')) + '/Security/Kabootit/Security/registry.js' ).path(apiName,true);
+		var URL = SECURITY.path(apiName,true);
 		
 		// get permitted actions (via xhr except for this one place)
-//		var xhr = require(FileSystemSync("PROJECT").path + "Modules/XHR");
 		var results = XHR.post(
 				URL, 
 				"api/" + version + "/" + method,
