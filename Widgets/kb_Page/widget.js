@@ -39,12 +39,13 @@ WAF.define('kb_Page', ['waf-core/widget'], function(widget) {
 	    type: "enum",
 	    "values": {
 	    	''				: '',
-	        "../Quickstart/"	: "Quickstart",
-	       	"../Sphere/"	: "Sphere",
+	        "../quickstart/"	: "Quickstart",
+	       	"../sphere/"	: "Sphere",
 	       	"../onthegoadmin/"	: "On-the-Go",
 	       	"../serenity/"	: "Serenity",
 	       	"/mars"	: "Mars",
-	       	"../empowered/"	: "Empowered",
+	       	"/canvas"	: "Canvas",
+	       	"../families/"	: "Empowered",
 	       	"../super/"	: "Super",
 			"/binary" : "Binary"
 	    },
