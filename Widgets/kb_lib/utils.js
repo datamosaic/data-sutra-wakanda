@@ -50,7 +50,7 @@ WAF.define('utils', [], function() {
 
 	        // Merge data into the template string
 	        return template.replace(pattern, function(tag, token){
-	            path = 	token.split(".")
+	            path = 	token.split(".");
 	            var  	len = path.length,
 	                	lookup = data,
 	                	i = 0;
