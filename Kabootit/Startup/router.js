@@ -1,1 +1,1 @@
-﻿
+﻿// theme non-script resourcesaddHttpRequestHandler(      '^/themes',      Folder(ds.getModelFolder().path).parent.path + 'Resources/Extensions/router/router.js',      'theme');// theme script resourcesaddHttpRequestHandler(      '(.*/themes/canvas)',      Folder(ds.getModelFolder().path).parent.path + 'Resources/Extensions/router/router.js',      'theme');
