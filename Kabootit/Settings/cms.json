@@ -1,0 +1,10 @@
+{
+	"name": "RPT",
+	"home": "index",
+	"routes" : [
+		"*"
+	],
+	"noLoginRequired" : [
+		
+	]
+}
