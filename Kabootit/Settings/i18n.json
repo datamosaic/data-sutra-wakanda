@@ -1,0 +1,9 @@
+{
+	"name": "I18N",
+	"path": {
+		"production": "http://kb-i18n.stratosphere.kabootit.co/",
+		"staging" : "http://kb-i18n.stratostaging.kabootit.co/",
+		"productionInternal": "http://localhost:9206/",
+		"stagingInternal": "http://localhost:19206/"
+	}
+}
