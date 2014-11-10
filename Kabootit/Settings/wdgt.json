@@ -1,0 +1,9 @@
+{
+	"name": "WDGT",
+	"path": {
+		"production": "http://kb-widgets.stratosphere.kabootit.co/",
+		"staging" : "http://kb-widgets.stratostaging.kabootit.co/",
+		"productionInternal": "http://localhost:9205/",
+		"stagingInternal": "http://localhost:19205/"
+	}
+}
