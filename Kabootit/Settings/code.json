@@ -1,0 +1,9 @@
+{
+	"name": "CODE",
+	"path": {
+		"production": "http://kb-resources.stratosphere.kabootit.co/",
+		"staging" : "http://kb-resources.stratostaging.kabootit.co/",
+		"productionInternal": "http://localhost:9204/",
+		"stagingInternal": "http://localhost:19204/"
+	}
+}
