@@ -1,0 +1,9 @@
+{
+	"name": "VL",
+	"path": {
+		"production": "http://kb-valuelist.stratosphere.kabootit.co/",
+		"staging" : "http://kb-valuelist.stratostaging.kabootit.co/",
+		"productionInternal": "http://localhost:9202/",
+		"stagingInternal": "http://localhost:19202/"
+	}
+}
