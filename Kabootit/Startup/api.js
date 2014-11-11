@@ -1,1 +1,1 @@
-﻿// // external project API-access// addHttpRequestHandler(//       '(?:/kb-valuelist)?/api\.\*',//       'Kabootit/API/vl.js', //       'vlController' // );
+﻿// external project API-accessaddHttpRequestHandler(      '(?:/kb-valuelist)?/api\.\*',      'Kabootit/API/vl.js',      'vlController');
