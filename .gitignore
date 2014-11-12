@@ -30,4 +30,4 @@ sessionID.json
 *.waRemoteModel
 # Don't push around changed port numbers for this project
 /VL Settings.waSettings
-/Kabootit/Security/vl.json
+/Kabootit/Settings/vl.json
