@@ -1,9 +1,0 @@
-{
-	"name": "AC",
-	"path": {
-		"production": "http://kb-security.stratosphere.kabootit.co/",
-		"staging" : "http://kb-security.stratostaging.kabootit.co/",
-		"productionInternal": "http://localhost:9201/",
-		"stagingInternal": "http://localhost:19201/"
-	}
-}
