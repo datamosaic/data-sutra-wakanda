@@ -30,4 +30,4 @@ sessionID.json
 *.waRemoteModel
 # Settings file (will be unique per solution)
 I18N Settings.waSettings
-/Kabootit/Security/i18n.json
+/Kabootit/Settings/i18n.json
