@@ -30,4 +30,4 @@ sessionID.json
 *.waRemoteModel
 # Settings file (will be unique per solution)
 RPT Settings.waSettings
-/Kabootit/Security/rpt.json
+/Kabootit/Settings/rpt.json

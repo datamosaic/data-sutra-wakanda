@@ -1,9 +1,0 @@
-{
-	"name": "RPT",
-	"path": {
-		"production": "http://kb-report.stratosphere.kabootit.co/",
-		"staging" : "http://kb-report.stratostaging.kabootit.co/",
-		"productionInternal": "http://localhost:9207/",
-		"stagingInternal": "http://localhost:19207/"
-	}
-}
