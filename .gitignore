@@ -30,5 +30,6 @@ sessionID.json
 *.waRemoteModel
 # Don't push around changed port numbers for this project
 /SA Settings.waSettings
-/Kabootit/Security/sa.json
+/Kabootit/Settings/sa.json
+# ignore static assets
 /WebFolder/images

@@ -1,9 +1,0 @@
-{
-	"name": "SA",
-	"path": {
-		"production": "http://kb-staticassets.stratosphere.kabootit.co/",
-		"staging" : "http://kb-staticassets.stratostaging.kabootit.co/",
-		"productionInternal": "http://localhost:9203/",
-		"stagingInternal": "http://localhost:19203/"
-	}
-}
