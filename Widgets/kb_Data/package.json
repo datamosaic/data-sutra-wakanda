@@ -1,0 +1,26 @@
+{
+    "name": "kb_Data",
+    "studioName": "Data",
+    "category": "Kabootit: Component",
+    "iconPath": "/icons/ic_blur_on_black_24dp.png",
+    "author": "Kabootit",
+    "contributors": [
+        "David Workman",
+        "Troy Elliott"
+    ],
+    "version": "1.0.0",
+    "copyright": "(c) 2014 Kabootit",
+    "repository": {
+        "type": "",
+        "url": ""
+    },
+    "keywords": ["wakanda", "widget", "kabootit"],
+    "engines": {"wakanda": ">= 9"},
+    "license": "Commercial",
+    "loadDependencies": [
+        {"id": "Widget_V2"},
+        {"id": "kb_Data/widget.js", "version": "1.0.0", "path": "WIDGETS_CUSTOM"},
+        {"id": "kb_Data/css/widget.css", "version": "1.0.0", "path": "WIDGETS_CUSTOM"},
+        {"id": "kb_Data/designer.js", "studioOnly": true, "version": "1.0.0", "path": "WIDGETS_CUSTOM"}
+    ]
+}

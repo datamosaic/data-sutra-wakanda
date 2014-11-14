@@ -1,7 +1,7 @@
 {
     "name": "kb_Input",
     "studioName": "Input",
-    "category": "Kabootit: Widgets",
+    "category": "Kabootit: Elements",
     "iconPath": "/icons/ic_input_black_24dp.png",
     "author": "Kabootit",
     "contributors": [

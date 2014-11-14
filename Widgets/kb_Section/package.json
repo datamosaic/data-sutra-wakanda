@@ -1,0 +1,26 @@
+{
+    "name": "kb_Section",
+    "studioName": "Section",
+    "category": "Kabootit: CMS",
+    "iconPath": "/icons/ic_view_quilt_black_24dp.png",
+    "author": "Widget Developer",
+    "contributors": [
+        "David Workman",
+        "Troy Elliott"
+    ],
+    "version": "1.0.0",
+    "copyright": "(c) 2014 Kabootit",
+    "repository": {
+        "type": "",
+        "url": ""
+    },
+    "keywords": ["wakanda", "widget"],
+    "engines": {"wakanda": ">= 9"},
+    "license": "Commercial",
+    "loadDependencies": [
+        {"id": "Widget_V2"},
+        {"id": "kb_Section/widget.js", "version": "1.0.0", "path": "WIDGETS_CUSTOM"},
+        {"id": "kb_Section/css/widget.css", "version": "1.0.0", "path": "WIDGETS_CUSTOM"},
+        {"id": "kb_Section/designer.js", "studioOnly": true, "version": "1.0.0", "path": "WIDGETS_CUSTOM"}
+    ]
+}

@@ -1,7 +1,7 @@
 {
     "name": "kb_Button",
     "studioName": "Button",
-    "category": "Kabootit: Widgets",
+    "category": "Kabootit: Elements",
     "iconPath": "/icons/ic_crop_landscape_black_24dp.png",
     "author": "Kabootit",
     "contributors": [

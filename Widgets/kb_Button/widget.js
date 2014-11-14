@@ -108,7 +108,17 @@ WAF.define('kb_Button', ['waf-core/widget', 'utils'], function(widget,utils) {
 		
 		// merge = JSON.stringify(merge);
 		
+		// RACTIVE v1: working out organization
+		//1. v1 ractive...node.innerHTML is target for ractive code in step 3
 		this.node.innerHTML = '<div style="display:none;" kb-data=\'' + merge + '\'></div><div class="kb-label-button"><b>Button: </b>' + this.kbLabel()  + '</div>';
+		//2. <script id="xxx" type="text/template"> template goes here </script>
+			// add into this.node.innerHTML for builder to grab
+		//3. <script>ractive setup code here. will run on html page on render. use hard coded data</script>
+			// add into this.node.innerHTML for builder to grab
+		
+		// RACTIVE v2: get data in dynamically
+		
+		// RACTIVE v3: synchronize client data with server data using websockets
 		
 	};
 

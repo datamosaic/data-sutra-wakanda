@@ -1,7 +1,7 @@
 {
     "name": "kb_Radio",
     "studioName": "Radio",
-    "category": "Kabootit: Widgets",
+    "category": "Kabootit: Elements",
     "iconPath": "/icons/ic_radio_button_on_black_24dp.png",
     "author": "Kabootit",
     "contributors": [

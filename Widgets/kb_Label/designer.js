@@ -1,8 +1,8 @@
 (function(kb_Label) {
 
     /* Default width and height of your widget */
-    kb_Label.setWidth('200');
-    kb_Label.setHeight('200');
+    kb_Label.setWidth('210');
+    kb_Label.setHeight('30');
 
     /* Properties */
     // parent

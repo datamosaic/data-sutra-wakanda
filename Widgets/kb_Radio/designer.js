@@ -1,8 +1,8 @@
 (function(kb_Radio) {
 
     /* Default width and height of your widget */
-    kb_Radio.setWidth('200');
-    kb_Radio.setHeight('200');
+    kb_Radio.setWidth('210');
+    kb_Radio.setHeight('30');
 
     /* Properties */
     // parent

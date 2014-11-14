@@ -1,8 +1,8 @@
 (function(kb_Combobox) {
 
     /* Default width and height of your widget */
-    kb_Combobox.setWidth('200');
-    kb_Combobox.setHeight('200');
+    kb_Combobox.setWidth('210');
+    kb_Combobox.setHeight('30');
 
     /* Properties */
     // parent

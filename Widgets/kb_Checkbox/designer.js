@@ -1,8 +1,8 @@
 (function(kb_Checkbox) {
 
     /* Default width and height of your widget */
-    kb_Checkbox.setWidth('200');
-    kb_Checkbox.setHeight('200');
+    kb_Checkbox.setWidth('210');
+    kb_Checkbox.setHeight('30');
 
     /* Properties */
     // parent
