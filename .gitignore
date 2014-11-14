@@ -30,4 +30,4 @@ sessionID.json
 *.waRemoteModel
 # Settings file (will be unique per solution)
 WDGT Settings.waSettings
-/Kabootit/Security/wdgt.json
+/Kabootit/Settings/wdgt.json
