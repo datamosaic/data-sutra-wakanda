@@ -1,1 +1,1 @@
-﻿var t3 = '<div id="kb_Page1" data-type="kb_Page" data-package="kb_Page" data-lib="WAF" data-kbtitle="Widget Testing" data-kbtheme="/mars" data-kbresource="login.tpl" data-kbpublish="true" data-constraint-top="true" data-constraint-left="true" class="waf-widget waf-widget waf-widget waf-widget waf-widget waf-kb_page waf-ui-box"><div class="kb-label-page"><b>Page:</b> Widget Testing</div></div>';JSON.parse(XmlToJSON(t3, "json-bag", "div"))["data-kbtheme"];
+﻿
