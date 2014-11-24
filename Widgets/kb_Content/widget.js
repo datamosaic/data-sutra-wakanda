@@ -43,6 +43,7 @@ WAF.define('kb_Content', ['waf-core/widget'], function(widget, kb_ContentRow) {
 	});
 	kb_Content.addProperty('kbTemplate', {
 	    type: "string",
+	    defaultValue: "{{{widgets}}}",
 	    bindable: false
 	});
 

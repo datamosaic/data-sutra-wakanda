@@ -91,7 +91,7 @@ WAF.define('kb_Button', ['waf-core/widget', 'utils'], function(widget,utils) {
 	 */
 	kb_Button.prototype.doMarkup = function doMarkup() {
 		var
-			template = '<button id="kb-id" data-lib="WAF" data-type="kb_Button" type="button" class="btn {{kbType}} {{kbSize}} {{kbBlock}} {{kbPull}}"  {{disabled}}>{{kbLabel}}</button>',
+			template = '<button id="kb-id" type="button" class="btn {{kbType}} {{kbSize}} {{kbBlock}} {{kbPull}}"  {{disabled}}>{{kbLabel}}</button>',
 			data = {
 				kbType		: this.kbType(),
 				kbSize		: this.kbSize(),
