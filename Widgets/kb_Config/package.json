@@ -1,8 +1,8 @@
 {
-    "name": "kb_Section",
-    "studioName": "Section",
+    "name": "kb_Config",
+    "studioName": "Config",
     "category": "Kabootit: Page",
-    "iconPath": "/icons/ic_view_quilt_black_24dp.png",
+    "iconPath": "/icons/ic_settings_applications_black_24dp.png",
     "author": "Widget Developer",
     "contributors": [
         "David Workman",
@@ -19,8 +19,8 @@
     "license": "Commercial",
     "loadDependencies": [
         {"id": "Widget_V2"},
-        {"id": "kb_Section/widget.js", "version": "1.0.0", "path": "WIDGETS_CUSTOM"},
-        {"id": "kb_Section/css/widget.css", "version": "1.0.0", "path": "WIDGETS_CUSTOM"},
-        {"id": "kb_Section/designer.js", "studioOnly": true, "version": "1.0.0", "path": "WIDGETS_CUSTOM"}
+        {"id": "kb_Config/widget.js", "version": "1.0.0", "path": "WIDGETS_CUSTOM"},
+        {"id": "kb_Config/css/widget.css", "version": "1.0.0", "path": "WIDGETS_CUSTOM"},
+        {"id": "kb_Config/designer.js", "studioOnly": true, "version": "1.0.0", "path": "WIDGETS_CUSTOM"}
     ]
 }

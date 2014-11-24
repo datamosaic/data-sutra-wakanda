@@ -1,6 +1,6 @@
-WAF.define('kb_Page', ['waf-core/widget'], function(widget) {
+WAF.define('kb_Config', ['waf-core/widget'], function(widget) {
 	
-    var kb_Page = widget.create('kb_Page', {
+    var kb_Config = widget.create('kb_Config', {
         init: function() {
         	 
         }
@@ -10,12 +10,12 @@ WAF.define('kb_Page', ['waf-core/widget'], function(widget) {
 
 
 	// properties
-	kb_Page.addProperty('kbTitle', {
+	kb_Config.addProperty('kbTitle', {
 	    type: "string",
 	    bindable: false,
 	    onChange: function(newValue) {
             
-            this.node.innerHTML = '<div class="kb-label-page"><b>Page:</b> ' + this.kbTitle()  + '</div>';
+            this.node.innerHTML = '<div class="kb-label-config"><b>Config:</b> ' + this.kbTitle()  + '</div>';
         
 		     var img =  $('div')
 			.filter(function() {
@@ -23,7 +23,7 @@ WAF.define('kb_Page', ['waf-core/widget'], function(widget) {
 			})
 			.find('button')
 			.filter(function() {
-				return $(this).text() == 'Page';
+				return $(this).text() == 'Config';
 			})
 			.css('background-image');
 	        
@@ -31,11 +31,11 @@ WAF.define('kb_Page', ['waf-core/widget'], function(widget) {
             
         }
 	});
-	kb_Page.addProperty('kbPublish', {
+	kb_Config.addProperty('kbPublish', {
 	    type: "boolean",
 	    bindable: false
 	});
-	kb_Page.addProperty('kbTheme', {
+	kb_Config.addProperty('kbTheme', {
 	    type: "enum",
 	    "values": {
 	    	''				: '',
@@ -51,16 +51,16 @@ WAF.define('kb_Page', ['waf-core/widget'], function(widget) {
 	    },
 	    bindable: false
 	});
-	kb_Page.addProperty('kbResource', {
+	kb_Config.addProperty('kbResource', {
 		    type: "string",
 		    bindable: false
 		});
     
     
-    kb_Page.inherit('waf-behavior/layout/container');
-    kb_Page.addClass('waf-ui-box');
+    kb_Config.inherit('waf-behavior/layout/container');
+    kb_Config.addClass('waf-ui-box');
 
-    return kb_Page;
+    return kb_Config;
 
 });
 

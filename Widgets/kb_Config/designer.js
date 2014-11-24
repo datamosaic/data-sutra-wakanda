@@ -1,33 +1,33 @@
-(function(kb_Page) {
+(function(kb_Config) {
 	
-	var widgetName = "Page";
+	var widgetName = "Config";
 
     /* Default width and height of your widget */
-    kb_Page.setWidth('400');
-    kb_Page.setHeight('40');
+    kb_Config.setWidth('400');
+    kb_Config.setHeight('40');
 
     /* Properties */
     
-    // page title
-    kb_Page.customizeProperty('kbTitle', {
+    // title
+    kb_Config.customizeProperty('kbTitle', {
     	category: "Kabootit",
         title: 'Title',
         description: 'Title meta tag value'
     });
-    // page title
-    kb_Page.customizeProperty('kbPublish', {
+    // publish
+    kb_Config.customizeProperty('kbPublish', {
     	category: "Kabootit",
         title: 'Publish',
         description: 'Builder only picks up published pages'
     });
     // theme
-    kb_Page.customizeProperty('kbTheme', {
+    kb_Config.customizeProperty('kbTheme', {
     	category: "Kabootit",
         title: 'Theme',
         description: 'Pick a theme'
     });
     // layout
-    kb_Page.customizeProperty('kbResource', {
+    kb_Config.customizeProperty('kbResource', {
     	category: "Kabootit",
         title: 'Resource',
         description: 'Specify theme resource'
@@ -65,8 +65,8 @@
 	}, 100);
 
 	
-    kb_Page.doAfter('init', function() {
-        this.node.innerHTML = '<div class="kb-label-page"><b>Page:</b> ' + this.kbTitle()  + '</div>';
+    kb_Config.doAfter('init', function() {
+        this.node.innerHTML = '<div class="kb-label-config"><b>Config:</b> ' + this.kbTitle()  + '</div>';
         
 	    var img =  getImg(widgetName);
         $(this.node).css('background', img + ' no-repeat');
