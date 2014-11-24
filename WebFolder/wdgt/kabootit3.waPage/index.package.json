@@ -1,19 +1,14 @@
 {
 	"loadDependencies": [
 		{
-			"id": "Desktop_Core",
-			"type": "core",
-			"version": "1.0.0"
-		},
-		{
 			"id": "wdgt/kabootit3.waPage/scripts/index.js",
 			"path": "WEBFOLDER",
 			"type": "script"
 		},
 		{
-			"id": "kb_Content/package.json",
-			"path": "WIDGETS_CUSTOM",
-			"type": "widget"
+			"id": "themes/mars/assets/js/bootstrap/tab.js",
+			"path": "THEMES-KABOOTIT",
+			"type": "script"
 		}
 	],
 	"name": "WebFolder/kabootit3.waPage/index.html",
