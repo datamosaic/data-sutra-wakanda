@@ -11,7 +11,7 @@
 			"type": "script"
 		},
 		{
-			"id": "kb_Widgets/package.json",
+			"id": "kb_Content/package.json",
 			"path": "WIDGETS_CUSTOM",
 			"type": "widget"
 		}
