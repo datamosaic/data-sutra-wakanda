@@ -1,0 +1,1 @@
+﻿/** * DPL API * @version 1 * @modified 2014 April 14 */var DPL = {	test : new Object()};/** * Get all organizations * @public * @returns {Array} */DPL.test.One = function get() {	return "hiya";};module.exports = DPL;
