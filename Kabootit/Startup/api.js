@@ -1,1 +1,1 @@
-﻿// external project API-accessaddHttpRequestHandler(      '(?:/kb-staticassets)?/api\.\*',      'Kabootit/API/sa.js',       'saController' );
+// external project API-accessaddHttpRequestHandler(      '(?:/kb-sa)?/api\.\*',      'Kabootit/API/sa.js',       'saController' );
