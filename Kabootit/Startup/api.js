@@ -1,1 +1,1 @@
-﻿// external project API-accessaddHttpRequestHandler(      '(?:/kb-widgets)?/api\.\*',      'Kabootit/API/wdgt.js',       'wdgtController' );
+// external project API-accessaddHttpRequestHandler(      '(?:/kb-wdgt)?/api\.\*',      'Kabootit/API/wdgt.js',       'wdgtController' );
