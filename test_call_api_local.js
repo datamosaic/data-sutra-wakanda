@@ -1,1 +1,1 @@
-﻿// var x = SOLUTION.callAPI('SA.file.move',['/Users/kabootit/Desktop/bignbold.png','game']);// var x = SOLUTION.callAPI('SA.file.remove',['/Users/kabootit/Desktop/blah.txt','game']);x;
+// var x = KB.callAPI('SA.file.move',['/Users/kabootit/Desktop/bignbold.png','game']);// var x = KB.callAPI('SA.file.remove',['/Users/kabootit/Desktop/blah.txt','game']);x;
