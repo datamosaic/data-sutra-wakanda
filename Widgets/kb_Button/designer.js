@@ -49,7 +49,7 @@
 		// grab img used
 		var img =  $('div')
 		.filter(function() {
-		    return this.id.match(/(?=.*Kabootit)(?=.*Widgets)/);
+		    return this.id.match(/(?=.*Kabootit)(?=.*Elements)/);
 		})
 		.find('button')
 		.filter(function() {

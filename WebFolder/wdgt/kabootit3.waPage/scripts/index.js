@@ -1,7 +1,13 @@
 WAF.onAfterInit = function onAfterInit() {
 					
 
+
+
+
 // Add the code that needs to be shared between components here
+
+
+
 
 
 
@@ -12,7 +18,11 @@ WAF.onAfterInit = function onAfterInit() {
 				
 				// @region namespaceDeclaration
 					
+
+
 	
+
+
 
 	
 				// @endregion
@@ -21,14 +31,24 @@ WAF.onAfterInit = function onAfterInit() {
 				
 					
 
+
+
+
 	
+
+
+
 
 
 	
 				
 				// @region eventManager
 					
+
+
 	
+
+
 
 	
 				// @endregion

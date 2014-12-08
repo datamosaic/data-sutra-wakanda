@@ -20,6 +20,7 @@
     "loadDependencies": [
         {"id": "Widget_V2"},
         {"id": "kb_Content/widget.js", "version": "1.0.0", "path": "WIDGETS_CUSTOM"},
+        {"id": "kb_lib/css/widget.css", "version": "1.0.0", "path": "WIDGETS_CUSTOM"},
         {"id": "kb_Content/css/widget.css", "version": "1.0.0", "path": "WIDGETS_CUSTOM"},
         {"id": "kb_Content/designer.js", "studioOnly": true, "version": "1.0.0", "path": "WIDGETS_CUSTOM"}
     ]

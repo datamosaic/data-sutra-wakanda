@@ -14,24 +14,11 @@ WAF.define('kb_Content', ['waf-core/widget'], function(widget, kb_ContentRow) {
     // properties
 	kb_Content.addProperty('kbTitle', {
 	    type: "string",
-	    bindable: false,
-	    onChange: function(newValue) {
-            
-            this.node.innerHTML = '<div class="kb-label-content"><b>Content:</b> ' + this.kbTitle()  + '</div>';
-        
-		     var img =  $('div')
-			.filter(function() {
-			    return this.id.match(/(?=.*Kabootit)(?=.*Layout)/);
-			})
-			.find('button')
-			.filter(function() {
-				return $(this).text() == 'Content';
-			})
-			.css('background-image');
-	        
-	        $(this.node).css('background', img + ' no-repeat');
-            
-        }
+	    bindable: false
+//	    onChange: function(newValue) {      
+//            this.node.innerHTML = '<div class="kb-label-content"><b>Content:</b> ' + this.kbTitle()  + '</div>';
+
+//        }
 	});
 	kb_Content.addProperty('kbFormatted', { 
 	    type: 'boolean',

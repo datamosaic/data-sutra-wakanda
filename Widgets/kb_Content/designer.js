@@ -1,7 +1,5 @@
 (function(kb_Content) {
 
-	var widgetName = "Content";
-
     /* Default width and height of your widget */
     kb_Content.setWidth('300');
     kb_Content.setHeight('400');
@@ -26,44 +24,14 @@
         description: 'Default state of button is disabled'
     });
 	
-
-	/* designer load code */
-	function getImg(widgetName) {
-		// grab img used
-		var img =  $('div')
-		.filter(function() {
-		    return this.id.match(/(?=.*Kabootit)(?=.*Layout)/);
-		})
-		.find('button')
-		.filter(function() {
-			return $(this).text() == widgetName;
-		})
-		.css('background-image');
-	
-		return img;
-       }
-	
-	
-	setTimeout(function(){
-		
-		var img = getImg(widgetName);
-		
-		// find all widgets of this type
-		var widgets = $('div[data-type="kb_' + widgetName + '"]');
-	
-		// set image
-		$( widgets ).each(function( index ) {
-		  	 $(widgets[index]).css('background', img + ' no-repeat');
-		});
-		
-	}, 100);
-	
+	var setBadge = function setBadge() {
+		var widgetName = "Content";
+		this.node.innerHTML = '<div class="kb-badge">' + widgetName + ':<b> ' + this.kbTitle()  + '</b></div>';
+	};
 	
     kb_Content.doAfter('init', function() {
-        this.node.innerHTML = '<div class="kb-label-content"><b>Content:</b> ' + this.kbTitle()  + '</div>';
-        
-	    var img =  getImg(widgetName);
-        $(this.node).css('background', img + ' no-repeat');
+    	setBadge.call(this);  
+    	this.kbTitle.onChange(setBadge, "Content");     
     });
 
 });
