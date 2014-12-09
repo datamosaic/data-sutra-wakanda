@@ -23,9 +23,10 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 
 	button10.click = function button10_click (event)// @startlock
 	{// @endlock
-		// TODO: spinner
+		// TEST: visual cue
 		$('#container').toggle();
 		
+		// RPC 1: return a promise
 		function getTemplate() {
 			var deferred = $.Deferred();
 			// get RPC results
@@ -46,14 +47,30 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 			return deferred.promise();
 		};
 		
-		// TODO: flip to async
+		// RPC 2: return a promise
 		function getData() {
-		  var deferred = $.Deferred();
-		  deferred.resolve(RactiveRPC.testData());
-		  return deferred.promise();
+			var deferred = $.Deferred();
+			// get RPC results
+			RactiveRPC.testDataAsync({
+				onsuccess: function(results) {
+					deferred.resolve(results);
+				},
+				onerror: function(error) {
+					deferred.reject(error);	
+				},
+				ontimeout: function(error) {
+					deferred.reject(error);	
+				},
+				timeout: 5000,
+				params: [1,2]
+			});	
+			
+			return deferred.promise();
 		};
 
+		// resolve multple promises at the same time
 		$.when( getTemplate(), getData() )
+			// onsuccess of all promises
 			.done(function(template, data) {
 		
 				var ractive = new Ractive({
@@ -66,14 +83,15 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 				  ractive.set( 'counter', ractive.get( 'counter' ) + 1 );
 				});
 				
-				// TODO: turn off spinner
+				// TEST: visual cue
 				$('#container').toggle();
 				
 			})
+			// onerror or ontimeout of any promise
 			.fail(function(error) {
 				console.log(error);		
 				
-				// TODO: turn off spinner
+				// TEST: visual cue
 				$('#container').toggle();	
 			});
 			
