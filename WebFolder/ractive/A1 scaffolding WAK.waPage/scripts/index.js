@@ -34,8 +34,13 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 					deferred.resolve(results);
 				},
 				onerror: function(error) {
-					deferred.reject({ code: error.data, msg: error.message });	
-				}
+					deferred.reject(error);	
+				},
+				ontimeout: function(error) {
+					deferred.reject(error);	
+				},
+				timeout: 5000,
+				params: [1,2]
 			});	
 			
 			return deferred.promise();
