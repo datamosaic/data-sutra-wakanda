@@ -68,7 +68,7 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 			return deferred.promise();
 		};
 
-		// resolve multple promises at the same time
+		// resolve all promises at the same time
 		$.when( getTemplate(), getData() )
 			// onsuccess of all promises
 			.done(function(template, data) {
@@ -93,10 +93,7 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 				
 				// TEST: visual cue
 				$('#container').toggle();	
-			});
-			
-		
-				
+			});	
 	};// @lock
 
 	button8.click = function button8_click (event)// @startlock
