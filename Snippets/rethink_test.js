@@ -1,0 +1,1 @@
+﻿// rethinkdb 30 second example in wakanda//var result = SystemWorker.exec("recli -j 'r.table(\"tv_shows\")'");//JSON.parse(result.output.toString());// recli module approachvar db = require("RethinkDB");var results = db.recli('r.table("tv_shows")');results
