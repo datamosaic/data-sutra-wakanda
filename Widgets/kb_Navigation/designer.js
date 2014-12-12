@@ -3,18 +3,18 @@
 	var widgetName = "Navigation";
 
     /* Default width and height of your widget */
-    kb_Navigation.setWidth('40');
+    kb_Navigation.setWidth('160');
     kb_Navigation.setHeight('300');
 
     /* Properties */
     
-    // page title
+    //  title
     kb_Navigation.customizeProperty('kbTitle', {
     	category: "Kabootit",
         title: 'Title',
         description: 'Title meta tag value'
     });
-    // page title
+    //  title
     kb_Navigation.customizeProperty('kbPublish', {
     	category: "Kabootit",
         title: 'Publish',
@@ -66,7 +66,7 @@
 
 	
     kb_Navigation.doAfter('init', function() {
-        this.node.innerHTML = '<div class="kb-label-navigation"><b>Page:</b> ' + this.kbTitle()  + '</div>';
+        this.node.innerHTML = '<div class="kb-label-navigation"><b>Navigation:</b> ' + this.kbTitle()  + '</div>';
         
 	    var img =  getImg(widgetName);
         $(this.node).css('background', img + ' no-repeat');
