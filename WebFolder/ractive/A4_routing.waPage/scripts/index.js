@@ -9,6 +9,15 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 
 // eventHandlers// @lock
 	
+	(function(){
+//		page({ dispatch: false });
+		page.base('/ractive/A4_routing/');
+		page('tab1', tab1 );
+		page('tab2', tab2 );
+		page();
+	
+	
+	})();
 	
 	function tab1() { 
 		// RPC 1: return a promise
@@ -68,10 +77,6 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 				  ractive.set( 'counter', ractive.get( 'counter' ) + 1 );
 				});
 				
-				// routing
-				history.pushState({"1" : "tab1"}, "1", "tab1");
-
-				
 			})
 			// onerror or ontimeout of any promise
 			.fail(function(error) {
@@ -83,6 +88,7 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 	
 	
 	function tab2() { 
+
 		// RPC 1: return a promise
 		function getTemplate() {
 			var deferred = $.Deferred();
@@ -140,9 +146,6 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 				  ractive.set( 'counter', ractive.get( 'counter' ) + 1 );
 				});
 				
-				// routing
-				history.pushState({"2" : "tab2"}, "2", "tab2");
-				
 			})
 			// onerror or ontimeout of any promise
 			.fail(function(error) {
@@ -166,7 +169,7 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 
 		// setup
 //		page({ dispatch: false });
-//		page.base('/ractive/A4_routing');
+//		page.base('/ractive/A4_routing/');
 //		page('tab1', tab1 );
 //		page('tab2', tab2 );
 //		page();
