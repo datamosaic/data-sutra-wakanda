@@ -1,0 +1,1 @@
+File Handling:	- phone gap		https://github.com/saadmos/PhoneGapWakandaStudioExtension/blob/master/packaging.js		https://github.com/choisel/Wakanda-Directory/blob/master/Users/WebFolder/index.waPage/scripts/index.js

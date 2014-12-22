@@ -1,0 +1,1 @@
+Handlers:	- cors: https://github.com/choisel/Wakanda-CORS/blob/master/utils/cors.js
