@@ -1,1 +1,1 @@
-﻿// grab unfiltered static asset api so can copy treevar SA = require('../StaticAssets/Kabootit/API/sa_1.js')// copy boilerplate kabootit directory acrossSA.file.copyTree(Folder('/Data/Codex/Wakanda/Extensions9/Kabootit/setup/Kabootit'),Folder('/Users/tse/Desktop/bob'))// modify rpc prefix and ports// plop generic login page down
+﻿//ds.freeCacheMem();//ds.getCacheInfo();//garbageCollect();
