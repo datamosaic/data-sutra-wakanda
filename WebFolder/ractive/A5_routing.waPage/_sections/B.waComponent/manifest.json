@@ -1,0 +1,6 @@
+{
+    "name"    : "B",    
+    "html"    : "B.html",
+    "styles"  : [],
+    "scripts" : ["B.js"]
+}
