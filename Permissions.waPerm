@@ -1,1 +1,3 @@
-﻿<?xml version="1.0" encoding="UTF-8"?><permissions></permissions>
+﻿<?xml version="1.0" encoding="UTF-8"?><permissions>
+	<allow type="module" resource="rpt" action="executeFromClient" groupName="Admin" groupID="01000000000000000000000000000000" />
+</permissions>
