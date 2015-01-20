@@ -1,0 +1,10 @@
+{
+	"name": "TEST",
+	"home": "index.html",
+	"routes" : [
+		"*"
+	],
+	"noLoginRequired" : [
+		
+	]
+}
