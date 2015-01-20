@@ -1,0 +1,9 @@
+[
+	{
+		"testTrue": true,
+		"testFalse": false
+	},
+	{
+		"test1plus1": 2
+	}
+]

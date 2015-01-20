@@ -1,0 +1,1 @@
+﻿// external project API-accessaddHttpRequestHandler(      '(?:/kb-test)?/api\.\*',      'Kabootit/API/test.js',       'testController' );
