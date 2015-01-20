@@ -22,7 +22,7 @@ function sendXHR(baseURL, action, params, requestHeaders) {
 	var needSlash = baseURL[baseURL.length - 1] != '/';
 	var url = baseURL + (action ? ((needSlash ? '/' : '') + action) : '');
 	var headers = new Object();
-	var result
+	var result;
 	
 	xhr.onreadystatechange = function() {
 		var state = this.readyState;
@@ -114,7 +114,7 @@ function sendGet(baseURL, action) {
 	var needSlash = baseURL ? baseURL[baseURL.length - 1] != '/' : false;
 	var url = baseURL + (action ? ((needSlash ? '/' : '') + action) : '');
 	var headers = new Object();
-	var result
+	var result;
 	
 	xhr.onreadystatechange = function() {
 		var state = this.readyState;

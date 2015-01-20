@@ -1,3 +1,1 @@
-﻿<?xml version="1.0" encoding="UTF-8"?><permissions>
-	<allow type="module" resource="ac" action="executeFromClient"/>
-</permissions>
+﻿<?xml version="1.0" encoding="UTF-8"?><permissions/>
