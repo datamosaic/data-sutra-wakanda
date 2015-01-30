@@ -5,6 +5,6 @@
 		"*"
 	],
 	"noLoginRequired" : [
-		
+		"index.html"
 	]
 }
