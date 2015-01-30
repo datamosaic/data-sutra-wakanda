@@ -8,6 +8,11 @@ WAF.onAfterInit = function onAfterInit() {
 	
 	// eventHandlers
 	
+	// running in an iframe, try to talk upstream and get credentials
+	if (window.parent != window) {
+		window.parent.postMessage("getCredentials",'*')
+	}
+	
 	// show sign in or out depending on if logged in
 	if (LOGIN.session().user.name == 'default guest') {
 		$('#signin').fadeIn();
@@ -42,6 +47,12 @@ WAF.onAfterInit = function onAfterInit() {
 			var after = LOGIN.session();
 		
 			if (after.ID != before.ID) {
+				// running in an iframe, try to talk upstream to prototypical router
+				if (window.parent != window) {
+					// send user and pass upstream to be used to authenticate elsewhere
+					window.parent.postMessage({user:user,pass:pass},'*');
+				}
+				
 				formClear();
 				if (before.storage.pageRequested) {
 					window.location = '/' + before.storage.pageRequested + '/';
@@ -52,7 +63,7 @@ WAF.onAfterInit = function onAfterInit() {
 			}
 		}
 		else {
-			alert("Login unsuccessful.")
+			alert("Login unsuccessful.");
 		}
 	};
 	
