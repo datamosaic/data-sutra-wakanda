@@ -7,8 +7,9 @@
  * @param {jQuery.Element[]} $loginDiv Div containing above controls to login
  * @param {jQuery.Element[]} $logoutDiv Div showing who is logged in and allowing to logout
  * @param {jQuery.Element[]} $userDisplay Shows who currently is logged in
+ * @param {String} [effect="fadeIn"] What jQuery effect to use when revealing login/logout div
  */
-function Login($user, $pass, $loginBtn, $loginDiv, $logoutDiv, $userDisplay) {
+function Login($user, $pass, $loginBtn, $loginDiv, $logoutDiv, $userDisplay, effect) {
 	// reference to the class so can access it from other contexts
 	var that = this;
 	
@@ -19,9 +20,47 @@ function Login($user, $pass, $loginBtn, $loginDiv, $logoutDiv, $userDisplay) {
 	if ($loginDiv == undefined) { $loginDiv = $('#signin') };
 	if ($logoutDiv == undefined) { $logoutDiv = $('#signout') };
 	if ($userDisplay == undefined) { $userDisplay = $('.user') };
+	if (effect == undefined) { effect = 'fadeIn' };
 	
 	// internal variables
 	var user;
+	var statusPromise;
+	
+	/**
+	 * Is current user logged in
+	 *
+	 * @return {Boolean} Logged in or not
+	 */
+	this.status = function getStatus() {
+		function currentStatus() {
+			return user.name == 'default guest' ? false : true;
+		};
+		
+		// user available, just return current status
+		if (user) {
+			return currentStatus();
+		}
+		// if initial get user promise isn't completed, wait
+		else {
+//			 // wait for grabbed user/pass
+// 			function getUser() {
+// 				statusPromise = $.Deferred();
+// 				return statusPromise.promise();
+// 			};
+//
+// 			// after current user retrieved, do some stuff
+// 			$.when( getUser() )
+// 				// onsuccess of all promises
+// 				.done(function() {
+// 					// no longer waiting for promise
+// 					statusPromise = null;
+//
+// 					// return current status
+// 					return currentStatus();
+// 				})
+// 			;
+		}
+	};
 	
 	/**
 	 * Expose all jquery elements
@@ -59,14 +98,14 @@ function Login($user, $pass, $loginBtn, $loginDiv, $logoutDiv, $userDisplay) {
 			
 			// we're logged in as somebody new now
 			if (after.ID != before.ID) {
-				// clear out user and password
-				$user.val("");
-				$pass.val("");
+				// want to serve by default everything from home (prototype page)
+				// window.location = '/';
 				
 				// running in an iframe
 				if (window.parent != window) {
-					// login completed successfully, navigate to first nav item
+					// project login completed successfully, navigate to page
 					window.parent.postMessage('softRefresh','*');
+					window.parent.postMessage('unblock','*');
 				}
 				// we had requested a particular page, go there
 				else if (before.storage.pageRequested) {
@@ -78,7 +117,7 @@ function Login($user, $pass, $loginBtn, $loginDiv, $logoutDiv, $userDisplay) {
 				}
 			}
 		}
-		// TODO: better log out message
+		// TODO: better error message
 		else {
 			alert("Login unsuccessful.");
 		}
@@ -142,10 +181,15 @@ function Login($user, $pass, $loginBtn, $loginDiv, $logoutDiv, $userDisplay) {
 				// fill user name and pass
 				user = userInfo;
 				
+				// if status request waiting, serve up
+				if (statusPromise) {
+					statusPromise.resolve();
+				}
+				
 				// show login form or status of who logged in
 				if (user.name == 'default guest') {
-					$loginDiv.fadeIn();
-		
+					$loginDiv[effect]();
+					
 					// focus user name
 					$user.focus();
 				}
@@ -153,8 +197,8 @@ function Login($user, $pass, $loginBtn, $loginDiv, $logoutDiv, $userDisplay) {
 				else {
 					// change name to that of logged in
 					$userDisplay.html(user.fullName);
-
-					$logoutDiv.fadeIn();
+					
+					$logoutDiv[effect]();
 				}
 			})
 			// onerror or ontimeout of any promise
@@ -173,7 +217,6 @@ function Login($user, $pass, $loginBtn, $loginDiv, $logoutDiv, $userDisplay) {
 		
 		// attempt to get credentials from parent iframe (running in prototyping mode)
 		if (window.parent != window) {
-			// TODO: need to pass in $user and $pass so that prototype.js can target the correct elements
 			window.parent.postMessage('getCredentials','*')
 		}
 	}();
