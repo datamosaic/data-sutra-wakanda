@@ -1,1 +1,428 @@
-﻿{	"toJSON": true,	"extraProperties": {		"version": "2",		"classes": {			"Group": {				"panelColor": "#eee",				"panel": {					"isOpen": "true",					"pathVisible": true,					"position": {						"X": 434,						"Y": 41					}				}			},			"Organization": {				"panelColor": "#C4BD97",				"panel": {					"isOpen": "true",					"pathVisible": true,					"position": {						"X": 67,						"Y": 46					}				}			},			"User": {				"panelColor": "#548DD4",				"panel": {					"isOpen": "true",					"pathVisible": true,					"position": {						"X": 61,						"Y": 250					}				}			},			"NavigationSet": {				"panelColor": "#E5B9B7",				"panel": {					"isOpen": "true",					"pathVisible": true,					"position": {						"X": 191,						"Y": 545					}				}			},			"NavigationItem": {				"panelColor": "#C3D69B",				"panel": {					"isOpen": "true",					"pathVisible": true,					"position": {						"X": 673,						"Y": 570					}				}			}		},		"model": {			"scriptMode": "manual",			"workspaceLeft": 0,			"workspaceTop": 0,			"lastScriptLocation": {				"NavigationItem": {					"events": "NavigationItem/NavigationItem-events.js"				},				"NavigationSet": {					"events": "NavigationSet/NavigationSet-events.js"				}			}		}	},	"dataClasses": [		{			"name": "Group",			"className": "Group",			"collectionName": "GroupCollection",			"scope": "public",			"attributes": [				{					"name": "ID",					"kind": "storage",					"scope": "public",					"unique": true,					"autosequence": true,					"autogenerate": true,					"type": "uuid",					"identifying": true,					"primKey": true				},				{					"name": "NavigationSet",					"kind": "relatedEntity",					"scope": "public",					"type": "NavigationSet",					"path": "NavigationSet"				},				{					"name": "UserCollection",					"kind": "relatedEntities",					"scope": "public",					"type": "UserCollection",					"reversePath": true,					"path": "Group"				},				{					"name": "description",					"kind": "storage",					"scope": "public",					"type": "string"				},				{					"name": "name",					"kind": "storage",					"scope": "public",					"type": "string"				}			]		},		{			"name": "NavigationItem",			"className": "NavigationItem",			"collectionName": "NavigationItemCollection",			"scope": "public",			"attributes": [				{					"name": "ID",					"kind": "storage",					"scope": "public",					"unique": true,					"autosequence": true,					"autogenerate": true,					"type": "uuid",					"identifying": true,					"primKey": true				},				{					"name": "NavigationSet",					"kind": "relatedEntity",					"scope": "public",					"type": "NavigationSet",					"path": "NavigationSet"				},				{					"name": "description",					"kind": "storage",					"scope": "public",					"type": "string"				},				{					"name": "name",					"kind": "storage",					"scope": "public",					"type": "string"				},				{					"name": "order_by",					"kind": "storage",					"scope": "public",					"type": "number"				},				{					"name": "url",					"kind": "storage",					"scope": "public",					"type": "string"				},				{					"name": "flag_active",					"kind": "storage",					"scope": "public",					"type": "bool",					"events": [						{							"kind": "init",							"from": "$mainModel.NavigationItem.flag_active.events.init",							"userDefined": true						}					]				}			]		},		{			"name": "NavigationSet",			"className": "NavigationSet",			"collectionName": "NavigationSetCollection",			"scope": "public",			"attributes": [				{					"name": "ID",					"kind": "storage",					"scope": "public",					"unique": true,					"autosequence": true,					"autogenerate": true,					"type": "uuid",					"identifying": true,					"primKey": true				},				{					"name": "NavigationItemCollection",					"kind": "relatedEntities",					"matchColumn": "navigationItemCollection",					"scope": "public",					"type": "NavigationItemCollection",					"reversePath": true,					"path": "NavigationSet"				},				{					"name": "GroupCollection",					"kind": "relatedEntities",					"scope": "public",					"type": "GroupCollection",					"reversePath": true,					"path": "NavigationSet"				},				{					"name": "description",					"kind": "storage",					"scope": "public",					"type": "string"				},				{					"name": "name",					"kind": "storage",					"scope": "public",					"type": "string"				},				{					"name": "identifier",					"kind": "storage",					"scope": "public",					"type": "string"				},				{					"name": "order_by",					"kind": "storage",					"scope": "public",					"type": "number"				},				{					"name": "url",					"kind": "storage",					"scope": "public",					"type": "string"				},				{					"name": "flag_active",					"kind": "storage",					"scope": "public",					"type": "bool",					"events": [						{							"kind": "init",							"from": "$mainModel.NavigationSet.flag_active.events.init",							"userDefined": true						}					]				}			]		},		{			"name": "Organization",			"className": "Organization",			"collectionName": "OrganizationCollection",			"scope": "public",			"attributes": [				{					"name": "ID",					"kind": "storage",					"matchColumn": "id_organization",					"scope": "public",					"unique": true,					"autosequence": true,					"autogenerate": true,					"type": "uuid",					"identifying": true,					"primKey": true				},				{					"name": "UserCollection",					"kind": "relatedEntities",					"scope": "public",					"type": "UserCollection",					"reversePath": true,					"path": "Organization"				},				{					"name": "name",					"kind": "storage",					"scope": "public",					"type": "string"				}			]		},		{			"name": "User",			"className": "User",			"collectionName": "UserCollection",			"scope": "public",			"attributes": [				{					"name": "ID",					"kind": "storage",					"scope": "public",					"unique": true,					"autosequence": true,					"autogenerate": true,					"type": "uuid",					"identifying": true,					"primKey": true				},				{					"name": "Group",					"kind": "relatedEntity",					"scope": "public",					"type": "Group",					"path": "Group"				},				{					"name": "Organization",					"kind": "relatedEntity",					"scope": "public",					"type": "Organization",					"path": "Organization"				},				{					"name": "name",					"kind": "storage",					"scope": "public",					"type": "string"				},				{					"name": "password",					"kind": "storage",					"scope": "public",					"type": "string"				},				{					"name": "name_first",					"kind": "storage",					"scope": "public",					"type": "string"				},				{					"name": "name_last",					"kind": "storage",					"scope": "public",					"type": "string"				},				{					"name": "flag_active",					"kind": "storage",					"scope": "public",					"type": "bool"				}			]		}	]}
+
+{
+	"toJSON" : true,
+	"extraProperties" : 
+	{
+		"version" : "2",
+		"classes" : 
+		{
+			"Group" : 
+			{
+				"panelColor" : "#eee",
+				"panel" : 
+				{
+					"isOpen" : "true",
+					"pathVisible" : true,
+					"position" : 
+					{
+						"X" : 434,
+						"Y" : 41
+					}
+				}
+			},
+			"Organization" : 
+			{
+				"panelColor" : "#C4BD97",
+				"panel" : 
+				{
+					"isOpen" : "true",
+					"pathVisible" : true,
+					"position" : 
+					{
+						"X" : 67,
+						"Y" : 46
+					}
+				}
+			},
+			"User" : 
+			{
+				"panelColor" : "#548DD4",
+				"panel" : 
+				{
+					"isOpen" : "true",
+					"pathVisible" : true,
+					"position" : 
+					{
+						"X" : 61,
+						"Y" : 250
+					}
+				}
+			},
+			"NavigationSet" : 
+			{
+				"panelColor" : "#E5B9B7",
+				"panel" : 
+				{
+					"isOpen" : "true",
+					"pathVisible" : true,
+					"position" : 
+					{
+						"X" : 191,
+						"Y" : 545
+					}
+				}
+			},
+			"NavigationItem" : 
+			{
+				"panelColor" : "#C3D69B",
+				"panel" : 
+				{
+					"isOpen" : "true",
+					"pathVisible" : true,
+					"position" : 
+					{
+						"X" : 673,
+						"Y" : 570
+					}
+				}
+			}
+		},
+		"model" : 
+		{
+			"scriptMode" : "manual",
+			"workspaceLeft" : 0,
+			"workspaceTop" : 0,
+			"lastScriptLocation" : 
+			{
+				"NavigationItem" : 
+				{
+					"events" : "NavigationItem/NavigationItem-events.js"
+				},
+				"NavigationSet" : 
+				{
+					"events" : "NavigationSet/NavigationSet-events.js"
+				}
+			}
+		}
+	},
+	"dataClasses" : 
+	[
+		{
+			"name" : "Group",
+			"className" : "Group",
+			"collectionName" : "GroupCollection",
+			"scope" : "public",
+			"attributes" : 
+			[
+				{
+					"name" : "ID",
+					"kind" : "storage",
+					"scope" : "public",
+					"indexed" : true,
+					"unique" : true,
+					"autosequence" : true,
+					"autogenerate" : true,
+					"type" : "uuid",
+					"indexKind" : "btree",
+					"identifying" : true
+				},
+				{
+					"name" : "NavigationSet",
+					"kind" : "relatedEntity",
+					"scope" : "public",
+					"type" : "NavigationSet",
+					"path" : "NavigationSet"
+				},
+				{
+					"name" : "UserCollection",
+					"kind" : "relatedEntities",
+					"scope" : "public",
+					"type" : "UserCollection",
+					"reversePath" : true,
+					"path" : "Group"
+				},
+				{
+					"name" : "description",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string"
+				},
+				{
+					"name" : "name",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string"
+				}
+			],
+			"key" : 
+			[
+				{
+					"name" : "ID"
+				}
+			]
+		},
+		{
+			"name" : "NavigationItem",
+			"className" : "NavigationItem",
+			"collectionName" : "NavigationItemCollection",
+			"scope" : "public",
+			"attributes" : 
+			[
+				{
+					"name" : "ID",
+					"kind" : "storage",
+					"scope" : "public",
+					"indexed" : true,
+					"unique" : true,
+					"autosequence" : true,
+					"autogenerate" : true,
+					"type" : "uuid",
+					"indexKind" : "btree",
+					"identifying" : true
+				},
+				{
+					"name" : "NavigationSet",
+					"kind" : "relatedEntity",
+					"scope" : "public",
+					"type" : "NavigationSet",
+					"path" : "NavigationSet"
+				},
+				{
+					"name" : "description",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string"
+				},
+				{
+					"name" : "name",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string"
+				},
+				{
+					"name" : "order_by",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "number"
+				},
+				{
+					"name" : "url",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string"
+				},
+				{
+					"name" : "flag_active",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "bool",
+					"events" : 
+					[
+						{
+							"kind" : "init",
+							"from" : "$mainModel.NavigationItem.flag_active.events.init",
+							"userDefined" : true
+						}
+					]
+				}
+			],
+			"key" : 
+			[
+				{
+					"name" : "ID"
+				}
+			]
+		},
+		{
+			"name" : "NavigationSet",
+			"className" : "NavigationSet",
+			"collectionName" : "NavigationSetCollection",
+			"scope" : "public",
+			"attributes" : 
+			[
+				{
+					"name" : "ID",
+					"kind" : "storage",
+					"scope" : "public",
+					"indexed" : true,
+					"unique" : true,
+					"autosequence" : true,
+					"autogenerate" : true,
+					"type" : "uuid",
+					"indexKind" : "btree",
+					"identifying" : true
+				},
+				{
+					"name" : "NavigationItemCollection",
+					"kind" : "relatedEntities",
+					"matchColumn" : "navigationItemCollection",
+					"scope" : "public",
+					"type" : "NavigationItemCollection",
+					"reversePath" : true,
+					"path" : "NavigationSet"
+				},
+				{
+					"name" : "GroupCollection",
+					"kind" : "relatedEntities",
+					"scope" : "public",
+					"type" : "GroupCollection",
+					"reversePath" : true,
+					"path" : "NavigationSet"
+				},
+				{
+					"name" : "description",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string"
+				},
+				{
+					"name" : "name",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string"
+				},
+				{
+					"name" : "identifier",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string"
+				},
+				{
+					"name" : "order_by",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "number"
+				},
+				{
+					"name" : "url",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string"
+				},
+				{
+					"name" : "flag_active",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "bool",
+					"events" : 
+					[
+						{
+							"kind" : "init",
+							"from" : "$mainModel.NavigationSet.flag_active.events.init",
+							"userDefined" : true
+						}
+					]
+				}
+			],
+			"key" : 
+			[
+				{
+					"name" : "ID"
+				}
+			]
+		},
+		{
+			"name" : "Organization",
+			"className" : "Organization",
+			"collectionName" : "OrganizationCollection",
+			"scope" : "public",
+			"attributes" : 
+			[
+				{
+					"name" : "ID",
+					"kind" : "storage",
+					"matchColumn" : "id_organization",
+					"scope" : "public",
+					"indexed" : true,
+					"unique" : true,
+					"autosequence" : true,
+					"autogenerate" : true,
+					"type" : "uuid",
+					"indexKind" : "btree",
+					"identifying" : true
+				},
+				{
+					"name" : "UserCollection",
+					"kind" : "relatedEntities",
+					"scope" : "public",
+					"type" : "UserCollection",
+					"reversePath" : true,
+					"path" : "Organization"
+				},
+				{
+					"name" : "name",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string"
+				}
+			],
+			"key" : 
+			[
+				{
+					"name" : "ID"
+				}
+			]
+		},
+		{
+			"name" : "User",
+			"className" : "User",
+			"collectionName" : "UserCollection",
+			"scope" : "public",
+			"attributes" : 
+			[
+				{
+					"name" : "ID",
+					"kind" : "storage",
+					"scope" : "public",
+					"indexed" : true,
+					"unique" : true,
+					"autosequence" : true,
+					"autogenerate" : true,
+					"type" : "uuid",
+					"indexKind" : "btree",
+					"identifying" : true
+				},
+				{
+					"name" : "Group",
+					"kind" : "relatedEntity",
+					"scope" : "public",
+					"type" : "Group",
+					"path" : "Group"
+				},
+				{
+					"name" : "Organization",
+					"kind" : "relatedEntity",
+					"scope" : "public",
+					"type" : "Organization",
+					"path" : "Organization"
+				},
+				{
+					"name" : "name",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string"
+				},
+				{
+					"name" : "password",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string"
+				},
+				{
+					"name" : "name_first",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string"
+				},
+				{
+					"name" : "name_last",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string"
+				},
+				{
+					"name" : "flag_active",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "bool"
+				}
+			],
+			"key" : 
+			[
+				{
+					"name" : "ID"
+				}
+			]
+		}
+	]
+}
