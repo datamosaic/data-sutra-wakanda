@@ -1,1 +1,149 @@
-﻿{	"toJSON": true,	"extraProperties": {		"version": "2",		"classes": {			"Peoplez": {				"panelColor": "#548DD4",				"panel": {					"isOpen": "true",					"pathVisible": true,					"position": {						"X": 25,						"Y": 20					}				}			},			"Companyz": {				"panelColor": "#E5B9B7",				"panel": {					"isOpen": "true",					"position": {						"X": 317,						"Y": 25					},					"pathVisible": true				}			}		},		"model": {			"scriptMode": "manual",			"workspaceLeft": 0,			"workspaceTop": 0		}	},	"dataClasses": [		{			"name": "Peoplez",			"className": "Peoplez",			"collectionName": "PeoplezCollection",			"matchTable": "People",			"scope": "public",			"attributes": [				{					"name": "ID",					"kind": "storage",					"scope": "public",					"unique": true,					"autosequence": true,					"autogenerate": true,					"type": "uuid",					"identifying": true,					"primKey": true				},				{					"name": "name_first",					"kind": "storage",					"scope": "public",					"type": "string"				},				{					"name": "name_last",					"kind": "storage",					"scope": "public",					"type": "string"				},				{					"name": "date_birth",					"kind": "storage",					"scope": "public",					"type": "date",					"simpleDate": false				},				{					"name": "age",					"kind": "storage",					"scope": "public",					"type": "number"				},				{					"name": "Companyz",					"kind": "relatedEntity",					"type": "Companyz",					"path": "Companyz",					"scope": "public"				}			]		},		{			"collectionName": "CompanyzCollection",			"className": "Companyz",			"attributes": [				{					"name": "ID",					"kind": "storage",					"type": "uuid",					"primKey": "true",					"autosequence": true,					"unique": true,					"identifying": true,					"autogenerate": true				},				{					"name": "company_name",					"scope": "public",					"type": "string",					"kind": "storage"				},				{					"name": "PeoplezCollection",					"scope": "public",					"reversePath": true,					"path": "Companyz",					"type": "PeoplezCollection",					"kind": "relatedEntities"				}			]		}	],	"type": []}
+
+{
+	"toJSON" : true,
+	"extraProperties" : 
+	{
+		"version" : "2",
+		"classes" : 
+		{
+			"Peoplez" : 
+			{
+				"panelColor" : "#548DD4",
+				"panel" : 
+				{
+					"isOpen" : "true",
+					"pathVisible" : true,
+					"position" : 
+					{
+						"X" : 25,
+						"Y" : 20
+					}
+				}
+			},
+			"Companyz" : 
+			{
+				"panelColor" : "#E5B9B7",
+				"panel" : 
+				{
+					"isOpen" : "true",
+					"pathVisible" : true,
+					"position" : 
+					{
+						"X" : 317,
+						"Y" : 25
+					}
+				}
+			}
+		},
+		"model" : 
+		{
+			"scriptMode" : "manual",
+			"workspaceLeft" : 0,
+			"workspaceTop" : 0
+		}
+	},
+	"dataClasses" : 
+	[
+		{
+			"name" : "Companyz",
+			"className" : "Companyz",
+			"collectionName" : "CompanyzCollection",
+			"scope" : "public",
+			"attributes" : 
+			[
+				{
+					"name" : "ID",
+					"kind" : "storage",
+					"scope" : "public",
+					"indexed" : true,
+					"unique" : true,
+					"autosequence" : true,
+					"autogenerate" : true,
+					"type" : "uuid",
+					"indexKind" : "btree",
+					"identifying" : true
+				},
+				{
+					"name" : "company_name",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string"
+				},
+				{
+					"name" : "PeoplezCollection",
+					"kind" : "relatedEntities",
+					"scope" : "public",
+					"type" : "PeoplezCollection",
+					"reversePath" : true,
+					"path" : "Companyz"
+				}
+			],
+			"key" : 
+			[
+				{
+					"name" : "ID"
+				}
+			]
+		},
+		{
+			"name" : "Peoplez",
+			"className" : "Peoplez",
+			"collectionName" : "PeoplezCollection",
+			"matchTable" : "People",
+			"scope" : "public",
+			"attributes" : 
+			[
+				{
+					"name" : "ID",
+					"kind" : "storage",
+					"scope" : "public",
+					"indexed" : true,
+					"unique" : true,
+					"autosequence" : true,
+					"autogenerate" : true,
+					"type" : "uuid",
+					"indexKind" : "btree",
+					"identifying" : true
+				},
+				{
+					"name" : "name_first",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string"
+				},
+				{
+					"name" : "name_last",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string"
+				},
+				{
+					"name" : "date_birth",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "date",
+					"simpleDate" : false
+				},
+				{
+					"name" : "age",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "number"
+				},
+				{
+					"name" : "Companyz",
+					"kind" : "relatedEntity",
+					"scope" : "public",
+					"type" : "Companyz",
+					"path" : "Companyz"
+				}
+			],
+			"key" : 
+			[
+				{
+					"name" : "ID"
+				}
+			]
+		}
+	]
+}
