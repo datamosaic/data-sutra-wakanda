@@ -1,3 +1,4 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?><permissions>
 	<allow type="module" resource="file" action="executeFromClient" groupName="Admin" groupID="01000000000000000000000000000000" />
+	<allow type="service" resource="upload" action="upload" groupName="Admin" groupID="01000000000000000000000000000000" temporaryForcePermissions="false" />
 </permissions>
