@@ -98,6 +98,17 @@ function getHeaders(that) {
 			
 		// clean up the header attribute
 		value = header.substr(indexSeparator + 1).trim();
+		
+		// already exists, (convert to array) push in new entry
+		if (headersObj.hasOwnProperty(name)) {
+			// make sure this is an array
+			if (!(headersObj[name] instanceof Array)) {
+				headersObj[name] = [headersObj[name]];
+			}
+			
+			// push in new entry
+			headersObj[name].push(value);
+		}
 		// fills an object with the headers
 		headersObj[name] = value;
 	});
