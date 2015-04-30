@@ -1,0 +1,1 @@
+﻿var moment = require("moment");moment.utc().format("HH:mm")
