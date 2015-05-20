@@ -19,7 +19,7 @@ function sendXHR(baseURL, action, params, requestHeaders) {
 		params = new Object();
 	}
 	var xhr = new XMLHttpRequest();
-	var needSlash = baseURL[baseURL.length - 1] != '/';
+	var needSlash = baseURL ? baseURL[baseURL.length - 1] != '/' : false;
 	var url = baseURL + (action ? ((needSlash ? '/' : '') + action) : '');
 	var headers = new Object();
 	var result;
