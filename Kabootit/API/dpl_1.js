@@ -1,1 +1,1 @@
-﻿/** * DPL API * @version 1 * @modified 2014 April 14 */var DPL = {	test : new Object()};/** * Get all organizations * @public * @returns {Array} */DPL.test.One = function get() {	return "hiya";};module.exports = DPL;
+﻿/** * DPL API * @version 1 * @modified 2015 June 22 */var DPL = {	server : new Object()};/** * Get uptime of this server * @public * @returns {Object} */DPL.server.uptime = function getUptime() {	return {};};module.exports = DPL;
