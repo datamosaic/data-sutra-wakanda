@@ -75,6 +75,20 @@
 						"Y" : 570
 					}
 				}
+			},
+			"GroupNavigationSet" : 
+			{
+				"panelColor" : "#B2A2C7",
+				"panel" : 
+				{
+					"isOpen" : "true",
+					"pathVisible" : true,
+					"position" : 
+					{
+						"X" : 551,
+						"Y" : 368
+					}
+				}
 			}
 		},
 		"model" : 
@@ -117,13 +131,6 @@
 					"identifying" : true
 				},
 				{
-					"name" : "NavigationSet",
-					"kind" : "relatedEntity",
-					"scope" : "public",
-					"type" : "NavigationSet",
-					"path" : "NavigationSet"
-				},
-				{
 					"name" : "UserCollection",
 					"kind" : "relatedEntities",
 					"scope" : "public",
@@ -142,6 +149,55 @@
 					"kind" : "storage",
 					"scope" : "public",
 					"type" : "string"
+				},
+				{
+					"name" : "GroupNavigationSet",
+					"kind" : "relatedEntities",
+					"scope" : "public",
+					"type" : "GroupNavigationSetCollection",
+					"reversePath" : true,
+					"path" : "Group"
+				}
+			],
+			"key" : 
+			[
+				{
+					"name" : "ID"
+				}
+			]
+		},
+		{
+			"name" : "GroupNavigationSet",
+			"className" : "GroupNavigationSet",
+			"collectionName" : "GroupNavigationSetCollection",
+			"scope" : "public",
+			"attributes" : 
+			[
+				{
+					"name" : "ID",
+					"kind" : "storage",
+					"scope" : "public",
+					"indexed" : true,
+					"unique" : true,
+					"autosequence" : true,
+					"autogenerate" : true,
+					"type" : "uuid",
+					"indexKind" : "btree",
+					"identifying" : true
+				},
+				{
+					"name" : "Group",
+					"kind" : "relatedEntity",
+					"scope" : "public",
+					"type" : "Group",
+					"path" : "Group"
+				},
+				{
+					"name" : "NavigationSet",
+					"kind" : "relatedEntity",
+					"scope" : "public",
+					"type" : "NavigationSet",
+					"path" : "NavigationSet"
 				}
 			],
 			"key" : 
@@ -252,10 +308,10 @@
 					"path" : "NavigationSet"
 				},
 				{
-					"name" : "GroupCollection",
+					"name" : "GroupNavigationSet",
 					"kind" : "relatedEntities",
 					"scope" : "public",
-					"type" : "GroupCollection",
+					"type" : "GroupNavigationSetCollection",
 					"reversePath" : true,
 					"path" : "NavigationSet"
 				},

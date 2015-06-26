@@ -2,6 +2,8 @@
 WAF.onAfterInit = function onAfterInit() {// @lock
 
 // @region namespaceDeclaration// @startlock
+	var grid_group_navset = {};	// @dataGrid
+	var grid_group_navset_picker = {};	// @dataGrid
 	var grid_group_userpicker = {};	// @dataGrid
 	var grid_group_user = {};	// @dataGrid
 	var btn_add_all = {};	// @button
@@ -12,6 +14,18 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 
 // eventHandlers// @lock
 
+	grid_group_navset.onRowDblClick = function grid_group_navset_onRowDblClick (event)// @startlock
+	{// @endlock
+		sources.GroupNavSet.remove();
+	};// @lock
+
+	grid_group_navset_picker.onRowDblClick = function grid_group_navset_picker_onRowDblClick (event)// @startlock
+	{// @endlock
+		sources.GroupNavSet.addNewElement();
+		sources.GroupNavSet.NavigationSet.set(sources.NavSetPicker.getCurrentElement());
+		sources.GroupNavSet.save();
+	};// @lock
+
 	grid_group_userpicker.onRowDblClick = function grid_group_userpicker_onRowDblClick (event)// @startlock
 	{// @endlock
 		sources.UserPicker.Group.set(sources.Group.getCurrentElement());
@@ -20,7 +34,6 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 				sources.Group.serverRefresh({forceReload:true});
 			}
 		});
-		
 	};// @lock
 
 	grid_group_user.onRowDblClick = function grid_group_user_onRowDblClick (event)// @startlock
@@ -54,6 +67,8 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 	};// @lock
 
 // @region eventManager// @startlock
+	WAF.addListener("grid_group_navset", "onRowDblClick", grid_group_navset.onRowDblClick, "WAF");
+	WAF.addListener("grid_group_navset_picker", "onRowDblClick", grid_group_navset_picker.onRowDblClick, "WAF");
 	WAF.addListener("grid_group_userpicker", "onRowDblClick", grid_group_userpicker.onRowDblClick, "WAF");
 	WAF.addListener("grid_group_user", "onRowDblClick", grid_group_user.onRowDblClick, "WAF");
 	WAF.addListener("btn_add_all", "click", btn_add_all.click, "WAF");
