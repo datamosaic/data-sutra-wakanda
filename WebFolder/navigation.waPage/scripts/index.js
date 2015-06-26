@@ -2,6 +2,7 @@
 WAF.onAfterInit = function onAfterInit() {// @lock
 
 // @region namespaceDeclaration// @startlock
+	var grid_user_group_picker = {};	// @dataGrid
 	var grid_group_navset = {};	// @dataGrid
 	var grid_group_navset_picker = {};	// @dataGrid
 	var grid_group_userpicker = {};	// @dataGrid
@@ -13,6 +14,16 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 // @endregion// @endlock
 
 // eventHandlers// @lock
+
+	grid_user_group_picker.onRowDblClick = function grid_user_group_picker_onRowDblClick (event)// @startlock
+	{// @endlock
+		sources.User.Group.set(sources.GroupPicker.getCurrentElement());
+		sources.User.save({
+			onSuccess: function(event) {
+				sources.User.serverRefresh({forceReload:true});
+			}
+		});
+	};// @lock
 
 	grid_group_navset.onRowDblClick = function grid_group_navset_onRowDblClick (event)// @startlock
 	{// @endlock
@@ -67,6 +78,7 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 	};// @lock
 
 // @region eventManager// @startlock
+	WAF.addListener("grid_user_group_picker", "onRowDblClick", grid_user_group_picker.onRowDblClick, "WAF");
 	WAF.addListener("grid_group_navset", "onRowDblClick", grid_group_navset.onRowDblClick, "WAF");
 	WAF.addListener("grid_group_navset_picker", "onRowDblClick", grid_group_navset_picker.onRowDblClick, "WAF");
 	WAF.addListener("grid_group_userpicker", "onRowDblClick", grid_group_userpicker.onRowDblClick, "WAF");
