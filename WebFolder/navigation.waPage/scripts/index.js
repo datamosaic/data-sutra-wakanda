@@ -2,6 +2,7 @@
 WAF.onAfterInit = function onAfterInit() {// @lock
 
 // @region namespaceDeclaration// @startlock
+	var btn_pass_set = {};	// @button
 	var btn_navitem_new = {};	// @button
 	var grid_navset_group = {};	// @dataGrid
 	var grid_navset_group_picker = {};	// @dataGrid
@@ -17,6 +18,22 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 // @endregion// @endlock
 
 // eventHandlers// @lock
+
+	btn_pass_set.click = function btn_pass_set_click (event)// @startlock
+	{// @endlock
+		sources.User.save({
+			onSuccess: function(event) {
+				var pass = prompt('Please enter a new password');
+				
+				if (pass) {
+					AC.resetUserPassword(
+						sources.User.ID,
+						pass
+					);
+				}
+			}
+		});
+	};// @lock
 
 	btn_navitem_new.click = function btn_navitem_new_click (event)// @startlock
 	{// @endlock
@@ -99,6 +116,7 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 	};// @lock
 
 // @region eventManager// @startlock
+	WAF.addListener("btn_pass_set", "click", btn_pass_set.click, "WAF");
 	WAF.addListener("btn_navitem_new", "click", btn_navitem_new.click, "WAF");
 	WAF.addListener("grid_navset_group", "onRowDblClick", grid_navset_group.onRowDblClick, "WAF");
 	WAF.addListener("grid_navset_group_picker", "onRowDblClick", grid_navset_group_picker.onRowDblClick, "WAF");
