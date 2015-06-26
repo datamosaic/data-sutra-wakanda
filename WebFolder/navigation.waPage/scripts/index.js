@@ -2,6 +2,9 @@
 WAF.onAfterInit = function onAfterInit() {// @lock
 
 // @region namespaceDeclaration// @startlock
+	var btn_navitem_new = {};	// @button
+	var grid_navset_group = {};	// @dataGrid
+	var grid_navset_group_picker = {};	// @dataGrid
 	var grid_user_group_picker = {};	// @dataGrid
 	var grid_group_navset = {};	// @dataGrid
 	var grid_group_navset_picker = {};	// @dataGrid
@@ -14,6 +17,24 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 // @endregion// @endlock
 
 // eventHandlers// @lock
+
+	btn_navitem_new.click = function btn_navitem_new_click (event)// @startlock
+	{// @endlock
+		// TODO: create on server so prefill everything correctly
+		sources.NavSetItem.addNewElement();
+	};// @lock
+
+	grid_navset_group.onRowDblClick = function grid_navset_group_onRowDblClick (event)// @startlock
+	{// @endlock
+		sources.NavSetGroup.remove();
+	};// @lock
+
+	grid_navset_group_picker.onRowDblClick = function grid_navset_group_picker_onRowDblClick (event)// @startlock
+	{// @endlock
+		sources.NavSetGroup.addNewElement();
+		sources.NavSetGroup.Group.set(sources.GroupPicker.getCurrentElement());
+		sources.NavSetGroup.save();
+	};// @lock
 
 	grid_user_group_picker.onRowDblClick = function grid_user_group_picker_onRowDblClick (event)// @startlock
 	{// @endlock
@@ -78,6 +99,9 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 	};// @lock
 
 // @region eventManager// @startlock
+	WAF.addListener("btn_navitem_new", "click", btn_navitem_new.click, "WAF");
+	WAF.addListener("grid_navset_group", "onRowDblClick", grid_navset_group.onRowDblClick, "WAF");
+	WAF.addListener("grid_navset_group_picker", "onRowDblClick", grid_navset_group_picker.onRowDblClick, "WAF");
 	WAF.addListener("grid_user_group_picker", "onRowDblClick", grid_user_group_picker.onRowDblClick, "WAF");
 	WAF.addListener("grid_group_navset", "onRowDblClick", grid_group_navset.onRowDblClick, "WAF");
 	WAF.addListener("grid_group_navset_picker", "onRowDblClick", grid_group_navset_picker.onRowDblClick, "WAF");
