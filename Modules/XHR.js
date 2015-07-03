@@ -11,13 +11,31 @@
  * @param {String} [action] Optional parameter to tack onto the baseURL
  * @param {Object} [params] Custom parameters to pass to the ajax call
  * @param {{key: String, value}[]} [requestHeaders] Headers to set
+ * @param {{seconds: Number, fx: Function}} [timeout] Amount of time to wait with optional function
  * 
  * @return {{statusLine: String, headers: Object, result: Object|String}}
  */
-function sendXHR(baseURL, action, params, requestHeaders) {
+function sendXHR(baseURL, action, params, requestHeaders, timeout) {
 	if (!params) {
 		params = new Object();
 	}
+	if (!timeout) {
+		timeout = {
+			seconds: 120,
+			fx: function() {
+				console.log("Timed out after " + timeout.seconds + " seconds")
+			}
+		};
+	}
+	else if (typeof timeout == 'number') {
+		timeout = {
+			seconds: timeout,
+			fx: function() {
+				console.log("Timed out after " + timeout.seconds + " seconds")
+			}
+		};
+	}
+	
 	var xhr = new XMLHttpRequest();
 	var needSlash = baseURL ? baseURL[baseURL.length - 1] != '/' : false;
 	var url = baseURL + (action ? ((needSlash ? '/' : '') + action) : '');
@@ -53,6 +71,12 @@ function sendXHR(baseURL, action, params, requestHeaders) {
 			var header = requestHeaders[i];
 			xhr.setRequestHeader(header.key,header.value);
 		}
+	}
+	
+	// make sure doesn't run forever
+	xhr.timeout = timeout.seconds * 1000;
+	if (typeof timeout.fx == 'function') {
+		xhr.ontimeout = timeout.fx;
 	}
 	
 	// send string across; else stringify
