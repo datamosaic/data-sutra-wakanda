@@ -2,9 +2,8 @@
 *.DS_Store
 ._*
 # Wakanda data
-*.waData
-*.WakTDef
-*/DataFolder/tmp
+/DataFolder*
+/Backups*
 # Wakanda preferences
 *.waPreferences
 # Wakanda log
