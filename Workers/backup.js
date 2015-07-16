@@ -1,9 +1,7 @@
 //==============================================================================
 // default "constants"
 
-var DEFAULT_WORKER_POLLING_PERIOD = 4 * 60;  // seconds
-var DEFAULT_WORKER_POLLING_PERIOD_MIN = 0.5;  // seconds
-var DEFAULT_WORKER_POLLING_PERIOD_MAX = 3600;  // seconds
+var DEFAULT_WORKER_POLLING_PERIOD = 4 * 60 * 60;  // seconds (every 4 hours)
 
 //==============================================================================
 // worker vars and init
@@ -100,18 +98,24 @@ function writeFileTXT(file, text) {
 
 function workerStart()
 {
+	// worker already started
 	if( workerIsRunning === true )
 		return;
-	if( workerInterval === null )
-	{
-		// setInterval waits for the interval to elapse before the first time so do one manually
-		var success = backup();
-		console.log(JSON.stringify(success));
-		workerInterval = setInterval( backup, workerPollingPeriod * 1000 );  // time in ms
-	}
+	
+	// set status as running and log it
 	workerIsRunning = true;
 	workerTimestampStarted = new Date();
 	console.log("worker started" + " at " + workerTimestampStarted.toISOString() );
+	
+	// run first time and set up to run every four hours
+	if( workerInterval === null )
+	{
+		// time in ms
+		workerInterval = setInterval( backup, workerPollingPeriod * 1000 );
+		
+		// setInterval waits for the interval to elapse before the first time so do one manually
+		var success = backup();
+	}
 }
 
 function workerStop()
@@ -187,9 +191,11 @@ function backup() {
 	
 	// create temporary zip file
 	var zippedFile = callWorker(zip,Folder('/tmp/'));
+	console.log("Backup completed succcessfully on " + allProjects.length + " projects.");
 	
 	// upload this file to dropbox
 	// var droppedBox = dropbox('/tmp/' + backupFileName + '.zip');
+	console.log("Dropbox doing its thing...");
 	
 	return {
 		zip: zippedFile.result,
@@ -243,11 +249,8 @@ onconnect = function(msg)
 			case 'close':
 				workerClose();
 				break;
-			case 'backup':
+			case 'backup':  // run a one-off backup 
 				var success = backup();
-				debugger
-				console.log(JSON.stringify(success));
-				
 				port.postMessage( { response: "backup", payload: success } );
 				break;
 			//--------------------------------
