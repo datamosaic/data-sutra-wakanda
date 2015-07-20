@@ -114,7 +114,7 @@ function workerStart()
 		workerInterval = setInterval( backup, workerPollingPeriod * 1000 );
 		
 		// setInterval waits for the interval to elapse before the first time so do one manually
-		var success = backup();
+		setTimeout(backup,0);
 	}
 }
 
