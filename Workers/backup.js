@@ -195,7 +195,6 @@ function backup() {
 	
 	// upload this file to dropbox
 	// var droppedBox = dropbox('/tmp/' + backupFileName + '.zip');
-	console.log("Dropbox doing its thing...");
 	
 	return {
 		zip: zippedFile.result,
@@ -205,6 +204,8 @@ function backup() {
 
 // copy backup to dropbox
 function dropbox(backupFilePath) {
+	console.log("Dropbox doing its thing...");
+	
 	// variables specific to particular installation
 	//TODO: in addition to setting these correctly (and installing the CLI tools) you must also authorize the server with the particular dropbox account
 	var DROPBOX_FOLDER = "/home/ubuntu/Dropbox\ \(Stratotainment\,\ LLC\)/s\ Server\ Backups/";
@@ -220,6 +221,8 @@ function dropbox(backupFilePath) {
 	// check dropbox status
 		// TODO: do this after delay
 	var dropFile = callWorker(drop, Folder('/'));
+	
+	console.log("Dropbox: " + dropFile.result);
 	
 	return {
 		result: dropFile.result
