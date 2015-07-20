@@ -194,11 +194,11 @@ function backup() {
 	console.log("Backup completed succcessfully on " + allProjects.length + " projects.");
 	
 	// upload this file to dropbox
-	// var droppedBox = dropbox('/tmp/' + backupFileName + '.zip');
+	var droppedBox = dropbox('/tmp/' + backupFileName + '.zip');
 	
 	return {
 		zip: zippedFile.result,
-		dropbox: 'nothing'//droppedBox.result
+		dropbox: droppedBox.result
 	}
 }
 
@@ -208,8 +208,15 @@ function dropbox(backupFilePath) {
 	
 	// variables specific to particular installation
 	//TODO: in addition to setting these correctly (and installing the CLI tools) you must also authorize the server with the particular dropbox account
-	var DROPBOX_FOLDER = "/home/ubuntu/Dropbox\ \(Stratotainment\,\ LLC\)/s\ Server\ Backups/";
-	var DROPBOX_BIN = "/home/ubuntu/.dropbox/dropbox.py";
+	var DROPBOX_BIN = "~/.dropbox/dropbox.py";
+	var DROPBOX_FOLDER = "~/Dropbox\ \(Stratotainment\,\ LLC\)/s\ Server\ Backups/";
+	
+	if (serverInfo.type == 'production') {
+		DROPBOX_FOLDER += 'Production/';
+	}
+	else if (serverInfo.type == 'staging') {
+		DROPBOX_FOLDER += 'Staging/';
+	}
 	
 	// command to grab status
 	var drop = DROPBOX_BIN + ' filestatus ' + DROPBOX_FOLDER;
