@@ -80,15 +80,19 @@ function sendXHR(baseURL, action, params, requestHeaders, timeout) {
 	}
 	
 	// send string across; else stringify
-	if (typeof params == 'string') {
-		xhr.send(params);
+	try {				
+		if (typeof params == 'string') {
+			xhr.send(params);
+		}
+		else {
+			xhr.send(JSON.stringify(params));
+		}
+		// get the status
+		statusLine = xhr.status + ' ' + xhr.statusText;
 	}
-	else {
-		xhr.send(JSON.stringify(params));
+	catch(e) {
+		statusLine = "500 XHR post failed for some reason";
 	}
-	
-	// get the status
-	statusLine = xhr.status + ' ' + xhr.statusText;
 	
 	return ({
 		statusLine: statusLine,
@@ -169,11 +173,18 @@ function sendGet(baseURL, action) {
 		}
 	};
 	
-	xhr.open('GET', url);
-	xhr.send();
-	
-	// get the status
-	statusLine = xhr.status + ' ' + xhr.statusText;
+	try {
+		xhr.open('GET', url);
+		xhr.send();
+		// TODO put in scaffolding to effectuate a custom timeout
+		// currently this uses the standard 2 minute timeout
+		
+		// get the status
+		statusLine = xhr.status + ' ' + xhr.statusText;		
+	}
+	catch(e) {
+		statusLine = "500 XHR get failed for some reason";
+	}
 	
 	return ({
 		statusLine: statusLine,
