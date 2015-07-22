@@ -196,6 +196,9 @@ function backup() {
 	// upload this file to dropbox
 	var droppedBox = dropbox('/tmp/' + backupFileName + '.zip');
 	
+	// remove directory from tmp directory
+	callWorker('rm -R /tmp/' + backupFileName,Folder('/tmp/'));
+	
 	return {
 		zip: zippedFile.result,
 		dropbox: droppedBox.result
@@ -208,31 +211,38 @@ function dropbox(backupFilePath) {
 	
 	// variables specific to particular installation
 	//TODO: in addition to setting these correctly (and installing the CLI tools) you must also authorize the server with the particular dropbox account
-	var DROPBOX_BIN = "~/.dropbox/dropbox.py";
-	var DROPBOX_FOLDER = "~/Dropbox\ \(Stratotainment\,\ LLC\)/s\ Server\ Backups/";
+	var HOME_DIR = "/root/";
+	var DROPBOX_BIN = ".dropbox/dropbox.py";
+	var DROPBOX_FOLDER = "Dropbox\ \(Stratotainment\,\ LLC\)/s\ Server\ Backups/";
 	
 	if (serverInfo.type == 'production') {
-		DROPBOX_FOLDER += 'Production/';
+		HOME_DIR = "/home/ubuntu/";
+		DROPBOX_FOLDER = HOME_DIR + DROPBOX_FOLDER + 'Production/';
 	}
 	else if (serverInfo.type == 'staging') {
-		DROPBOX_FOLDER += 'Staging/';
+		HOME_DIR = "/root/";
+		DROPBOX_FOLDER = HOME_DIR + DROPBOX_FOLDER + 'Staging/';
 	}
+	DROPBOX_BIN = HOME_DIR + DROPBOX_BIN;
 	
 	// command to grab status
-	var drop = DROPBOX_BIN + ' filestatus ' + DROPBOX_FOLDER;
-	
+	// var drop = DROPBOX_BIN + ' filestatus ' + DROPBOX_FOLDER; (issue with spaces...)
+	// console.log(drop);
 	// move temp backup zip file into dropbox for synchronization
 	var backupFile = File(backupFilePath);
+	// console.log(backupFilePath + ' moving to ' + DROPBOX_FOLDER + backupFile.name);
+	// console.log(backupFilePath + ' exists: ' + backupFile.exists);
 	backupFile.moveTo(DROPBOX_FOLDER + backupFile.name,true);
+	// console.log(DROPBOX_FOLDER + backupFile.name + ' exists: ' + File(DROPBOX_FOLDER + backupFile.name).exists);
 	
 	// check dropbox status
 		// TODO: do this after delay
-	var dropFile = callWorker(drop, Folder('/'));
+	// var dropFile = callWorker(drop, Folder('/'));
 	
-	console.log("Dropbox: " + dropFile.result);
+	// console.log("Dropbox: " + dropFile.result);
 	
 	return {
-		result: dropFile.result
+		result: File(DROPBOX_FOLDER + backupFile.name).exists ? 'success' : 'failure'//dropFile.result
 	};
 }
 
