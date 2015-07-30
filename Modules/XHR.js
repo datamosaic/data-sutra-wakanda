@@ -2,7 +2,6 @@
  *	Wrap XHR calls up
  */
 
-
 /**
  * One-off call that will do everything
  * TODO: auto do get/post depending on some preference
@@ -15,7 +14,7 @@
  * 
  * @return {{statusLine: String, headers: Object, result: Object|String}}
  */
-function sendXHR(baseURL, action, params, requestHeaders, timeout) {
+function sendPost(baseURL, action, params, requestHeaders, timeout) {
 	if (!params) {
 		params = new Object();
 	}
@@ -138,52 +137,117 @@ function getHeaders(that) {
 			headersObj[name].push(value);
 		}
 		// fills an object with the headers
-		headersObj[name] = value;
+		else {
+			headersObj[name] = value;
+		}
 	});
 	
 	return headersObj;
-}
+};
 
-function sendPost() {
-	return sendXHR.apply(this,arguments);
-}
-
-function sendGet(baseURL, action) {
-	var xhr = new XMLHttpRequest();
+/**
+ * Do get request, using CURL libs if available
+ * 
+ * @param {String} baseURL The URL for the ajax call
+ * @param {String} [action] Optional parameter to tack onto the baseURL
+ * @param {{key: String, value}[]} [requestHeaders] Headers to set
+ * @param {{seconds: Number, fx: Function}} [timeout] Amount of time to wait with optional function
+ * 
+ * @return {{statusLine: String, headers: Object, result: Object|String}}
+ */
+function sendGet(baseURL, action, requestHeaders, timeout) {
+	// if curl available, use it so we can have additional parameters to monkey with
+	try {
+		var curl = require('curl');
+		var httpClient = require('httpClient');
+	}
+	catch (e) {
+		curl = false;
+	}
+	
+	if (!timeout) {
+		timeout = {
+			seconds: 120,
+			fx: function() {
+				console.log("Timed out after " + timeout.seconds + " seconds")
+			}
+		};
+	}
+	else if (typeof timeout == 'number') {
+		timeout = {
+			seconds: timeout,
+			fx: function() {
+				console.log("Timed out after " + timeout.seconds + " seconds")
+			}
+		};
+	}
+	
 	var needSlash = baseURL ? baseURL[baseURL.length - 1] != '/' : false;
 	var url = baseURL + (action ? ((needSlash ? '/' : '') + action) : '');
 	var headers = new Object();
 	var result;
 	
-	xhr.onreadystatechange = function() {
-		var state = this.readyState;
-		// while the status event is not done we continue
-		if (state !== 4) { 
-			return;
-		}
+	if (curl) {
+		var client = new httpClient.Client();
 		
-		// get the headers of the response
-		headers = getHeaders(this);
-		// get the contents of the response
-		result = this.responseText;
+		try {
+			client.open('GET', url);
+			
+			client.setConnectTimeout(timeout.seconds);
+			client.setMaxTime(timeout.seconds);
+			
+			client.send();
+			
+			// get the headers of the response
+			headers = client._responseHeaders;
+			// get the contents of the response
+			result = client.responseText;
 				
-		// JSON response, parse it as objects
-		if (headers['Content-Type'] && headers['Content-Type'].indexOf('json') !== -1) {
-			result = JSON.parse(result);
-		}
-	};
-	
-	try {
-		xhr.open('GET', url);
-		xhr.send();
-		// TODO put in scaffolding to effectuate a custom timeout
-		// currently this uses the standard 2 minute timeout
+			// JSON response, parse it as objects
+			if (headers['Content-Type'] && headers['Content-Type'].indexOf('json') !== -1) {
+				result = JSON.parse(result);
+			}
 		
-		// get the status
-		statusLine = xhr.status + ' ' + xhr.statusText;		
+			// get the status
+			statusLine = client.status + ' ' + client.statusText;		
+		}
+		catch(e) {
+			statusLine = "500 XHR get failed for some reason";
+		}
 	}
-	catch(e) {
-		statusLine = "500 XHR get failed for some reason";
+	else {
+		var xhr = new XMLHttpRequest();
+		
+		xhr.onreadystatechange = function() {
+			var state = this.readyState;
+			// while the status event is not done we continue
+			if (state !== 4) { 
+				return;
+			}
+		
+			// get the headers of the response
+			headers = getHeaders(this);
+			// get the contents of the response
+			result = this.responseText;
+				
+			// JSON response, parse it as objects
+			if (headers['Content-Type'] && headers['Content-Type'].indexOf('json') !== -1) {
+				result = JSON.parse(result);
+			}
+		};
+	
+		try {
+			xhr.open('GET', url);
+			xhr.send();
+			// TODO put in scaffolding to effectuate a custom timeout
+			// currently this uses the standard 2 minute timeout
+		
+			// get the status
+			statusLine = xhr.status + ' ' + xhr.statusText;		
+		}
+		catch(e) {
+			statusLine = "500 XHR get failed for some reason";
+		}
 	}
 	
 	return ({
@@ -191,10 +255,7 @@ function sendGet(baseURL, action) {
 		headers: headers,
 		result: result
 	});
-}
-
-// one-off call
-exports.send = sendXHR;
+};
 
 // individual components
 exports.post = sendPost;
