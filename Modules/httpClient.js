@@ -83,11 +83,11 @@ Client.prototype.send = function send()
  
         //parse the httpResponse
         var httpResponseText = curlResultObj.console.stdOut.toString("utf8");
- 		console.log(httpResponseText);
+ 		//console.log(httpResponseText);
  		
         //split the headers and content
-        var opt;
-        var headerText = httpResponseText.slice(0, opt = httpResponseText.indexOf("\r\n\r\n"));
+        var opt = httpResponseText.indexOf("\r\n\r\n");
+        var headerText = httpResponseText.slice(0, opt);
         this.responseText = httpResponseText.slice(opt + 4);
  
         //get the status and response headers
