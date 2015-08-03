@@ -13,105 +13,89 @@ var curl = require("curl");
  * @constructor
  */
 function Client() {
-    this._method = "";
-    this._url = "";
-    this._requestHeaderNames = [];
-    this._requestHeaderValues = [];
+	this._paramObj = {};
     this._responseHeaders = [];
-    this._connectTimeout = null;
-    this._maxTime = null;
     this.statusText = "";
     this.status = 0;
     this.responseText = "";
     this.responseType = "text";
     this.curlErr = false;
- 
 }
  
 /**
- * Declares the HTTP method and the URL of the Client
- * @param method - GET is the only option right now (will ad POST, PUT, HEAD, etc. later as needed)
- * @param url
+ * Declares the Client's operating parameters
+ * param object:
+ * {
+ *   // required
+ *   method: 'GET' or 'POST',
+ *   url: string,
+ *   // optional
+ *   postParams: string,  // e.g. stringified JSON
+ *   requestHeaders: [ { key: abc, value: xyz } ],
+ *   connectTimeout: seconds,
+ *   maxTime: seconds
+ * }
  */
-Client.prototype.open = function open(method, url) {
-    this._method = method;
-    this._url = url;
-};
- 
- 
-/**
- * Maximum  time  in  seconds  that you allow the connection to the server to take
- * @param {number} seconds
- */
-Client.prototype.setConnectTimeout = function setConnectTimeout(seconds) {
-    this._connectTimeout = seconds;
-};
- 
-/**
- * Maximum  time  in  seconds that you allow the whole operation to take
- * @param {number} seconds
- */
-Client.prototype.setMaxTime = function setMaxTime(seconds) {
-    this._maxTime = seconds;
+Client.prototype.open = function open(givenParamObj)
+{
+    this._paramObj = givenParamObj;
+    // throw exceptions or otherwise error if required params not included?
+    if( ! ( 'requestHeaders' in this._paramObj ) )
+    	this._paramObj.requestHeaders = [];
+    if( ! ( 'postParams' in this._paramObj ) )
+    	this._paramObj.postParams = "";
+    // data-checking?
 };
  
 /**
  * sends the request defined in the Client
  */
-Client.prototype.send = function send() {
-    var requestHeaders,
-        numLoops, i,
-        curlCommand,
-        curlResultObj,
-        httpResponseText,
-        headerText,
-        opt,
-        headerArr,
-        statusArr;
- 
-    //convert request headers to curl syntax
-    requestHeaders = "";
-    numLoops = this._requestHeaderNames.length;
-    for (i=0; i < numLoops; i++) {
-        if (i === 0) {
-            requestHeaders = '--header "' + this._requestHeaderNames[i] + ': ' + this._requestHeaderValues[i] + '"';
-        } else {
-            requestHeaders = requestHeaders + ' ' + '--header "' + this._requestHeaderNames[i] + ': ' + this._requestHeaderValues[i] + '"';
-        }
+Client.prototype.send = function send() 
+{
+    // convert request headers to curl syntax
+    var strRequestHeaders = "";
+    for( var i = 0; i < this._paramObj.requestHeaders.length; ++i )
+	{
+		var item = this._paramObj.requestHeaders[i];
+		strRequestHeaders += ' --header "' + item.key + ': ' + item.value + '"';
+	}
+
+    // build the curl command
+    var curlCommand = "-i";  // get response headers
+	curlCommand += strRequestHeaders;
+    if (this._paramObj.method === 'POST') {
+		curlCommand += " -X POST -d '" + this._paramObj.postParams + "'";
+	}
+    if ('connectTimeout' in this._paramObj) {
+        curlCommand += " --connect-timeout " + this._paramObj.connectTimeout;
     }
- 
-    //build the curl command
-    curlCommand = "-i"; //get response headers
-    if (requestHeaders !== "") {
-        curlCommand = curlCommand + " " + requestHeaders;
+    if ('maxTime' in this._paramObj) {
+        curlCommand += " --max-time " + this._paramObj.maxTime;
     }
-    if (this._connectTimeout) {
-        curlCommand = curlCommand + " " + "--connect-timeout " + this._connectTimeout;
-    }
-    if (this._maxTime) {
-        curlCommand = curlCommand + " " + "--max-time " + this._maxTime;
-    }
-    curlCommand = curlCommand + " " + this._url;
+    curlCommand += " " + this._paramObj.url;
+    console.log( "curlCommand: " + curlCommand );
  
-    //run the curl command
-    curlResultObj = curl.curl(curlCommand);
+    // run the curl command
+    var curlResultObj = curl.curl(curlCommand);
  
-    //handle curl result
+    // handle curl result
     if (curlResultObj.worker.exitStatus === 0) {
  
         //parse the httpResponse
-        httpResponseText = curlResultObj.console.stdOut.toString("utf8");
- 
+        var httpResponseText = curlResultObj.console.stdOut.toString("utf8");
+ 		console.log(httpResponseText);
+ 		
         //split the headers and content
-        headerText = httpResponseText.slice(0, opt = httpResponseText.indexOf("\r\n\r\n"));
+        var opt;
+        var headerText = httpResponseText.slice(0, opt = httpResponseText.indexOf("\r\n\r\n"));
         this.responseText = httpResponseText.slice(opt + 4);
  
         //get the status and response headers
-        headerArr = headerText.split("\r\n");
+        var headerArr = headerText.split("\r\n");
         this.statusText = headerArr.shift();
-        statusArr = this.statusText.split(" ");
-        this.statusText = statusArr[1];
-        this.status = parseInt(this.statusText, 10);
+        var statusArr = this.statusText.split(" ");
+        this.statusText = statusArr[2];
+        this.status = parseInt(statusArr[1], 10);
         this._responseHeaders = getHeaders(headerText);
  
     } else {

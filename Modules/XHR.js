@@ -3,6 +3,7 @@
  */
 
 /**
+ * Do post request, using CURL libs if available
  * One-off call that will do everything
  * TODO: auto do get/post depending on some preference
  * 
@@ -15,8 +16,19 @@
  * @return {{statusLine: String, headers: Object, result: Object|String}}
  */
 function sendPost(baseURL, action, params, requestHeaders, timeout) {
+	// if curl available, use it so we can have additional parameters to monkey with
+	try {
+		var httpClient = require('httpClient');
+	}
+	catch (e) {
+		httpClient = false;
+	}
+
 	if (!params) {
 		params = new Object();
+	}
+	if (!requestHeaders) {  // looping over later, so fix it now
+		requestHeaders = new Array();
 	}
 	if (!timeout) {
 		timeout = {
@@ -35,63 +47,109 @@ function sendPost(baseURL, action, params, requestHeaders, timeout) {
 		};
 	}
 	
-	var xhr = new XMLHttpRequest();
 	var needSlash = baseURL ? baseURL[baseURL.length - 1] != '/' : false;
 	var url = baseURL + (action ? ((needSlash ? '/' : '') + action) : '');
 	var headers = new Object();
 	var result;
 	
-	xhr.onreadystatechange = function() {
-		var state = this.readyState;
-		// while the status event is not done we continue
-		if (state !== 4) { 
-			return;
-		}
-		
-		// get the headers of the response
-		headers = getHeaders(this);
-		// get the contents of the response
-		result = this.responseText;
+	if (httpClient) {
+		var client = new httpClient.Client();
+
+		try {
+			if( ! requestHeaders.filter( function(item) {
+				return item.key.toLowerCase().indexOf('content-type') !== -1;
+			} ).length )
+			{
+				if( typeof params === 'string' )
+					requestHeaders.push( { key: 'Content-Type', value: 'text/plain' } );
+				else
+					requestHeaders.push( { key: 'Content-Type', value: 'application/json' } );
+			}
+			
+			var curlParamObj = {
+				method: 'POST',
+ 				url: url,
+				postParams: typeof params === 'string' ? params : JSON.stringify(params),
+				requestHeaders: requestHeaders,
+				connectTimeout: timeout.seconds,
+				maxTime: timeout.seconds
+			};
+			client.open(curlParamObj);
+			
+			client.send();
+			
+			// get the headers of the response
+			headers = client._responseHeaders;
+			// get the contents of the response
+			result = client.responseText;
 				
-		// JSON response, parse it as objects
-		if (headers['Content-Type'] && headers['Content-Type'].indexOf('json') !== -1) {
-			if (result != "") {
+			// JSON response, parse it as objects
+			if (headers['Content-Type'] && headers['Content-Type'].indexOf('json') !== -1) {
 				result = JSON.parse(result);
 			}
+		
+			// get the status
+			statusLine = client.status + ' ' + client.statusText;		
 		}
-	};
-	
-	// open synchronous call
-	xhr.open('POST', url, false);
-	
-	// set custom headers
-	if (requestHeaders instanceof Array) {
-		for (var i = 0; i < requestHeaders.length; i++) {
-			var header = requestHeaders[i];
-			xhr.setRequestHeader(header.key,header.value);
+		catch(e) {
+			statusLine = "500 XHR get failed for some reason";
 		}
-	}
+	}  // curl
+	else {
+		var xhr = new XMLHttpRequest();
 	
-	// make sure doesn't run forever
-	xhr.timeout = timeout.seconds * 1000;
-	if (typeof timeout.fx == 'function') {
-		xhr.ontimeout = timeout.fx;
-	}
-	
-	// send string across; else stringify
-	try {				
-		if (typeof params == 'string') {
-			xhr.send(params);
+		xhr.onreadystatechange = function() {
+			var state = this.readyState;
+			// while the status event is not done we continue
+			if (state !== 4) { 
+				return;
+			}
+			
+			// get the headers of the response
+			headers = getHeaders(this);
+			// get the contents of the response
+			result = this.responseText;
+					
+			// JSON response, parse it as objects
+			if (headers['Content-Type'] && headers['Content-Type'].indexOf('json') !== -1) {
+				if (result != "") {
+					result = JSON.parse(result);
+				}
+			}
+		};
+		
+		// open synchronous call
+		xhr.open('POST', url, false);
+		
+		// set custom headers
+		if (requestHeaders instanceof Array) {
+			for (var i = 0; i < requestHeaders.length; i++) {
+				var header = requestHeaders[i];
+				xhr.setRequestHeader(header.key,header.value);
+			}
 		}
-		else {
-			xhr.send(JSON.stringify(params));
+		
+		// make sure doesn't run forever
+		xhr.timeout = timeout.seconds * 1000;
+		if (typeof timeout.fx == 'function') {
+			xhr.ontimeout = timeout.fx;
 		}
-		// get the status
-		statusLine = xhr.status + ' ' + xhr.statusText;
-	}
-	catch(e) {
-		statusLine = "500 XHR post failed for some reason";
-	}
+		
+		// send string across; else stringify
+		try {				
+			if (typeof params == 'string') {
+				xhr.send(params);
+			}
+			else {
+				xhr.send(JSON.stringify(params));
+			}
+			// get the status
+			statusLine = xhr.status + ' ' + xhr.statusText;
+		}
+		catch(e) {
+			statusLine = "500 XHR post failed for some reason";
+		}
+	}  // XMLHttpRequest
 	
 	return ({
 		statusLine: statusLine,
@@ -158,11 +216,10 @@ function getHeaders(that) {
 function sendGet(baseURL, action, requestHeaders, timeout) {
 	// if curl available, use it so we can have additional parameters to monkey with
 	try {
-		var curl = require('curl');
 		var httpClient = require('httpClient');
 	}
 	catch (e) {
-		curl = false;
+		httpClient = false;
 	}
 	
 	if (!timeout) {
@@ -187,14 +244,18 @@ function sendGet(baseURL, action, requestHeaders, timeout) {
 	var headers = new Object();
 	var result;
 	
-	if (curl) {
+	if (httpClient) {
 		var client = new httpClient.Client();
 		
 		try {
-			client.open('GET', url);
-			
-			client.setConnectTimeout(timeout.seconds);
-			client.setMaxTime(timeout.seconds);
+			var curlParamObj = {
+				method: 'GET',
+ 				url: url,
+				requestHeaders: requestHeaders || new Array(),
+				connectTimeout: timeout.seconds,
+				maxTime: timeout.seconds
+			};
+			client.open(curlParamObj);
 			
 			client.send();
 			
@@ -214,7 +275,7 @@ function sendGet(baseURL, action, requestHeaders, timeout) {
 		catch(e) {
 			statusLine = "500 XHR get failed for some reason";
 		}
-	}
+	}  // curl
 	else {
 		var xhr = new XMLHttpRequest();
 		
@@ -248,7 +309,7 @@ function sendGet(baseURL, action, requestHeaders, timeout) {
 		catch(e) {
 			statusLine = "500 XHR get failed for some reason";
 		}
-	}
+	}  // XMLHttpRequest
 	
 	return ({
 		statusLine: statusLine,
