@@ -37,8 +37,17 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 
 	btn_navitem_new.click = function btn_navitem_new_click (event)// @startlock
 	{// @endlock
-		// TODO: create on server so prefill everything correctly
+		// create on server so prefill everything correctly
 		sources.NavSetItem.addNewElement();
+		// if identifier on parent, prefill on child
+		sources.NavSetItem.identifier = sources.NavSet.identifier;
+		sources.NavSetItem.order_by = sources.NavSetItem.length;
+		sources.NavSetItem.save( { 
+			onSuccess: function(event){ 
+				//TODO: enter name field
+//				$('#grid_navitem .waf-dataGrid-row.waf-state-active .waf-dataGrid-col-name .content').click();
+			}
+		});
 	};// @lock
 
 	grid_navset_group.onRowDblClick = function grid_navset_group_onRowDblClick (event)// @startlock
