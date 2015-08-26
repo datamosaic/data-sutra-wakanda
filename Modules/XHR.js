@@ -23,6 +23,8 @@ function sendPost(baseURL, action, params, requestHeaders, timeout) {
 	catch (e) {
 		httpClient = false;
 	}
+	// disable curl-based XHR post stuff for now
+	httpClient = false;
 
 	if (!params) {
 		params = new Object();
