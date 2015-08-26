@@ -73,7 +73,7 @@ Client.prototype.send = function send()
         curlCommand += " --max-time " + this._paramObj.maxTime;
     }
     curlCommand += " " + this._paramObj.url;
-    console.log( "curlCommand: " + curlCommand );
+    //console.log( "curlCommand: " + curlCommand );
  
     // run the curl command
     var curlResultObj = curl.curl(curlCommand);
