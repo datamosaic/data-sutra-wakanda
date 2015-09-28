@@ -18,15 +18,15 @@
 function sendPost(baseURL, action, params, requestHeaders, timeout) {
 
 	// disable curl for now
-	var httpClient = false;
+	//var httpClient = false;
 
 	// if curl available, use it so we can have additional parameters to monkey with
-// 	try {
-// 		var httpClient = require('httpClient');
-// 	}
-// 	catch (e) {
-// 		httpClient = false;
-// 	}
+	try {
+		var httpClient = require('httpClient');
+	}
+	catch (e) {
+		httpClient = false;
+	}
 
 	if (!params) {
 		params = new Object();
@@ -220,15 +220,15 @@ function getHeaders(that) {
 function sendGet(baseURL, action, requestHeaders, timeout) {
 
 	// disable curl for now
-	var httpClient = false;
+	//var httpClient = false;
 	
 	// if curl available, use it so we can have additional parameters to monkey with
-// 	try {
-// 		var httpClient = require('httpClient');
-// 	}
-// 	catch (e) {
-// 		httpClient = false;
-// 	}
+	try {
+		var httpClient = require('httpClient');
+	}
+	catch (e) {
+		httpClient = false;
+	}
 	
 	if (!timeout) {
 		timeout = {
