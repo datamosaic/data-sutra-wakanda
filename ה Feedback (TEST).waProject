@@ -21,4 +21,7 @@
 	<file path="./TEST Settings.waSettings">
 		<tag name="settings"/>
 	</file>
+	<file path="./Kabootit/Startup/bootstrap.js">
+		<tag name="bootStrap"/>
+	</file>
 </project>
