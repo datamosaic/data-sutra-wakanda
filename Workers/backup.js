@@ -194,14 +194,14 @@ function backup() {
 	console.log("Backup completed succcessfully on " + allProjects.length + " projects.");
 	
 	// upload this file to dropbox
-	var droppedBox = dropbox('/tmp/' + backupFileName + '.zip');
+	//var droppedBox = dropbox('/tmp/' + backupFileName + '.zip');
 	
 	// remove directory from tmp directory
 	callWorker('rm -R /tmp/' + backupFileName,Folder('/tmp/'));
 	
 	return {
-		zip: zippedFile.result,
-		dropbox: droppedBox.result
+		zip: zippedFile.result//,
+		//dropbox: droppedBox.result
 	}
 }
 
