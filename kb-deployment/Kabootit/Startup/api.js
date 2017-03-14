@@ -1,0 +1,1 @@
+// external project API-accessaddHttpRequestHandler(      '(?:/kb-dpl)?/api\.\*',      'Kabootit/API/dpl.js',       'dplController' );

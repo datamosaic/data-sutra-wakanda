@@ -1,0 +1,10 @@
+{
+	"name": "DPL",
+	"home": "index.html",
+	"routes" : [
+		"*"
+	],
+	"noLoginRequired" : [
+		
+	]
+}
