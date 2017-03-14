@@ -15,13 +15,23 @@ An application platform for Wakanda.
 - [Widgets for Wakanda](https://github.com/Wakanda-Packages/wakanda-widgets)
 - [Studio Extensions for Wakanda](https://github.com/Wakanda/wakanda-extensions)
 
-## Developer
+## Screenies
+
+1. Model editor
 
 ![](wakanda-model-example.png)
 
-## UI
+2. UI editor
+
+![](wakanda-ui-editor.png)
+
+3. Internal UI
 
 ![](wakanda-ui-example.png)
+
+4. External UI
+
+![](wakanda-ui-external.png)
 
 
 
