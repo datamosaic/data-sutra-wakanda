@@ -1,0 +1,1 @@
+﻿/** * I18n API * @version 1 * @modified 2014 April 14 */var RPT = {	test : new Object()};/** * Get all organizations * @public * @returns {Array} */RPT.test.one = function get() {	return "hiya";};module.exports = RPT;

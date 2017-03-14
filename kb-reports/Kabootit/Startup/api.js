@@ -1,0 +1,1 @@
+﻿// external project API-accessaddHttpRequestHandler(      '(?:/kb-rpt)?/api\.\*',      'Kabootit/API/rpt.js',       'rptController' );
