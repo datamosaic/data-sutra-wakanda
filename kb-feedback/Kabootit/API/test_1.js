@@ -1,0 +1,1 @@
+﻿/** * Feedback API * @version 1 * @modified 2015 January 20 */var TEST = {	test : new Object()};/** * Get all organizations * @public * @returns {Array} */TEST.test.one = function get() {	return "this is feedback";};module.exports = TEST;
