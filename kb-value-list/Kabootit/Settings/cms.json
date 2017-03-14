@@ -1,0 +1,10 @@
+{
+	"name": "VL",
+	"home": "index.html",
+	"routes" : [
+		"*"
+	],
+	"noLoginRequired" : [
+		
+	]
+}
