@@ -1,0 +1,27 @@
+{
+    "name": "kb_Button",
+    "studioName": "Button",
+    "category": "Kabootit: Elements",
+    "iconPath": "/icons/ic_crop_landscape_black_24dp.png",
+    "author": "Kabootit",
+    "contributors": [
+        "David Workman",
+        "Troy Elliott"
+    ],
+    "version": "1.0.0",
+    "copyright": "(c) 2014 Kabootit",
+    "repository": {
+        "type": "",
+        "url": ""
+    },
+    "keywords": ["wakanda", "widget", "kabootit"],
+    "engines": {"wakanda": ">= 9"},
+    "license": "Commercial",
+    "loadDependencies": [
+        {"id": "Widget_V2"},
+        {"id": "kb_Button/widget.js", "version": "1.0.0", "path": "WIDGETS_CUSTOM"},
+        {"id": "kb_Button/css/widget.css", "version": "1.0.0", "path": "WIDGETS_CUSTOM"},
+        {"id": "kb_Button/designer.js", "studioOnly": true, "version": "1.0.0", "path": "WIDGETS_CUSTOM"},
+		{"id": "kb_lib/package.json", "version": "1.0.0", "path": "WIDGETS_CUSTOM"}
+    ]
+}

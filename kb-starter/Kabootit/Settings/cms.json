@@ -1,0 +1,10 @@
+{
+	"name": "START",
+	"home": "index",
+	"routes" : [
+		"*"
+	],
+	"noLoginRequired" : [
+		
+	]
+}

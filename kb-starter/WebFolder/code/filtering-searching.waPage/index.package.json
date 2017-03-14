@@ -1,0 +1,25 @@
+﻿{
+    "loadDependencies": [
+        {
+            "id": "Desktop_Core",
+            "type": "core",
+            "version": "1.0.0"
+        },
+        {
+            "id": "default",
+            "type": "theme"
+        },
+        {
+            "id": "code/filtering-searching.waPage/styles/index.css",
+            "path": "WEBFOLDER",
+            "type": "style"
+        },
+        {
+            "id": "src/resources/prototype.js",
+            "path": "WEBFOLDER",
+            "type": "script"
+        }
+    ],
+    "name": "Starter/code/filtering-searching.waPage/index.html",
+    "version": "1.0.0"
+}

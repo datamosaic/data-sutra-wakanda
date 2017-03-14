@@ -1,0 +1,16 @@
+{
+	"loadDependencies": [
+		{
+			"id": "Desktop_Core",
+			"type": "core",
+			"version": "1.0.0"
+		},
+        {
+            "id": "src/resources/prototype.js",
+            "path": "WEBFOLDER",
+            "type": "script"
+        }
+	],
+	"name": "Starter App/index.waPage/index.html",
+	"version": "1.0.0"
+}

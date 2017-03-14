@@ -1,0 +1,1 @@
+module.exports = require('../../Feedback/Modules/test.js');
