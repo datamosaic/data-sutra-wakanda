@@ -1,0 +1,10 @@
+{
+	"name": "HELP",
+	"home": "index.html",
+	"routes" : [
+		"*"
+	],
+	"noLoginRequired" : [
+		
+	]
+}
