@@ -1,0 +1,1 @@
+Sockets:	- issue with workers: http://forum.wakanda.org/showthread.php?7013-sending-message-to-webworker-server-to-server-does-not-work&p=32840&viewfull=1#post32840	

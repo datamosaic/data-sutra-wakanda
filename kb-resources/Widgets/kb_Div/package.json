@@ -1,0 +1,26 @@
+{
+    "name": "kb_Div",
+    "studioName": "Div",
+    "category": "Kabootit: Widgets",
+    "iconPath": "/icons/ic_unfold_more_flip_black_24dp.png",
+    "author": "Kabootit",
+    "contributors": [
+        "David Workman",
+        "Troy Elliott"
+    ],
+    "version": "1.0.0",
+    "copyright": "(c) 2014 Kabootit",
+    "repository": {
+        "type": "",
+        "url": ""
+    },
+    "keywords": ["wakanda", "widget", "kabootit"],
+    "engines": {"wakanda": ">= 9"},
+    "license": "Commercial",
+    "loadDependencies": [
+        {"id": "Widget_V2"},
+        {"id": "kb_Div/widget.js", "version": "1.0.0", "path": "WIDGETS_CUSTOM"},
+        {"id": "kb_Div/css/widget.css", "version": "1.0.0", "path": "WIDGETS_CUSTOM"},
+        {"id": "kb_Div/designer.js", "studioOnly": true, "version": "1.0.0", "path": "WIDGETS_CUSTOM"}
+    ]
+}

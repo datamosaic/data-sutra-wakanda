@@ -1,0 +1,1 @@
+Email:	- email example code		https://github.com/ganbin/Forums/blob/master/Forums/Modules/namespace.js		https://github.com/ganbin/Forums/blob/master/Forums/emailconf.js	- SMTP instances: http://forum.wakanda.org/showthread.php?6295-Sending-email-through-GoDaddy

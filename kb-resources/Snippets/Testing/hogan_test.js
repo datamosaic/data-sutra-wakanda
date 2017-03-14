@@ -1,0 +1,1 @@
+﻿var Hogan = require('hogan');var data = {  screenName: "dhg"};var template = Hogan.compile("Follow @{{screenName}}.");var output = template.render(data);// prints "Follow @dhg."output;
