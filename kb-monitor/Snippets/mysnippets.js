@@ -1,0 +1,1 @@
+﻿// how to call API if KB isn't already aroundvar SRVRMON = require( FileSystemSync('PROJECT').path + 'Kabootit/API/srvrmon_1.js' );SRVRMON.helloWorld();orig one-shot button get and store load		SRVRMON.getAndStoreGameServerLoadAsync( {			onSuccess: function(result) { if( result === true ) { refreshLoadHistoryGrid(); } }		} );

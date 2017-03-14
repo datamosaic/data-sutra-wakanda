@@ -1,0 +1,26 @@
+{
+	"loadDependencies": [
+		{
+			"id": "Desktop_Core",
+			"type": "core",
+			"version": "1.0.0"
+		},
+		{
+			"id": "login.waPage/scripts/index.js",
+			"path": "WEBFOLDER",
+			"type": "script"
+		},
+        {
+            "id": "login.waPage/scripts/login.js",
+            "path": "WEBFOLDER",
+            "type": "script"
+        },
+        {
+            "id": "src/resources/prototype.js",
+            "path": "WEBFOLDER",
+            "type": "script"
+        }
+	],
+	"name": "Server Monitor/login.waPage/index.html",
+	"version": "1.0.0"
+}

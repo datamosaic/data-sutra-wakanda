@@ -1,0 +1,858 @@
+
+{
+	"toJSON" : true,
+	"extraProperties" : 
+	{
+		"version" : "2",
+		"classes" : 
+		{
+			"ServerLoad" : 
+			{
+				"panelColor" : "#8DB3E2",
+				"panel" : 
+				{
+					"isOpen" : "true",
+					"pathVisible" : true,
+					"position" : 
+					{
+						"X" : 533,
+						"Y" : 25
+					}
+				}
+			},
+			"Server" : 
+			{
+				"panelColor" : "#996699",
+				"panel" : 
+				{
+					"isOpen" : "true",
+					"pathVisible" : true,
+					"position" : 
+					{
+						"X" : 28,
+						"Y" : 17
+					}
+				}
+			},
+			"AlertContact" : 
+			{
+				"panelColor" : "#CCC1D9",
+				"panel" : 
+				{
+					"isOpen" : "true",
+					"pathVisible" : true,
+					"position" : 
+					{
+						"X" : 96,
+						"Y" : 881
+					}
+				}
+			},
+			"ServerAlertContact" : 
+			{
+				"panelColor" : "#4FA997",
+				"panel" : 
+				{
+					"isOpen" : "true",
+					"pathVisible" : true,
+					"position" : 
+					{
+						"X" : 546,
+						"Y" : 465
+					}
+				}
+			},
+			"Instruction" : 
+			{
+				"panelColor" : "#CCC1D9",
+				"panel" : 
+				{
+					"isOpen" : "true",
+					"pathVisible" : true,
+					"position" : 
+					{
+						"X" : 566,
+						"Y" : 835
+					}
+				}
+			},
+			"MyGlobalSettings" : 
+			{
+				"panelColor" : "#D7E3BC",
+				"panel" : 
+				{
+					"isOpen" : "true",
+					"pathVisible" : true,
+					"position" : 
+					{
+						"X" : 564,
+						"Y" : 672
+					}
+				}
+			},
+			"ServerAlertEvent" : 
+			{
+				"panelColor" : "#C3D69B",
+				"panel" : 
+				{
+					"isOpen" : "true",
+					"position" : 
+					{
+						"X" : 855,
+						"Y" : 33
+					}
+				}
+			}
+		},
+		"model" : 
+		{
+			"scriptMode" : "manual",
+			"workspaceLeft" : 711,
+			"workspaceTop" : 5,
+			"lastScriptLocation" : 
+			{
+				"ServerLoad" : 
+				{
+					"events" : "ServerLoad/ServerLoad-events.js",
+					"method" : "ServerLoad/ServerLoad-methods.js",
+					"computed" : "ServerLoad/ServerLoad-events.js"
+				},
+				"Server" : 
+				{
+					"events" : "Server/Server-events.js",
+					"computed" : "Server/Server-events.js"
+				},
+				"AlertContact" : 
+				{
+					"events" : "AlertContact/AlertContact-events.js"
+				},
+				"ServerAlertContact" : 
+				{
+					"computed" : "ServerAlertContact/ServerAlertContact-events.js"
+				},
+				"ServerAlertEvent" : 
+				{
+					"computed" : "AlertEvent/AlertEvent-events.js",
+					"events" : "ServerAlertEvent/ServerAlertEvent-events.js"
+				}
+			}
+		}
+	},
+	"dataClasses" : 
+	[
+		{
+			"name" : "AlertContact",
+			"className" : "AlertContact",
+			"collectionName" : "AlertContactCollection",
+			"scope" : "public",
+			"attributes" : 
+			[
+				{
+					"name" : "ID",
+					"kind" : "storage",
+					"scope" : "public",
+					"indexed" : true,
+					"unique" : true,
+					"autogenerate" : true,
+					"type" : "uuid",
+					"indexKind" : "btree",
+					"identifying" : true
+				},
+				{
+					"name" : "first_name",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string"
+				},
+				{
+					"name" : "last_name",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string"
+				},
+				{
+					"name" : "email",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string"
+				},
+				{
+					"name" : "ServerAlertContactCollection",
+					"kind" : "relatedEntities",
+					"scope" : "public",
+					"type" : "ServerAlertContactCollection",
+					"reversePath" : true,
+					"path" : "AlertContact"
+				}
+			],
+			"events" : 
+			[
+				{
+					"kind" : "remove",
+					"from" : "$mainModel.AlertContact.events.remove"
+				},
+				{
+					"kind" : "remove",
+					"from" : "$mainModel.AlertContact.events.remove"
+				},
+				{
+					"kind" : "remove",
+					"from" : "$mainModel.AlertContact.events.remove"
+				},
+				{
+					"kind" : "remove",
+					"from" : "$mainModel.AlertContact.events.remove"
+				},
+				{
+					"kind" : "remove",
+					"from" : "$mainModel.AlertContact.events.remove",
+					"userDefined" : true
+				}
+			],
+			"key" : 
+			[
+				{
+					"name" : "ID"
+				}
+			]
+		},
+		{
+			"name" : "Instruction",
+			"className" : "Instruction",
+			"collectionName" : "InstructionCollection",
+			"scope" : "public",
+			"attributes" : 
+			[
+				{
+					"name" : "ID",
+					"kind" : "storage",
+					"scope" : "public",
+					"indexed" : true,
+					"unique" : true,
+					"autogenerate" : true,
+					"type" : "uuid",
+					"indexKind" : "btree",
+					"identifying" : true
+				},
+				{
+					"name" : "title",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string"
+				},
+				{
+					"name" : "body",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string",
+					"multiLine" : true
+				}
+			],
+			"key" : 
+			[
+				{
+					"name" : "ID"
+				}
+			]
+		},
+		{
+			"name" : "MyGlobalSettings",
+			"className" : "MyGlobalSettings",
+			"collectionName" : "MyGlobalSettingsCollection",
+			"scope" : "public",
+			"attributes" : 
+			[
+				{
+					"name" : "ID",
+					"kind" : "storage",
+					"scope" : "public",
+					"indexed" : true,
+					"unique" : true,
+					"autosequence" : true,
+					"autogenerate" : true,
+					"type" : "uuid",
+					"indexKind" : "btree",
+					"identifying" : true
+				},
+				{
+					"name" : "ssh_key",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string"
+				}
+			],
+			"key" : 
+			[
+				{
+					"name" : "ID"
+				}
+			]
+		},
+		{
+			"name" : "Server",
+			"className" : "Server",
+			"collectionName" : "ServerCollection",
+			"scope" : "public",
+			"attributes" : 
+			[
+				{
+					"name" : "ID",
+					"kind" : "storage",
+					"scope" : "public",
+					"indexed" : true,
+					"unique" : true,
+					"autogenerate" : true,
+					"type" : "uuid",
+					"indexKind" : "btree",
+					"identifying" : true
+				},
+				{
+					"name" : "name",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string"
+				},
+				{
+					"name" : "type",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string"
+				},
+				{
+					"name" : "address",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string"
+				},
+				{
+					"name" : "includeInPoll",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "bool"
+				},
+				{
+					"name" : "view_order",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "number"
+				},
+				{
+					"name" : "ServerLoadCollection",
+					"kind" : "relatedEntities",
+					"scope" : "public",
+					"type" : "ServerLoadCollection",
+					"reversePath" : true,
+					"path" : "Server"
+				},
+				{
+					"name" : "ServerAlertContactCollection",
+					"kind" : "relatedEntities",
+					"scope" : "public",
+					"type" : "ServerAlertContactCollection",
+					"reversePath" : true,
+					"path" : "Server"
+				},
+				{
+					"name" : "sac_count",
+					"kind" : "calculated",
+					"scope" : "public",
+					"type" : "number",
+					"scriptKind" : "javascript",
+					"onGet" : 
+					[
+						{
+							"from" : "$mainModel.Server.sac_count.onGet",
+							"userDefined" : true
+						}
+					]
+				},
+				{
+					"name" : "last_reached",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "date",
+					"simpleDate" : false
+				},
+				{
+					"name" : "went_down",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "date",
+					"simpleDate" : false
+				},
+				{
+					"name" : "last_alerted",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "date",
+					"simpleDate" : false
+				},
+				{
+					"name" : "request_path",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string"
+				},
+				{
+					"name" : "request_options",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string"
+				},
+				{
+					"name" : "access_token",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string"
+				},
+				{
+					"name" : "admin_ip",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string"
+				},
+				{
+					"name" : "admin_port",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string"
+				},
+				{
+					"name" : "admin_username",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string"
+				},
+				{
+					"name" : "admin_script_path",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string"
+				},
+				{
+					"name" : "admin_script_start",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string"
+				},
+				{
+					"name" : "admin_script_stop",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string"
+				},
+				{
+					"name" : "admin_start_initiated",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "date",
+					"simpleDate" : false
+				},
+				{
+					"name" : "admin_start_gaveup",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "date",
+					"simpleDate" : false
+				},
+				{
+					"name" : "last_reached_fmt",
+					"kind" : "calculated",
+					"scope" : "public",
+					"type" : "string",
+					"scriptKind" : "javascript",
+					"onGet" : 
+					[
+						{
+							"from" : "$mainModel.Server.last_reached_fmt.onGet",
+							"userDefined" : true
+						}
+					]
+				},
+				{
+					"name" : "went_down_fmt",
+					"kind" : "calculated",
+					"scope" : "public",
+					"type" : "string",
+					"scriptKind" : "javascript",
+					"onGet" : 
+					[
+						{
+							"from" : "$mainModel.Server.went_down_fmt.onGet",
+							"userDefined" : true
+						}
+					]
+				},
+				{
+					"name" : "last_alerted_fmt",
+					"kind" : "calculated",
+					"scope" : "public",
+					"type" : "string",
+					"scriptKind" : "javascript",
+					"onGet" : 
+					[
+						{
+							"from" : "$mainModel.Server.last_alerted_fmt.onGet",
+							"userDefined" : true
+						}
+					]
+				},
+				{
+					"name" : "admin_start_initiated_fmt",
+					"kind" : "calculated",
+					"scope" : "public",
+					"type" : "string",
+					"scriptKind" : "javascript",
+					"onGet" : 
+					[
+						{
+							"from" : "$mainModel.Server.admin_start_initiated_fmt.onGet",
+							"userDefined" : true
+						}
+					]
+				},
+				{
+					"name" : "admin_start_gaveup_fmt",
+					"kind" : "calculated",
+					"scope" : "public",
+					"type" : "string",
+					"scriptKind" : "javascript",
+					"onGet" : 
+					[
+						{
+							"from" : "$mainModel.Server.admin_start_gaveup_fmt.onGet",
+							"userDefined" : true
+						}
+					]
+				},
+				{
+					"name" : "ServerAlertEventCollection",
+					"kind" : "relatedEntities",
+					"scope" : "public",
+					"type" : "ServerAlertEventCollection",
+					"reversePath" : true,
+					"path" : "Server"
+				}
+			],
+			"events" : 
+			[
+				{
+					"kind" : "remove",
+					"from" : "$mainModel.Server.events.remove"
+				},
+				{
+					"kind" : "remove",
+					"from" : "$mainModel.Server.events.remove"
+				},
+				{
+					"kind" : "remove",
+					"from" : "$mainModel.Server.events.remove"
+				},
+				{
+					"kind" : "remove",
+					"from" : "$mainModel.Server.events.remove"
+				},
+				{
+					"kind" : "remove",
+					"from" : "$mainModel.Server.events.remove",
+					"userDefined" : true
+				}
+			],
+			"key" : 
+			[
+				{
+					"name" : "ID"
+				}
+			]
+		},
+		{
+			"name" : "ServerAlertContact",
+			"className" : "ServerAlertContact",
+			"collectionName" : "ServerAlertContactCollection",
+			"scope" : "public",
+			"attributes" : 
+			[
+				{
+					"name" : "ID",
+					"kind" : "storage",
+					"scope" : "public",
+					"indexed" : true,
+					"unique" : true,
+					"autogenerate" : true,
+					"type" : "uuid",
+					"indexKind" : "btree",
+					"identifying" : true
+				},
+				{
+					"name" : "AlertContact",
+					"kind" : "relatedEntity",
+					"scope" : "public",
+					"type" : "AlertContact",
+					"path" : "AlertContact"
+				},
+				{
+					"name" : "Server",
+					"kind" : "relatedEntity",
+					"scope" : "public",
+					"type" : "Server",
+					"path" : "Server"
+				},
+				{
+					"name" : "include_in_alert",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "bool"
+				},
+				{
+					"name" : "myservername",
+					"kind" : "calculated",
+					"scope" : "public",
+					"type" : "string",
+					"scriptKind" : "javascript",
+					"onGet" : 
+					[
+						{
+							"from" : "$mainModel.ServerAlertContact.myservername.onGet",
+							"userDefined" : true
+						}
+					]
+				}
+			],
+			"key" : 
+			[
+				{
+					"name" : "ID"
+				}
+			]
+		},
+		{
+			"name" : "ServerAlertEvent",
+			"className" : "ServerAlertEvent",
+			"collectionName" : "ServerAlertEventCollection",
+			"scope" : "public",
+			"attributes" : 
+			[
+				{
+					"name" : "ID",
+					"kind" : "storage",
+					"scope" : "public",
+					"indexed" : true,
+					"unique" : true,
+					"autogenerate" : true,
+					"type" : "uuid",
+					"indexKind" : "btree",
+					"identifying" : true
+				},
+				{
+					"name" : "Server",
+					"kind" : "relatedEntity",
+					"scope" : "public",
+					"type" : "Server",
+					"path" : "Server"
+				},
+				{
+					"name" : "rec_created",
+					"kind" : "storage",
+					"scope" : "public",
+					"not_null" : true,
+					"type" : "date",
+					"simpleDate" : false
+				},
+				{
+					"name" : "rec_created_fmt",
+					"kind" : "calculated",
+					"scope" : "public",
+					"type" : "string",
+					"scriptKind" : "javascript",
+					"onGet" : 
+					[
+						{
+							"from" : "$mainModel.ServerAlertEvent.rec_created_fmt.onGet",
+							"userDefined" : true
+						}
+					]
+				},
+				{
+					"name" : "event_type",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string"
+				}
+			],
+			"events" : 
+			[
+				{
+					"kind" : "init",
+					"from" : "$mainModel.ServerAlertEvent.events.init",
+					"userDefined" : true
+				}
+			],
+			"key" : 
+			[
+				{
+					"name" : "ID"
+				}
+			]
+		},
+		{
+			"name" : "ServerLoad",
+			"className" : "ServerLoad",
+			"collectionName" : "ServerLoadCollection",
+			"scope" : "public",
+			"attributes" : 
+			[
+				{
+					"name" : "ID",
+					"kind" : "storage",
+					"scope" : "public",
+					"indexed" : true,
+					"unique" : true,
+					"autosequence" : true,
+					"autogenerate" : true,
+					"type" : "uuid",
+					"indexKind" : "btree",
+					"identifying" : true
+				},
+				{
+					"name" : "Server",
+					"kind" : "relatedEntity",
+					"scope" : "public",
+					"type" : "Server",
+					"path" : "Server"
+				},
+				{
+					"name" : "rec_created",
+					"kind" : "storage",
+					"scope" : "public",
+					"not_null" : true,
+					"type" : "date",
+					"simpleDate" : false,
+					"events" : 
+					[
+						{
+							"kind" : "init",
+							"from" : "$mainModel.ServerLoad.rec_created.events.init"
+						},
+						{
+							"kind" : "init",
+							"from" : "$mainModel.ServerLoad.rec_created.events.init"
+						},
+						{
+							"kind" : "init",
+							"from" : "$mainModel.ServerLoad.rec_created.events.init"
+						},
+						{
+							"kind" : "init",
+							"from" : "$mainModel.ServerLoad.rec_created.events.init"
+						},
+						{
+							"kind" : "init",
+							"from" : "$mainModel.ServerLoad.rec_created.events.init",
+							"userDefined" : true
+						}
+					],
+					"defaultFormat" : 
+					[
+						{
+							"format" : "yy-mm-dd",
+							"presentation" : "text"
+						}
+					]
+				},
+				{
+					"name" : "rec_created_fmt",
+					"kind" : "calculated",
+					"scope" : "public",
+					"type" : "string",
+					"scriptKind" : "javascript",
+					"onGet" : 
+					[
+						{
+							"from" : "$mainModel.ServerLoad.rec_created_fmt.onGet",
+							"userDefined" : true
+						}
+					]
+				},
+				{
+					"name" : "stampString",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string"
+				},
+				{
+					"name" : "avgOneMin",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "number"
+				},
+				{
+					"name" : "avgFiveMin",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "number"
+				},
+				{
+					"name" : "avgFifteenMin",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "number"
+				},
+				{
+					"name" : "cpu_percent",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "number"
+				},
+				{
+					"name" : "memory_used_mb",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "number"
+				},
+				{
+					"name" : "memory_free_mb",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "number"
+				},
+				{
+					"name" : "memory_percent",
+					"kind" : "calculated",
+					"scope" : "public",
+					"type" : "number",
+					"scriptKind" : "javascript",
+					"onGet" : 
+					[
+						{
+							"from" : "$mainModel.ServerLoad.memory_percent.onGet",
+							"userDefined" : true
+						}
+					]
+				}
+			],
+			"methods" : 
+			[
+				{
+					"name" : "deleteSelected",
+					"applyTo" : "entityCollection",
+					"scope" : "public",
+					"from" : "$mainModel.ServerLoad.collectionMethods.deleteSelected",
+					"userDefined" : true
+				},
+				{
+					"name" : "getIDs",
+					"applyTo" : "entityCollection",
+					"scope" : "public",
+					"from" : "$mainModel.ServerLoad.collectionMethods.getIDs",
+					"userDefined" : true
+				}
+			],
+			"key" : 
+			[
+				{
+					"name" : "ID"
+				}
+			]
+		}
+	]
+}

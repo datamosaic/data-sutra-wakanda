@@ -1,0 +1,1 @@
+﻿var contacts = ds.AlertContact.all();contacts;

@@ -1,0 +1,1 @@
+module.exports = require('../../Internationalization/Modules/i18n.js');

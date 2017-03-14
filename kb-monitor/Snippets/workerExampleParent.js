@@ -1,0 +1,1 @@
+﻿var worker = new Worker( "Snippets/workerExampleChild.js" );var state = 0;worker.onmessage = function workerOnMessage(event){	if( state == 0 )	{		console.log(event.data);		worker.postMessage("Please quit.");		state = 1;	}	else	{		console.log(event.data);		close();	}}worker.postMessage("Go ahead.");wait();console.log("Parent has terminated.");

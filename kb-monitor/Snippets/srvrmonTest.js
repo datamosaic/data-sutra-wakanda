@@ -1,0 +1,1 @@
+﻿var KB_SRVRMON = require( FileSystemSync('PROJECT').path + 'Kabootit/API/srvrmon_1.js' );var SRVRMON = require( FileSystemSync('PROJECT').path + 'Modules/srvrmon.js' );var myserv = ds.Server({name:"local local"});SRVRMON.testUpAlert(myserv.ID);

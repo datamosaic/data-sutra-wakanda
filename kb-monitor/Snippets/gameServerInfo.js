@@ -1,0 +1,1 @@
+﻿var xhrResult = XHR.get(		STRATO.gameServer.URL,		"0/server/info?psw=WwkX2uEipuUkH9ijQ0vm6uxRlXbk9JLWw1DbNe$VdLk"	);var info = JSON.parse(xhrResult.result);  // JSON is JS standard included functionalityvar load = info.load;var loadNumbers = [ parseFloat(load[0]),	 parseFloat(load[1]), parseFloat(load[2]) ];loadNumbers

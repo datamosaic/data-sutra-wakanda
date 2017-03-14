@@ -1,0 +1,1 @@
+﻿var state = 0;onmessage = function workerOnMessage(event){	if( state == 0 )	{		console.log(event.data);		postMessage("Child started.");		state = 1;	}	else	{		console.log(event.data);		postMessage("Child finished.");		close();	}}

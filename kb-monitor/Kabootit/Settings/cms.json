@@ -1,0 +1,10 @@
+{
+	"name": "SRVRMON",
+	"home": "servermonitor",
+	"routes" : [
+		"*"
+	],
+	"noLoginRequired" : [
+		
+	]
+}
