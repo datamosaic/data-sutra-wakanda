@@ -1,0 +1,16 @@
+{
+	"loadDependencies": [
+		{
+			"id": "wdgt/kabootit3.waPage/scripts/index.js",
+			"path": "WEBFOLDER",
+			"type": "script"
+		},
+		{
+			"id": "themes/mars/assets/js/bootstrap/tab.js",
+			"path": "THEMES-KABOOTIT",
+			"type": "script"
+		}
+	],
+	"name": "WebFolder/kabootit3.waPage/index.html",
+	"version": "1.0.0"
+}

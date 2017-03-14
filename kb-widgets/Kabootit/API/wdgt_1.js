@@ -1,0 +1,1 @@
+﻿/** * WDGT API * @version 1 * @modified 2014 April 14 */var WDGT = {	test : new Object()};/** * Get all organizations * @public * @returns {Array} */WDGT.test.One = function get() {	return "hiya";};module.exports = WDGT;
