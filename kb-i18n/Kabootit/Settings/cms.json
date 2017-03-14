@@ -1,0 +1,10 @@
+{
+	"name": "I18N",
+	"home": "index",
+	"routes" : [
+		"*"
+	],
+	"noLoginRequired" : [
+		
+	]
+}

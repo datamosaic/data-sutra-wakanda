@@ -1,0 +1,1 @@
+﻿// external project API-accessaddHttpRequestHandler(      '(?:/kb-i18n)?/api\.\*',      'Kabootit/API/i18n.js',       'i18nController' );
