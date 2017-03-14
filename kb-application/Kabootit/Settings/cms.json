@@ -1,0 +1,10 @@
+{
+	"name": "APP",
+	"home": "prototype",
+	"routes" : [
+		"*"
+	],
+	"noLoginRequired" : [
+		
+	]
+}

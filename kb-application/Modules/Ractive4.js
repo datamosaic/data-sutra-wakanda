@@ -1,0 +1,1 @@
+module.exports = require('../../Widgets/Modules/Ractive4.js');

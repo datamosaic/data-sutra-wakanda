@@ -1,0 +1,1 @@
+module.exports = require('../../Reports/Modules/rpt.js');
