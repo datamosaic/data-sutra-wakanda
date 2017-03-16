@@ -6,7 +6,7 @@
           "theme-vuejs@git+https://github.com/pearofducks/gitbook-plugin-theme-vuejs.git", "-fontsettings" ],
     "pluginsConfig": {
         "github": {
-            "url": "https://github.com/datamosaic/sutra-cms/"
+            "url": "https://github.com/datamosaic/data-sutra-wakanda"
         },
         "simple-page-toc": {
             "maxDepth": 4,
