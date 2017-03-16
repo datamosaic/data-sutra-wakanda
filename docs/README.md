@@ -1,3 +1,3 @@
 # Data Sutra for Wakanda
 
- > Documentation
+- [Documentation](https://datamosaic.github.io/data-sutra-wakanda/documentation/)
