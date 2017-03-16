@@ -1,0 +1,12 @@
+# documentation
+website/doc-src/_book
+website/doc-src/node_modules
+website/documentation
+
+
+# Logs
+logs
+*.log
+
+# node_modules
+node_modules
