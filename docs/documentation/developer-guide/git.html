@@ -1,0 +1,557 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Git · Sutra CMS</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-versions/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-vuejs/vue.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="naming-conventions.html" />
+    
+    
+    <link rel="prev" href="url-scheme.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../overview.html">
+            
+                <a href="../overview.html">
+            
+                    
+                    Overview
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    Installation
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../installation/developer.html">
+            
+                <a href="../installation/developer.html">
+            
+                    
+                    Developer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../installation/developer-old.html">
+            
+                <a href="../installation/developer-old.html">
+            
+                    
+                    Old Instructions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../installation/server.html">
+            
+                <a href="../installation/server.html">
+            
+                    
+                    Server
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    Developer Guide
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="organization.html">
+            
+                <a href="organization.html">
+            
+                    
+                    Organization
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="architecture.html">
+            
+                <a href="architecture.html">
+            
+                    
+                    Architecture
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="logic-flow.html">
+            
+                <a href="logic-flow.html">
+            
+                    
+                    Logic Flow
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="api.html">
+            
+                <a href="api.html">
+            
+                    
+                    API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="url-scheme.html">
+            
+                <a href="url-scheme.html">
+            
+                    
+                    URL Scheme
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.6" data-path="git.html">
+            
+                <a href="git.html">
+            
+                    
+                    Git
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="naming-conventions.html">
+            
+                <a href="naming-conventions.html">
+            
+                    
+                    Naming Conventions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../cms/overview.html">
+            
+                <a href="../cms/overview.html">
+            
+                    
+                    Bootstrap CMS
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../cms/themes.html">
+            
+                <a href="../cms/themes.html">
+            
+                    
+                    Themes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../cms/pages.html">
+            
+                <a href="../cms/pages.html">
+            
+                    
+                    Pages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../cms/sections.html">
+            
+                <a href="../cms/sections.html">
+            
+                    
+                    Sections
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Git</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="git">GIT</h1>
+<!-- toc -->
+<ul>
+<li><a href="#sub-modules">Sub modules</a></li>
+<li><a href="#branches-and-tags">Branches and Tags</a></li>
+<li><a href="#how-to-detached-head-when-needing-to-commit">How-to detached head when needing to commit</a></li>
+</ul>
+<!-- tocstop -->
+<p>We use GIT to manage all of our solution code. Multiple developers,
+Wakanda versions, clients, staging servers, and deployment servers &#x2014; are
+all tied together with GIT workflows.</p>
+<p>GIT Tutorial: <a href="http://mrchlblng.me/2014/09/practical-git-introduction/" target="_blank">http://mrchlblng.me/2014/09/practical-git-introduction/</a></p>
+<h2 id="sub-modules">Sub modules</h2>
+<p>We are using GIT submodules to give us the ability to use &#x201C;connected&#x201D;
+projects across many solutions. This adds another layer of complexity to
+our development GIT setups but is well worth the end result.</p>
+<p>The default Wakanda file ignore list is used to keep connected projects
+localized. For example, <code>Access and Control</code> project has all of its
+functionality, data description, etc shared but the actual data storage
+file is not.</p>
+<pre class="language-"><code># OS X
+*.DS_Store
+._*
+# Wakanda data
+*.waData
+# Wakanda preferences
+*.waPreferences
+# Wakanda log
+*.waLog
+*/Logs
+studio_log*
+# Wakanda code symbols
+*.waSym
+*.waSymData
+# Wakanda index
+*.waIndex
+*.waIndx
+*.Match
+# Wakanda User and Group cache
+*.cacheUAG
+# Wakanda breakpoints
+breakpoints.json
+# Wakanda session ID cache
+sessionID.json
+# Wakanda backup
+*.waBackup
+# Wakanda Remote Model Cache
+*.waRemoteModel
+</code></pre><h2 id="branches-and-tags">Branches and Tags</h2>
+<p>TODO:</p>
+<h2 id="how-to-detached-head-when-needing-to-commit">How-to detached head when needing to commit</h2>
+<p>We use git submodules for all our shared projects. Generally these
+submodules will be on a detached head. Detached heads aren&#x2019;t bad&#x2026;unless
+you&#x2019;ve done some modifications in the submodule and want to commit them
+back to the repository. Here&#x2019;s how to get back on master when that
+happens:</p>
+<ul>
+<li>commit your changes like normal<ul>
+<li>right click on the commit you just made (if not in history,
+click on the detached head and it will show up there) and choose
+&#x201C;copy commit hash to clipboard&#x201D;</li>
+</ul>
+</li>
+<li>double click on the branch you want to be head (not the detached
+one)<ul>
+<li>it may prompt you about losing your work</li>
+</ul>
+</li>
+<li>right click on branches heading in sidebar and &#x201C;create new branch&#x201D;<ul>
+<li>give the branch any name you want (&#x201C;fix_head&#x201D;)</li>
+<li>paste the hash on your clipboard into the starting point</li>
+<li>press create branch button</li>
+</ul>
+</li>
+<li>double click on the branch you want to be head (probably &#x201C;master&#x201D;)</li>
+<li>under working copy menu, choose merge<ul>
+<li>choose your newly created branch &#x201C;fix_head&#x201D; and press merge</li>
+</ul>
+</li>
+<li>right-click on newly created branch in sidebar and choose option to
+delete</li>
+<li>push your changes</li>
+<li>go out of the submodule, click the check-box next to the submodule
+and commit the change (this will update the pointer)</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="url-scheme.html" class="navigation navigation-prev " aria-label="Previous page: URL Scheme">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="naming-conventions.html" class="navigation navigation-next " aria-label="Next page: Naming Conventions">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Git","level":"1.4.6","depth":2,"next":{"title":"Naming Conventions","level":"1.4.7","depth":2,"path":"developer-guide/naming-conventions.md","ref":"developer-guide/naming-conventions.md","articles":[]},"previous":{"title":"URL Scheme","level":"1.4.5","depth":2,"path":"developer-guide/url-scheme.md","ref":"developer-guide/url-scheme.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","versions","todo","github","prism","-highlight","youtube","simple-page-toc","theme-vuejs@git+https://github.com/pearofducks/gitbook-plugin-theme-vuejs.git","-fontsettings"],"root":"./","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"youtube":{},"github":{"url":"https://github.com/datamosaic/sutra-cms/"},"simple-page-toc":{"maxDepth":4,"skipFirstH1":true},"todo":{},"search":{},"theme-vuejs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"versions":{"type":"branches","gitbookConfigURL":"./gitbook/book.json","options":[{"value":"","text":"Wakanda 10","selected":true}]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Sutra CMS","gitbook":"*","Description":"Sutra CMS developer documentation"},"file":{"path":"developer-guide/git.md","mtime":"2017-03-16T22:30:11.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-03-16T23:15:48.446Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-versions/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+
+    </body>
+</html>
+

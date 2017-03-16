@@ -1,0 +1,27 @@
+{
+  "name": "sutra-cms-documentation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "build": "gitbook build ./ ../documentation",
+    "mark": "node_modules/.bin/markdown ../../README.md > ../index.html",
+    "deploy": "npm run build && npm run mark && .bin/deploy.sh"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gitbook-plugin-forkmegithub": "^2.2.0",
+    "gitbook-plugin-github": "^2.0.0",
+    "gitbook-plugin-prism": "^2.1.0",
+    "gitbook-plugin-simple-page-toc": "^0.1.1",
+    "gitbook-plugin-theme-vuejs": "git+https://github.com/pearofducks/gitbook-plugin-theme-vuejs.git",
+    "gitbook-plugin-todo": "^0.1.3",
+    "gitbook-plugin-versions": "git+https://github.com/kabootit/gitbook-plugin-versions.git",
+    "gitbook-plugin-youtube": "^1.1.0"
+  },
+  "devDependencies": {
+    "markdown-to-html": "0.0.13"
+  }
+}
