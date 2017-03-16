@@ -6,6 +6,8 @@ An application platform for Wakanda.
 
 > This is code for "Old" Wakanda which was abandoned mid 2015 by [4D](http://www.4d.com/)
 
+- [Documentation](https://datamosaic.github.io/data-sutra-wakanda/documentation/)
+
 ## Related projects
 
 ### "Old" Wakanda Sources
