@@ -1,0 +1,26 @@
+{
+    "title": "Sutra CMS",
+    "Description": "Sutra CMS developer documentation",
+    "root": "./",
+    "plugins": [ "-sharing", "versions", "todo", "github", "prism", "-highlight", "youtube", "simple-page-toc",
+          "theme-vuejs@git+https://github.com/pearofducks/gitbook-plugin-theme-vuejs.git", "-fontsettings" ],
+    "pluginsConfig": {
+        "github": {
+            "url": "https://github.com/datamosaic/sutra-cms/"
+        },
+        "simple-page-toc": {
+            "maxDepth": 4,
+            "skipFirstH1": true
+        },
+        "versions": {
+            "gitbookConfigURL": "./gitbook/book.json",
+            "options": [
+                {
+                    "value": "",
+                    "text": "Wakanda 10",
+                    "selected": true
+                }
+            ]
+        }
+    }
+}
