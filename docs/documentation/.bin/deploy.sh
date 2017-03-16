@@ -7,7 +7,7 @@ cp -rf ../documentation ../../docs/documentation
 
 # website
 cp -rf ../favicon.ico ../../docs/favicon.ico
-cp -rf ../index.html ../../docs/index.html
+# cp -rf ../index.html ../../docs/index.html
 
 # git
 git add -A
