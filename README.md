@@ -1,6 +1,6 @@
 # Data Sutra for Wakanda
 
-![](https://img.shields.io/badge/Wakanda-v10-yellow.svg)
+![](https://img.shields.io/badge/Wakanda-v10-yellow.svg) ![](https://img.shields.io/badge/Project%20Status-Archived-red.svg)
 
 An application platform for Wakanda.
 
