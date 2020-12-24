@@ -1,9 +1,7 @@
 (function(kb_Radio) {
-
     /* Default width and height of your widget */
     kb_Radio.setWidth('200');
     kb_Radio.setHeight('200');
-
     /* Properties */
     // parent
     kb_Radio.customizeProperty('kbParent', {
@@ -18,13 +16,8 @@
         description: 'Any html content',
         multiline: true
     });
-
-
     /* Override widget's initialization */
     kb_Radio.prototype.init = function() {
         this.node.innerHTML = '<div class="kb-label-div"><b>Div:</b> ' + this.kbParent()  + '</div>';
     };
-
-
 });
-

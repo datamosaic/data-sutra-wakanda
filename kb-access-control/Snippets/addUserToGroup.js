@@ -1,10 +1,4 @@
 ﻿ds.Group.all()
-
-
-
-
-
-
 ds.User.all()
 var fellow = ds.User({name:'konley@data-mosaic.com'})
 fellow

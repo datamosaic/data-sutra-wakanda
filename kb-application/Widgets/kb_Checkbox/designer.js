@@ -1,9 +1,7 @@
 (function(kb_Checkbox) {
-
     /* Default width and height of your widget */
     kb_Checkbox.setWidth('210');
     kb_Checkbox.setHeight('30');
-
     /* Properties */
     // parent
     kb_Checkbox.customizeProperty('kbParent', {
@@ -18,13 +16,8 @@
         description: 'Any html content',
         multiline: true
     });
-
-
     /* Override widget's initialization */
     kb_Checkbox.prototype.init = function() {
         this.node.innerHTML = '<div class="kb-label-div"><b>Div:</b> ' + this.kbParent()  + '</div>';
     };
-
-
 });
-

@@ -7,13 +7,10 @@
  * Available under MIT license <http://lodash.com/license>
  */
 ;(function() {
-
   /** Used as a safe reference for `undefined` in pre ES5 environments */
   var undefined;
-
   /** Used as the semantic version number */
   var VERSION = '3.0.0-pre';
-
   /** Used to compose bitmasks for wrapper metadata */
   var BIND_FLAG = 1,
       BIND_KEY_FLAG = 2,
@@ -22,101 +19,76 @@
       CURRY_BOUND_FLAG = 16,
       PARTIAL_FLAG = 32,
       PARTIAL_RIGHT_FLAG = 64;
-
   /** Used as default options for `_.trunc` */
   var DEFAULT_TRUNC_LENGTH = 30,
       DEFAULT_TRUNC_OMISSION = '...';
-
   /** Used to detect when a function becomes hot */
   var HOT_COUNT = 150,
       HOT_SPAN = 16;
-
   /** Used to indicate the type of lazy iteratees */
   var LAZY_FILTER_FLAG = 1,
       LAZY_MAP_FLAG = 2,
       LAZY_WHILE_FLAG = 3;
-
   /** Used as the `TypeError` message for "Functions" methods */
   var FUNC_ERROR_TEXT = 'Expected a function';
-
   /** Used as the internal argument placeholder */
   var PLACEHOLDER = '__lodash_placeholder__';
-
   /** Used to generate unique IDs */
   var idCounter = 0;
-
   /** Used to match empty string literals in compiled template source */
   var reEmptyStringLeading = /\b__p \+= '';/g,
       reEmptyStringMiddle = /\b(__p \+=) '' \+/g,
       reEmptyStringTrailing = /(__e\(.*?\)|\b__t\)) \+\n'';/g;
-
   /** Used to match HTML entities and HTML characters */
   var reEscapedHtml = /&(?:amp|lt|gt|quot|#39|#96);/g,
       reUnescapedHtml = /[&<>"'`]/g;
-
   /** Used to match template delimiters */
   var reEscape = /<%-([\s\S]+?)%>/g,
       reEvaluate = /<%([\s\S]+?)%>/g,
       reInterpolate = /<%=([\s\S]+?)%>/g;
-
   /**
    * Used to match ES6 template delimiters.
    * See the [ES6 spec](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-template-literal-lexical-components)
    * for more details.
    */
   var reEsTemplate = /\$\{([^\\}]*(?:\\.[^\\}]*)*)\}/g;
-
   /** Used to match `RegExp` flags from their coerced string values */
   var reFlags = /\w*$/;
-
   /** Used to detect named functions */
   var reFuncName = /^\s*function[ \n\r\t]+\w/;
-
   /** Used to detect hexadecimal string values */
   var reHexPrefix = /^0[xX]/;
-
   /** Used to detect host constructors (Safari > 5) */
   var reHostCtor = /^\[object .+?Constructor\]$/;
-
   /** Used to match latin-1 supplement letters (excluding mathematical operators) */
   var reLatin1 = /[\xC0-\xD6\xD8-\xDE\xDF-\xF6\xF8-\xFF]/g;
-
   /** Used to ensure capturing order of template delimiters */
   var reNoMatch = /($^)/;
-
   /**
    * Used to match `RegExp` special characters.
    * See this [article on `RegExp` characters](http://www.regular-expressions.info/characters.html#special)
    * for more details.
    */
   var reRegExpChars = /[.*+?^${}()|[\]\/\\]/g;
-
   /** Used to detect functions containing a `this` reference */
   var reThis = /\bthis\b/;
-
   /** Used to match unescaped characters in compiled string literals */
   var reUnescapedString = /['\n\r\u2028\u2029\\]/g;
-
   /** Used to match words to create compound words */
   var reWords = (function() {
     var upper = '[A-Z\\xC0-\\xD6\\xD8-\\xDE]',
         lower = '[a-z\\xDF-\\xF6\\xF8-\\xFF]+';
-
     return RegExp(upper + '{2,}(?=' + upper + lower + ')|' + upper + '?' + lower + '|' + upper + '+|[0-9]+', 'g');
   }());
-
   /** Used to detect and test whitespace */
   var whitespace = (
     // whitespace
     ' \t\x0B\f\xA0\ufeff' +
-
     // line terminators
     '\n\r\u2028\u2029' +
-
     // unicode category "Zs" space separators
     '\u1680\u180E\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000'
   );
-
   /** Used to assign default `context` object properties */
   var contextProps = [
     'Array', 'ArrayBuffer', 'Date', 'Error', 'Float32Array', 'Float64Array',
@@ -126,16 +98,13 @@
     'Uint8ClampedArray', 'Uint16Array', 'Uint32Array', 'WeakMap',
     'window', 'WinRTError'
   ];
-
   /** Used to fix the JScript `[[DontEnum]]` bug */
   var shadowedProps = [
     'constructor', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable',
     'toLocaleString', 'toString', 'valueOf'
   ];
-
   /** Used to make template sourceURLs easier to identify */
   var templateCounter = -1;
-
   /** `Object#toString` result references */
   var argsClass = '[object Arguments]',
       arrayClass = '[object Array]',
@@ -150,7 +119,6 @@
       setClass = '[object Set]',
       stringClass = '[object String]',
       weakMapClass = '[object WeakMap]';
-
   var arrayBufferClass = '[object ArrayBuffer]',
       float32Class = '[object Float32Array]',
       float64Class = '[object Float64Array]',
@@ -161,7 +129,6 @@
       uint8ClampedClass = '[object Uint8ClampedArray]',
       uint16Class = '[object Uint16Array]',
       uint32Class = '[object Uint32Array]';
-
   /** Used to identify object classifications that are treated like arrays */
   var arrayLikeClasses = {};
   arrayLikeClasses[argsClass] =
@@ -176,7 +143,6 @@
   arrayLikeClasses[numberClass] = arrayLikeClasses[objectClass] =
   arrayLikeClasses[regexpClass] = arrayLikeClasses[setClass] =
   arrayLikeClasses[stringClass] = arrayLikeClasses[weakMapClass] = false;
-
   /** Used to identify object classifications that `_.clone` supports */
   var cloneableClasses = {};
   cloneableClasses[argsClass] = cloneableClasses[arrayClass] =
@@ -191,14 +157,12 @@
   cloneableClasses[errorClass] =
   cloneableClasses[funcClass] = cloneableClasses[mapClass] =
   cloneableClasses[setClass] = cloneableClasses[weakMapClass] = false;
-
   /** Used as an internal `_.debounce` options object by `_.throttle` */
   var debounceOptions = {
     'leading': false,
     'maxWait': 0,
     'trailing': false
   };
-
   /** Used to map latin-1 supplementary letters to basic latin letters */
   var deburredLetters = {
     '\xC0': 'A',  '\xC1': 'A', '\xC2': 'A', '\xC3': 'A', '\xC4': 'A', '\xC5': 'A',
@@ -219,7 +183,6 @@
     '\xDE': 'Th', '\xFE': 'th',
     '\xDF': 'ss'
   };
-
   /**
    * Used to map characters to HTML entities.
    *
@@ -242,7 +205,6 @@
     "'": '&#39;',
     '`': '&#96;'
   };
-
   /** Used to map HTML entities to characters */
   var htmlUnescapes = {
     '&amp;': '&',
@@ -252,20 +214,17 @@
     '&#39;': "'",
     '&#96;': '`'
   };
-
   /** Used to map iteratee types to lazy methods */
   var lazyIterateeTypes = {
     'filter': LAZY_FILTER_FLAG,
     'map': LAZY_MAP_FLAG,
     'takeWhile': LAZY_WHILE_FLAG
   };
-
   /** Used to determine if values are of the language type `Object` */
   var objectTypes = {
     'function': true,
     'object': true
   };
-
   /** Used to escape characters for inclusion in compiled string literals */
   var stringEscapes = {
     '\\': '\\',
@@ -275,27 +234,20 @@
     '\u2028': 'u2028',
     '\u2029': 'u2029'
   };
-
   /** Used as a reference to the global object */
   var root = (objectTypes[typeof window] && window) || this;
-
   /** Detect free variable `exports` */
   var freeExports = objectTypes[typeof exports] && exports && !exports.nodeType && exports;
-
   /** Detect free variable `module` */
   var freeModule = objectTypes[typeof module] && module && !module.nodeType && module;
-
   /** Detect free variable `global` from Node.js or Browserified code and use it as `root` */
   var freeGlobal = freeExports && freeModule && typeof global == 'object' && global;
   if (freeGlobal && (freeGlobal.global === freeGlobal || freeGlobal.window === freeGlobal || freeGlobal.self === freeGlobal)) {
     root = freeGlobal;
   }
-
   /** Detect the popular CommonJS extension `module.exports` */
   var moduleExports = freeModule && freeModule.exports === freeExports && freeExports;
-
   /*--------------------------------------------------------------------------*/
-
   /**
    * A specialized version of `_.forEach` for arrays without support for
    * callback shorthands or `this` binding.
@@ -308,7 +260,6 @@
   function arrayEach(array, iteratee) {
     var index = -1,
         length = array.length;
-
     while (++index < length) {
       if (iteratee(array[index], index, array) === false) {
         break;
@@ -316,7 +267,6 @@
     }
     return array;
   }
-
   /**
    * A specialized version of `_.forEachRight` for arrays without support for
    * callback shorthands or `this` binding.
@@ -328,7 +278,6 @@
    */
   function arrayEachRight(array, iteratee) {
     var length = array.length;
-
     while (length--) {
       if (iteratee(array[length], length, array) === false) {
         break;
@@ -336,7 +285,6 @@
     }
     return array;
   }
-
   /**
    * A specialized version of `_.every` for arrays without support for callback
    * shorthands or `this` binding.
@@ -350,7 +298,6 @@
   function arrayEvery(array, predicate) {
     var index = -1,
         length = array.length;
-
     while (++index < length) {
       if (!predicate(array[index], index, array)) {
         return false;
@@ -358,7 +305,6 @@
     }
     return true;
   }
-
   /**
    * A specialized version of `_.map` for arrays without support for callback
    * shorthands or `this` binding.
@@ -372,13 +318,11 @@
     var index = -1,
         length = array.length,
         result = Array(length);
-
     while (++index < length) {
       result[index] = iteratee(array[index], index, array);
     }
     return result;
   }
-
   /**
    * A specialized version of `_.filter` for arrays without support for callback
    * shorthands or `this` binding.
@@ -393,7 +337,6 @@
         length = array.length,
         resIndex = -1,
         result = [];
-
     while (++index < length) {
       var value = array[index];
       if (predicate(value, index, array)) {
@@ -402,7 +345,6 @@
     }
     return result;
   }
-
   /**
    * A specialized version of `_.reduce` for arrays without support for callback
    * shorthands or `this` binding.
@@ -418,7 +360,6 @@
   function arrayReduce(array, iteratee, accumulator, initFromArray) {
     var index = -1,
         length = array.length;
-
     if (initFromArray && length) {
       accumulator = array[++index];
     }
@@ -427,7 +368,6 @@
     }
     return accumulator;
   }
-
   /**
    * A specialized version of `_.reduceRight` for arrays without support for
    * callback shorthands or `this` binding.
@@ -442,7 +382,6 @@
    */
   function arrayReduceRight(array, iteratee, accumulator, initFromArray) {
     var length = array.length;
-
     if (initFromArray && length) {
       accumulator = array[--length];
     }
@@ -451,7 +390,6 @@
     }
     return accumulator;
   }
-
   /**
    * A specialized version of `_.some` for arrays without support for callback
    * shorthands or `this` binding.
@@ -465,7 +403,6 @@
   function arraySome(array, predicate) {
     var index = -1,
         length = array.length;
-
     while (++index < length) {
       if (predicate(array[index], index, array)) {
         return true;
@@ -473,7 +410,6 @@
     }
     return false;
   }
-
   /**
    * The base implementation of `_.at` without support for strings and individual
    * key arguments.
@@ -487,13 +423,11 @@
     var index = -1,
         length = props.length,
         result = Array(length);
-
     while(++index < length) {
       result[index] = collection[props[index]];
     }
     return result;
   }
-
   /**
    * The base implementation of `compareAscending` which compares values and
    * sorts them in ascending order without guaranteeing a stable sort.
@@ -507,7 +441,6 @@
     if (value !== other) {
       var valIsReflexive = value === value,
           othIsReflexive = other === other;
-
       if (value > other || !valIsReflexive || (typeof value == 'undefined' && othIsReflexive)) {
         return 1;
       }
@@ -517,7 +450,6 @@
     }
     return 0;
   }
-
   /**
    * The base implementation of `_.indexOf` without support for `fromIndex`
    * bounds checks and binary searches.
@@ -534,7 +466,6 @@
     }
     var index = (fromIndex || 0) - 1,
         length = array.length;
-
     while (++index < length) {
       if (array[index] === value) {
         return index;
@@ -542,7 +473,6 @@
     }
     return -1;
   }
-
   /**
    * The base implementation of `_.slice` without support for `start` and `end`
    * arguments.
@@ -555,13 +485,11 @@
     var index = -1,
         length = array ? array.length : 0,
         result = Array(length);
-
     while (++index < length) {
       result[index] = array[index];
     }
     return result;
   }
-
   /**
    * An implementation of `_.contains` for cache objects that mimics the return
    * signature of `_.indexOf` by returning `0` if the value is found, else `-1`.
@@ -574,7 +502,6 @@
   function cacheIndexOf(cache, value) {
     return cache.has(value) ? 0 : -1;
   }
-
   /**
    * Used by `_.max` and `_.min` as the default callback when a given collection
    * is a string value.
@@ -586,7 +513,6 @@
   function charAtCallback(string) {
     return string.charCodeAt(0);
   }
-
   /**
    * Used by `_.trim` and `_.trimLeft` to get the index of the first character
    * of `string` that is not found in `chars`.
@@ -599,11 +525,9 @@
   function charsLeftIndex(string, chars) {
     var index = -1,
         length = string.length;
-
     while (++index < length && chars.indexOf(string.charAt(index)) > -1) {}
     return index;
   }
-
   /**
    * Used by `_.trim` and `_.trimRight` to get the index of the last character
    * of `string` that is not found in `chars`.
@@ -615,11 +539,9 @@
    */
   function charsRightIndex(string, chars) {
     var index = string.length;
-
     while (index-- && chars.indexOf(string.charAt(index)) > -1) {}
     return index;
   }
-
   /**
    * Used by `_.sortBy` to compare transformed elements of `collection` and stable
    * sort them in ascending order.
@@ -632,7 +554,6 @@
   function compareAscending(object, other) {
     return baseCompareAscending(object.criteria, other.criteria) || (object.index - other.index);
   }
-
   /**
    * Used by `_.sortBy` to compare multiple properties of each element in a
    * collection and stable sort them in ascending order.
@@ -647,7 +568,6 @@
         objCriteria = object.criteria,
         othCriteria = other.criteria,
         length = objCriteria.length;
-
     while (++index < length) {
       var result = baseCompareAscending(objCriteria[index], othCriteria[index]);
       if (result) {
@@ -662,7 +582,6 @@
     // See https://code.google.com/p/v8/issues/detail?id=90
     return object.index - other.index;
   }
-
   /**
    * Used by `_.deburr` to convert latin-1 to basic latin letters.
    *
@@ -673,7 +592,6 @@
   function deburrLetter(letter) {
     return deburredLetters[letter];
   }
-
   /**
    * Used by `_.escape` to convert characters to HTML entities.
    *
@@ -684,7 +602,6 @@
   function escapeHtmlChar(chr) {
     return htmlEscapes[chr];
   }
-
   /**
    * Used by `_.template` to escape characters for inclusion in compiled
    * string literals.
@@ -696,7 +613,6 @@
   function escapeStringChar(chr) {
     return '\\' + stringEscapes[chr];
   }
-
   /**
    * Gets the index at which the first occurrence of `NaN` is found in `array`.
    * If `fromRight` is provided elements of `array` are iterated from right to left.
@@ -710,7 +626,6 @@
   function indexOfNaN(array, fromIndex, fromRight) {
     var length = array.length,
         index = fromRight ? (fromIndex || length) : ((fromIndex || 0) - 1);
-
     while ((fromRight ? index-- : ++index < length)) {
       var other = array[index];
       if (other !== other) {
@@ -719,7 +634,6 @@
     }
     return -1;
   }
-
   /**
    * Checks if `value` is a host object in IE < 9.
    *
@@ -739,7 +653,6 @@
       return typeof value.toString != 'function' && typeof (value + '') == 'string';
     };
   }());
-
   /**
    * Checks if the provided arguments are from an iteratee call.
    *
@@ -752,11 +665,9 @@
   function isIterateeCall(value, index, object) {
     var indexType = typeof index,
         objectType = typeof object;
-
     return (object && (indexType == 'number' || indexType == 'string') &&
       (objectType == 'function' || objectType == 'object') && object[index] === value) || false;
   }
-
   /**
    * Used by `trimmedLeftIndex` and `trimmedRightIndex` to determine if a
    * character code is whitespace.
@@ -769,7 +680,6 @@
     return ((charCode <= 160 && (charCode >= 9 && charCode <= 13) || charCode == 32 || charCode == 160) || charCode == 5760 || charCode == 6158 ||
       (charCode >= 8192 && (charCode <= 8202 || charCode == 8232 || charCode == 8233 || charCode == 8239 || charCode == 8287 || charCode == 12288 || charCode == 65279)));
   }
-
   /**
    * Replaces all `placeholder` elements in `array` with an internal placeholder
    * and returns an array of their indexes.
@@ -784,7 +694,6 @@
         length = array.length,
         resIndex = -1,
         result = [];
-
     while (++index < length) {
       if (array[index] === placeholder) {
         array[index] = PLACEHOLDER;
@@ -793,7 +702,6 @@
     }
     return result;
   }
-
   /**
    * An implementation of `_.uniq` optimized for sorted arrays without support
    * for callback shorthands and `this` binding.
@@ -809,11 +717,9 @@
         length = array.length,
         resIndex = -1,
         result = [];
-
     while (++index < length) {
       var value = array[index],
           computed = iteratee ? iteratee(value, index, array) : value;
-
       if (!index || seen !== computed) {
         seen = computed;
         result[++resIndex] = value;
@@ -821,7 +727,6 @@
     }
     return result;
   }
-
   /**
    * Used by `_.trim` and `_.trimLeft` to get the index of the first non-whitespace
    * character of `string`.
@@ -833,11 +738,9 @@
   function trimmedLeftIndex(string) {
     var index = -1,
         length = string.length;
-
     while (++index < length && isWhitespace(string.charCodeAt(index))) {}
     return index;
   }
-
   /**
    * Used by `_.trim` and `_.trimRight` to get the index of the last non-whitespace
    * character of `string`.
@@ -848,11 +751,9 @@
    */
   function trimmedRightIndex(string) {
     var index = string.length;
-
     while (index-- && isWhitespace(string.charCodeAt(index))) {}
     return index;
   }
-
   /**
    * Used by `_.unescape` to convert HTML entities to characters.
    *
@@ -863,9 +764,7 @@
   function unescapeHtmlChar(chr) {
     return htmlUnescapes[chr];
   }
-
   /*--------------------------------------------------------------------------*/
-
   /**
    * Create a new pristine `lodash` function using the given `context` object.
    *
@@ -899,7 +798,6 @@
     // ES5 clears this up by stating that literals must use built-in constructors.
     // See http://es5.github.io/#x11.1.5.
     context = context ? _.defaults(root.Object(), context, _.pick(root, contextProps)) : root;
-
     /** Native constructor references */
     var Array = context.Array,
         Date = context.Date,
@@ -911,34 +809,26 @@
         RegExp = context.RegExp,
         String = context.String,
         TypeError = context.TypeError;
-
     /** Used for native method references */
     var arrayProto = Array.prototype,
         errorProto = Error.prototype,
         objectProto = Object.prototype,
         stringProto = String.prototype;
-
     /** Used to detect DOM support */
     var document = (document = context.window) && document.document;
-
     /** Used to resolve the decompiled source of functions */
     var fnToString = Function.prototype.toString;
-
     /** Used to check objects for own properties */
     var hasOwnProperty = objectProto.hasOwnProperty;
-
     /** Used to restore the original `_` reference in `_.noConflict` */
     var oldDash = context._;
-
     /** Used to resolve the internal `[[Class]]` of values */
     var toString = objectProto.toString;
-
     /** Used to detect if a method is native */
     var reNative = RegExp('^' +
       escapeRegExp(toString)
       .replace(/toString|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$'
     );
-
     /** Native method references */
     var ArrayBuffer = isNative(ArrayBuffer = context.ArrayBuffer) && ArrayBuffer,
         bufferSlice = isNative(bufferSlice = ArrayBuffer && new ArrayBuffer(0).slice) && bufferSlice,
@@ -954,7 +844,6 @@
         Uint8Array = isNative(Uint8Array = context.Uint8Array) && Uint8Array,
         unshift = arrayProto.unshift,
         WeakMap = isNative(WeakMap = context.WeakMap) && WeakMap;
-
     /** Used to clone array buffers */
     var Float64Array = (function() {
       // Safari 5 errors when using an array buffer to initialize a typed array
@@ -966,7 +855,6 @@
       } catch(e) {}
       return result;
     }());
-
     /* Native method references for those with the same name as other `lodash` methods */
     var nativeCreate = isNative(nativeCreate = Object.create) && nativeCreate,
         nativeIsArray = isNative(nativeIsArray = Array.isArray) && nativeIsArray,
@@ -978,28 +866,22 @@
         nativeNumIsFinite = isNative(nativeNumIsFinite = Number.isFinite) && nativeNumIsFinite,
         nativeParseInt = context.parseInt,
         nativeRandom = Math.random;
-
     /** Used as references for `-Infinity` and `Infinity` */
     var NEGATIVE_INFINITY = Number.NEGATIVE_INFINITY,
         POSITIVE_INFINITY = Number.POSITIVE_INFINITY;
-
     /** Used as references for the max length and index of an array */
     var MAX_ARRAY_LENGTH = Math.pow(2, 32) - 1,
         MAX_ARRAY_INDEX =  MAX_ARRAY_LENGTH - 1;
-
     /** Used as the size, in bytes, of each Float64Array element */
     var FLOAT64_BYTES_PER_ELEMENT = Float64Array ? Float64Array.BYTES_PER_ELEMENT : 0;
-
     /**
      * Used as the maximum length of an array-like value.
      * See the [ES6 spec](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-tolength)
      * for more details.
      */
     var MAX_SAFE_INTEGER = Math.pow(2, 53) - 1;
-
     /** Used to store function metadata */
     var metaMap = WeakMap && new WeakMap;
-
     /** Used to lookup a built-in constructor by `[[Class]]` */
     var ctorByClass = {};
     ctorByClass[float32Class] = context.Float32Array;
@@ -1011,14 +893,12 @@
     ctorByClass[uint8ClampedClass] = context.Uint8ClampedArray;
     ctorByClass[uint16Class] = context.Uint16Array;
     ctorByClass[uint32Class] = context.Uint32Array;
-
     /** Used to avoid iterating over non-enumerable properties in IE < 9 */
     var nonEnumProps = {};
     nonEnumProps[arrayClass] = nonEnumProps[dateClass] = nonEnumProps[numberClass] = { 'constructor': true, 'toLocaleString': true, 'toString': true, 'valueOf': true };
     nonEnumProps[boolClass] = nonEnumProps[stringClass] = { 'constructor': true, 'toString': true, 'valueOf': true };
     nonEnumProps[errorClass] = nonEnumProps[funcClass] = nonEnumProps[regexpClass] = { 'constructor': true, 'toString': true };
     nonEnumProps[objectClass] = { 'constructor': true };
-
     arrayEach(shadowedProps, function(key) {
       for (var className in nonEnumProps) {
         if (hasOwnProperty.call(nonEnumProps, className)) {
@@ -1027,9 +907,7 @@
         }
       }
     });
-
     /*------------------------------------------------------------------------*/
-
     /**
      * Creates a `lodash` object which wraps the given value to enable intuitive
      * method chaining.
@@ -1109,7 +987,6 @@
       }
       return new LodashWrapper(value);
     }
-
     /**
      * An object environment feature flags.
      *
@@ -1118,15 +995,12 @@
      * @type Object
      */
     var support = lodash.support = {};
-
     (function(x) {
       var Ctor = function() { this.x = 1; },
           object = { '0': 1, 'length': 1 },
           props = [];
-
       Ctor.prototype = { 'valueOf': 1, 'y': 1 };
       for (var key in new Ctor) { props.push(key); }
-
       /**
        * Detect if the `[[Class]]` of `arguments` objects is resolvable
        * (all but Firefox < 4, IE < 9).

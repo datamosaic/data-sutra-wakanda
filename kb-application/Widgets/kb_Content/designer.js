@@ -1,9 +1,7 @@
 (function(kb_Content) {
-
     /* Default width and height of your widget */
     kb_Content.setWidth('300');
     kb_Content.setHeight('400');
-
     /* Properties */
     // parent
     kb_Content.customizeProperty('kbTitle', {
@@ -23,16 +21,12 @@
         title: 'Use template',
         description: 'Default state of button is disabled'
     });
-
 	var setBadge = function setBadge() {
 		var widgetName = "Content";
 		this.node.innerHTML = '<div class="kb-badge">' + widgetName + ':<b> ' + this.kbTitle()  + '</b></div>';
 	};
-
     kb_Content.doAfter('init', function() {
     	setBadge.call(this);
     	this.kbTitle.onChange(setBadge, "Content");
     });
-
 });
-

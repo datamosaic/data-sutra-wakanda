@@ -1,13 +1,9 @@
 (function(kb_Config) {
-
 	var widgetName = "Config";
-
     /* Default width and height of your widget */
     kb_Config.setWidth('400');
     kb_Config.setHeight('40');
-
     /* Properties */
-
     // title
     kb_Config.customizeProperty('kbTitle', {
     	category: "Kabootit",
@@ -32,7 +28,6 @@
         title: 'Resource',
         description: 'Specify theme resource'
     });
-
 	/* designer load code */
 	function getImg(widgetName) {
 		// grab img used
@@ -45,32 +40,20 @@
 			return $(this).text() == widgetName;
 		})
 		.css('background-image');
-
 		return img;
        }
-
-
 	setTimeout(function(){
-
 		var img = getImg(widgetName);
-
 		// find all widgets of this type
 		var widgets = $('div[data-type="kb_' + widgetName + '"]');
-
 		// set image
 		$( widgets ).each(function( index ) {
 		  	 $(widgets[index]).css('background', img + ' no-repeat');
 		});
-
 	}, 100);
-
-
     kb_Config.doAfter('init', function() {
         this.node.innerHTML = '<div class="kb-label-config"><b>Config:</b> ' + this.kbTitle()  + '</div>';
-
 	    var img =  getImg(widgetName);
         $(this.node).css('background', img + ' no-repeat');
     });
-
 });
-

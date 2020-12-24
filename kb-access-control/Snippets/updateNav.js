@@ -1,27 +1,4 @@
 ﻿//var navSets = ds.NavigationSet.all();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //for (var i = 0; i < navSets.length; i++) {
 //	var navSet = navSets[i];
 //
@@ -34,7 +11,6 @@
 //		}
 //	}
 //}
-
 var bob = new Array();
 for (var i in application) {
 	bob.push(i);

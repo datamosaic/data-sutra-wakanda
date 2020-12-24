@@ -1,13 +1,8 @@
 WAF.define('kb_Radio', ['waf-core/widget'], function(widget) {
-
     var kb_Radio = widget.create('kb_Radio', {
         init: function() {
-
-
         }
-
     });
-
 	// properties
 	kb_Radio.addProperty('kbParent', {
 	    type: "string",
@@ -20,12 +15,7 @@ WAF.define('kb_Radio', ['waf-core/widget'], function(widget) {
 	    type: "string",
 	    bindable: false
 	});
-
-
     kb_Radio.inherit('waf-behavior/layout/container');
     kb_Radio.addClass('waf-ui-box');
-
     return kb_Radio;
-
 });
-

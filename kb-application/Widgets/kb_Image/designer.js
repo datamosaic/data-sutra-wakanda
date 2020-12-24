@@ -1,10 +1,7 @@
 (function(kb_Image) {
-
 	var widgetName = "Image";
-
     kb_Image.setWidth('210');
     kb_Image.setHeight('30');
-
     /* Properties */
     kb_Image.customizeProperty('kbTemplate', {
     	category: "Kabootit",
@@ -42,8 +39,6 @@
         title: 'Disabled',
         description: 'Default state of button is disabled'
     });
-
-
 	/* designer load code */
 	function getImg(widgetName) {
 		// grab img used
@@ -56,24 +51,17 @@
 			return $(this).text() == widgetName;
 		})
 		.css('background-image');
-
 		return img;
        }
-
 	setTimeout(function(){
-
 		var img = getImg(widgetName);
-
 		// find all widgets of this type
 		var widgets = $('div[data-type="kb_' + widgetName + '"]');
-
 		// set image
 		$( widgets ).each(function( index ) {
 		  	 $(widgets[index]).css('background', img + ' no-repeat');
 		});
-
 	}, 100);
-
     kb_Image.doAfter('init', function() {
         this.node.innerHTML = '<div kb-data=""></div><div class="kb-label-image"><b>Image: </b>' + this.kbLabel()  + '</div>';
 		// this.node.setAttribute('data-kb','some value');
@@ -81,7 +69,4 @@
 	    var img =  getImg(widgetName);
         $(this.node).css('background', img + ' no-repeat');
     });
-
-
 });
-

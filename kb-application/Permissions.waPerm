@@ -10,9 +10,8 @@
 	<allow type="module" resource="rpt" action="executeFromClient" groupName="Admin" groupID="01000000000000000000000000000000" />
 	<allow type="module" resource="test" action="executeFromClient" groupName="Admin" groupID="01000000000000000000000000000000" />
 	<allow type="module" resource="vl" action="executeFromClient" groupName="Admin" groupID="01000000000000000000000000000000" />
-
 	<allow type="module" resource="app" action="executeFromClient" groupName="Admin" groupID="01000000000000000000000000000000" />
-	
+
 	<allow action="read" groupName="Admin" groupID="01000000000000000000000000000000" resource="Model" temporaryForcePermissions="false" type="model"/>
 	<allow action="create" groupName="Admin" groupID="01000000000000000000000000000000" resource="Model" temporaryForcePermissions="false" type="model"/>
 	<allow action="update" groupName="Admin" groupID="01000000000000000000000000000000" resource="Model" temporaryForcePermissions="false" type="model"/>

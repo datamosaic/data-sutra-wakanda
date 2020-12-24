@@ -1,98 +1,14 @@
 ﻿/**
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  * Listen for messages posted from parent window
  */
 (function listenForParentMessages(){
 	var portholeMethodOn = window.addEventListener ? "addEventListener" : "attachEvent";
 	var portholeMethodOff = window.addEventListener ? "removeEventListener" : "detachEvent";
 	var portholeEvent = portholeMethodOn == "attachEvent" ? "onmessage" : "message";
-
 	// console.log("child page is listening");
-
 	function messageListener(e) {
 		// console.log("message received");
 		// console.log(e);
-
 		// go to new page within this project
 		if (e.data.page) {
 			location.pathname = e.data.page;
@@ -118,10 +34,8 @@
 					// userDisplay: $('.user')
 				};
 			}
-
 			elems.userEntry.val(e.data.user);
 			elems.passEntry.val(e.data.pass);
-
 			// who is currently logged in
 			LOGIN.userAsync({
 				"onSuccess" : function(userInfo) {
@@ -148,10 +62,8 @@
 			});
 		}
 	}
-
 	window[portholeMethodOn](portholeEvent,messageListener,false);
 })();
-
 /**
  * Send message upstream when document actually finished loading
  */

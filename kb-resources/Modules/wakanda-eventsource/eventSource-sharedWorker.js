@@ -5,27 +5,21 @@
 	waitReconnect,
 	events,
 	sse;
-
 clientPorts = [];
-
 portsMap = {
     session: {},
     user: {}
 };
-
 waitReconnect = {};
-
 events = {
 	disconnectListeners: []
 };
-
 buffer = [];
 buffer.MAX_AGE = 2 * 60 * 60 * 1000; // 2 hours
 buffer.MAX_EVENTS = 500;
 buffer.MAX_SIZE = 2 * 1024 * 1024; // 2 Mb
 buffer.INCLUDE_COMMENTS = false; // 2 Mb
 buffer.size = 0;
-
 //sse = require("wakanda-eventsource");
 sse = {
     PUSH: 'push',
@@ -33,11 +27,9 @@ sse = {
     CONNECTION_READY: 'connectionready',
     STOP : 'stop'
 };
-
 self.onconnect = function onconnect(msg) {
 	var
 		port;
-
 	port = msg.ports[0];
 	port.onmessage = function onmessage(event) {
 		var
@@ -48,40 +40,33 @@ self.onconnect = function onconnect(msg) {
 			expiredEvent,
 			currentIndex,
 			current;
-
 		function dispatchData(clientConnection, index, list) {
 		    var
 		        filter,
 		        event;
-
 			if (!clientConnection || !clientConnection.postMessage) {
 				// WORKER CONNECTION LOST ?
 				// HTTP CONNECTION CLOSED BY CLIENT ?
 				list.splice(index, 1);
 				return;
 			}
-
 			if (data.isComment && clientConnection.config.noComment) {
 			    // comments refused by this connection
 			    return;
 			}
-
 			filter = clientConnection.config.eventsFilter || [];
 			event = data.event || 'message';
 			if (filter.length && filter.indexOf(data.event) === -1) {
 			    // event not listened by this connection
 			    return;
 			}
-
 			clientConnection.postMessage({
 				type: sse.PUSH,
 				message: data.message
 			});
 		}
-
 		data = event.data;
 		switch (data.type) {
-
 		case "settings":
 			// UPDATE EventSource Server settings
 			if (typeof data.maxAge === 'number') {
@@ -97,7 +82,6 @@ self.onconnect = function onconnect(msg) {
 			    buffer.INCLUDE_COMMENTS = data.bufferIncludeComments;
 			}
 			break;
-
 		case sse.PUSH:
 			// MESSAGE PUSHED via ServerSent.prototype.send()
 			// log to buffer
@@ -150,7 +134,6 @@ self.onconnect = function onconnect(msg) {
 				clientPorts.forEach(dispatchData);
 			}
 			break;
-
 		case "register":
 			// HTTP REQUEST HANDLER CONNECTIONS
 			port.config = data;
@@ -187,11 +170,9 @@ self.onconnect = function onconnect(msg) {
 				type: sse.CONNECTION_READY
 			});
 			break;
-
 		case 'countConnections':
 			port.postMessage(clientPorts.length);
 			break;
-
 		case "disconnect":
 			clientPorts.splice(clientPorts.indexOf(port), 1);
 			delete portsMap.session[data.session];
@@ -215,15 +196,12 @@ self.onconnect = function onconnect(msg) {
 				}
 			}, data.delay);
 			break;
-
 		case 'listen':
 			events[data.event + 'Listeners'].push(port);
 			break;
-
 		case 'unlisten':
 			events[data.event + 'Listeners'].splice(events[data.event + 'Listeners'].indexOf(port), 1);
 			break;
-
 		case sse.STOP:
 			// service stopped - close all connections
 			clientPorts.forEach(function dispatchData(clientConnection, index) {
@@ -244,10 +222,8 @@ self.onconnect = function onconnect(msg) {
 			    user: {}
 			};
 			break;
-
 		default:
 			console.warning('unexpected message', data);
-
 		}
 	};
 };

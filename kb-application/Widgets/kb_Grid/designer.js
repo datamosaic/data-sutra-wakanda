@@ -1,9 +1,7 @@
 (function(kb_Grid) {
-
     /* Default width and height of your widget */
     kb_Grid.setWidth('210');
     kb_Grid.setHeight('30');
-
     /* Properties */
     // parent
     kb_Grid.customizeProperty('kbParent', {
@@ -18,13 +16,8 @@
         description: 'Any html content',
         multiline: true
     });
-
-
     /* Override widget's initialization */
     kb_Grid.prototype.init = function() {
         this.node.innerHTML = '<div class="kb-label-div"><b>Div:</b> ' + this.kbParent()  + '</div>';
     };
-
-
 });
-

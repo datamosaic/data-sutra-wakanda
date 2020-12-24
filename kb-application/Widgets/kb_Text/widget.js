@@ -1,13 +1,8 @@
 WAF.define('kb_Text', ['waf-core/widget'], function(widget) {
-
     var kb_Text = widget.create('kb_Text', {
         init: function() {
-
-
         }
-
     });
-
 	// properties
 	kb_Text.addProperty('kbParent', {
 	    type: "string",
@@ -20,12 +15,7 @@ WAF.define('kb_Text', ['waf-core/widget'], function(widget) {
 	    type: "string",
 	    bindable: false
 	});
-
-
     kb_Text.inherit('waf-behavior/layout/container');
     kb_Text.addClass('waf-ui-box');
-
     return kb_Text;
-
 });
-

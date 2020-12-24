@@ -1,14 +1,10 @@
 WAF.define('kb_Button', ['waf-core/widget', 'utils'], function(widget,utils) {
-
-
     var kb_Button = widget.create('kb_Button');
     kb_Button.inherit('waf-behavior/layout/container');
     kb_Button.addClass('waf-ui-box');
-
 	kb_Button.prototype.init = function init() {
 		this.doMarkup();
 	};
-
 	// properties
 	kb_Button.addProperty('kbTemplate', {
 	    type: "string",
@@ -79,7 +75,6 @@ WAF.define('kb_Button', ['waf-core/widget', 'utils'], function(widget,utils) {
 			this.doMarkup();
 		}
 	});
-
 	/**
 	 * doMarkup
 	 * store widget client markup in attr "data-kb"
@@ -105,9 +100,7 @@ WAF.define('kb_Button', ['waf-core/widget', 'utils'], function(widget,utils) {
 		merge = merge.replace(/false|null/g,"");
 		merge = merge.replace(/[ \t]{2,}/g," ");
 		merge = merge.replace(/[ ]\"[ ]/g,"\"");
-
 		// merge = JSON.stringify(merge);
-
 		// RACTIVE v1: working out organization
 		//1. v1 ractive...node.innerHTML is target for ractive code in step 3
 		this.node.innerHTML = '<div style="display:none;" kb-data=\'' + merge + '\'></div><div class="kb-label-button"><b>Button: </b>' + this.kbLabel()  + '</div>';
@@ -115,14 +108,8 @@ WAF.define('kb_Button', ['waf-core/widget', 'utils'], function(widget,utils) {
 			// add into this.node.innerHTML for builder to grab
 		//3. <script>ractive setup code here. will run on html page on render. use hard coded data</script>
 			// add into this.node.innerHTML for builder to grab
-
 		// RACTIVE v2: get data in dynamically
-
 		// RACTIVE v3: synchronize client data with server data using websockets
-
 	};
-
     return kb_Button;
-
 });
-

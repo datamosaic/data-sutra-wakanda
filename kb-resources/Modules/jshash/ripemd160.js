@@ -6,14 +6,12 @@
  * See http://pajhome.org.uk/crypt/md5 for details.
  * Also http://www.ocf.berkeley.edu/~jjlin/jsotp/
  */
-
 /*
  * Configurable variables. You may need to tweak these to be compatible with
  * the server-side, but the defaults work in most cases.
  */
 var hexcase = 0;  /* hex output format. 0 - lowercase; 1 - uppercase        */
 var b64pad  = ""; /* base-64 pad character. "=" for strict RFC compliance   */
-
 /*
  * These are the functions you'll usually want to call
  * They take string arguments and return either hex or base-64 encoded strings
@@ -27,7 +25,6 @@ function b64_hmac_rmd160(k, d)
   { return rstr2b64(rstr_hmac_rmd160(str2rstr_utf8(k), str2rstr_utf8(d))); }
 function any_hmac_rmd160(k, d, e)
   { return rstr2any(rstr_hmac_rmd160(str2rstr_utf8(k), str2rstr_utf8(d)), e); }
-
 /*
  * Perform a simple self-test to see if the VM is working
  */
@@ -35,7 +32,6 @@ function rmd160_vm_test()
 {
   return hex_rmd160("abc").toLowerCase() == "8eb208f7e05d987a9b044a8e98c6b087f15a0bfc";
 }
-
 /*
  * Calculate the rmd160 of a raw string
  */
@@ -43,7 +39,6 @@ function rstr_rmd160(s)
 {
   return binl2rstr(binl_rmd160(rstr2binl(s), s.length * 8));
 }
-
 /*
  * Calculate the HMAC-rmd160 of a key and some data (raw strings)
  */
@@ -51,18 +46,15 @@ function rstr_hmac_rmd160(key, data)
 {
   var bkey = rstr2binl(key);
   if(bkey.length > 16) bkey = binl_rmd160(bkey, key.length * 8);
-
   var ipad = Array(16), opad = Array(16);
   for(var i = 0; i < 16; i++)
   {
     ipad[i] = bkey[i] ^ 0x36363636;
     opad[i] = bkey[i] ^ 0x5C5C5C5C;
   }
-
   var hash = binl_rmd160(ipad.concat(rstr2binl(data)), 512 + data.length * 8);
   return binl2rstr(binl_rmd160(opad.concat(hash), 512 + 160));
 }
-
 /*
  * Convert a raw string to a hex string
  */
@@ -80,7 +72,6 @@ function rstr2hex(input)
   }
   return output;
 }
-
 /*
  * Convert a raw string to a base-64 string
  */
@@ -103,7 +94,6 @@ function rstr2b64(input)
   }
   return output;
 }
-
 /*
  * Convert a raw string to an arbitrary string encoding
  */
@@ -112,14 +102,12 @@ function rstr2any(input, encoding)
   var divisor = encoding.length;
   var remainders = Array();
   var i, q, x, quotient;
-
   /* Convert to an array of 16-bit big-endian values, forming the dividend */
   var dividend = Array(Math.ceil(input.length / 2));
   for(i = 0; i < dividend.length; i++)
   {
     dividend[i] = (input.charCodeAt(i * 2) << 8) | input.charCodeAt(i * 2 + 1);
   }
-
   /*
    * Repeatedly perform a long division. The binary array forms the dividend,
    * the length of the encoding is the divisor. Once computed, the quotient
@@ -141,21 +129,17 @@ function rstr2any(input, encoding)
     remainders[remainders.length] = x;
     dividend = quotient;
   }
-
   /* Convert the remainders to the output string */
   var output = "";
   for(i = remainders.length - 1; i >= 0; i--)
     output += encoding.charAt(remainders[i]);
-
   /* Append leading zero equivalents */
   var full_length = Math.ceil(input.length * 8 /
                                     (Math.log(encoding.length) / Math.log(2)))
   for(i = output.length; i < full_length; i++)
     output = encoding[0] + output;
-
   return output;
 }
-
 /*
  * Encode a string as utf-8.
  * For efficiency, this assumes the input is valid utf-16.
@@ -165,7 +149,6 @@ function str2rstr_utf8(input)
   var output = "";
   var i = -1;
   var x, y;
-
   while(++i < input.length)
   {
     /* Decode utf-16 surrogate pairs */
@@ -176,7 +159,6 @@ function str2rstr_utf8(input)
       x = 0x10000 + ((x & 0x03FF) << 10) + (y & 0x03FF);
       i++;
     }
-
     /* Encode output as utf-8 */
     if(x <= 0x7F)
       output += String.fromCharCode(x);
@@ -195,7 +177,6 @@ function str2rstr_utf8(input)
   }
   return output;
 }
-
 /*
  * Encode a string as utf-16
  */
@@ -207,7 +188,6 @@ function str2rstr_utf16le(input)
                                   (input.charCodeAt(i) >>> 8) & 0xFF);
   return output;
 }
-
 function str2rstr_utf16be(input)
 {
   var output = "";
@@ -216,7 +196,6 @@ function str2rstr_utf16be(input)
                                    input.charCodeAt(i)        & 0xFF);
   return output;
 }
-
 /*
  * Convert a raw string to an array of little-endian words
  * Characters >255 have their high-byte silently ignored.
@@ -230,7 +209,6 @@ function rstr2binl(input)
     output[i>>5] |= (input.charCodeAt(i / 8) & 0xFF) << (i%32);
   return output;
 }
-
 /*
  * Convert an array of little-endian words to a string
  */
@@ -241,7 +219,6 @@ function binl2rstr(input)
     output += String.fromCharCode((input[i>>5] >>> (i % 32)) & 0xFF);
   return output;
 }
-
 /*
  * Calculate the RIPE-MD160 of an array of little-endian words, and a bit length.
  */
@@ -250,13 +227,11 @@ function binl_rmd160(x, len)
   /* append padding */
   x[len >> 5] |= 0x80 << (len % 32);
   x[(((len + 64) >>> 9) << 4) + 14] = len;
-
   var h0 = 0x67452301;
   var h1 = 0xefcdab89;
   var h2 = 0x98badcfe;
   var h3 = 0x10325476;
   var h4 = 0xc3d2e1f0;
-
   for (var i = 0; i < x.length; i += 16) {
     var T;
     var A1 = h0, B1 = h1, C1 = h2, D1 = h3, E1 = h4;
@@ -282,7 +257,6 @@ function binl_rmd160(x, len)
   }
   return [h0, h1, h2, h3, h4];
 }
-
 function rmd160_f(j, x, y, z)
 {
   return ( 0 <= j && j <= 15) ? (x ^ y ^ z) :
@@ -338,7 +312,6 @@ var rmd160_s2 = [
   15,  5,  8, 11, 14, 14,  6, 14,  6,  9, 12,  9, 12,  5, 15,  8,
    8,  5, 12,  9, 12,  5, 14,  6,  8, 13,  6,  5, 15, 13, 11, 11
 ];
-
 /*
  * Add integers, wrapping at 2^32. This uses 16-bit operations internally
  * to work around bugs in some JS interpreters.
@@ -349,7 +322,6 @@ function safe_add(x, y)
   var msw = (x >> 16) + (y >> 16) + (lsw >> 16);
   return (msw << 16) | (lsw & 0xFFFF);
 }
-
 /*
  * Bitwise rotate a 32-bit number to the left.
  */
