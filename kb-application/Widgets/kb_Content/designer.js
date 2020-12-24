@@ -16,22 +16,22 @@
     	category: "Kabootit",
         title: 'Template',
         description: 'Insert tags and markup',
-        multiline: true 
+        multiline: true
     });
     kb_Content.customizeProperty('kbFormatted', {
     	category: "Kabootit",
         title: 'Use template',
         description: 'Default state of button is disabled'
     });
-	
+
 	var setBadge = function setBadge() {
 		var widgetName = "Content";
 		this.node.innerHTML = '<div class="kb-badge">' + widgetName + ':<b> ' + this.kbTitle()  + '</b></div>';
 	};
-	
+
     kb_Content.doAfter('init', function() {
-    	setBadge.call(this);  
-    	this.kbTitle.onChange(setBadge, "Content");     
+    	setBadge.call(this);
+    	this.kbTitle.onChange(setBadge, "Content");
     });
 
 });

@@ -8,7 +8,7 @@
 
 
 .kb-badge {
-	
+
 
 	border-radius: 5px;
 	padding: 1px 8px;
@@ -25,13 +25,13 @@
 	-webkit-box-shadow: inset 0px 3px 5px rgba(0, 0, 0, 0.3);
 	-o-box-shadow: inset 0px 3px 5px rgba(0, 0, 0, 0.3);
 	box-shadow: inset 0px 3px 5px rgba(0, 0, 0, 0.3);
-	
+
 	border: 1px solid rgba(255, 255, 255, 0.2);
 	padding-top: 0px;
-	
+
 	line-height: 20px;
 	font-size: 16px;
-	
+
 	background: url(../icons/ic_flip_to_back_black_24dp.png) no-repeat,#262626  ;
 
 }

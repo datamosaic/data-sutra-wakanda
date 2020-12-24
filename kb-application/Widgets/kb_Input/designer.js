@@ -10,7 +10,7 @@
     	category: "Kabootit",
         title: 'Template',
         description: 'Mustache tag "widget" required',
-        multiline: true 
+        multiline: true
     });
     kb_Input.customizeProperty('kbLabel', {
     	category: "Kabootit",
@@ -32,7 +32,7 @@
         title: 'Rows',
         description: 'Amount of rows if text area'
     });
-	
+
 	/* designer load code */
 	function getImg(widgetName) {
 		// grab img used
@@ -45,23 +45,23 @@
 			return $(this).text() == widgetName;
 		})
 		.css('background-image');
-	
+
 		return img;
        }
-	
-	
+
+
 	setTimeout(function(){
-		
+
 		var img = getImg(widgetName);
-		
+
 		// find all widgets of this type
 		var widgets = $('div[data-type="kb_' + widgetName + '"]');
-	
+
 		// set image
 		$( widgets ).each(function( index ) {
 		  	 $(widgets[index]).css('background', img + ' no-repeat');
 		});
-		
+
 	}, 100);
 
 
@@ -71,7 +71,7 @@
 	    var img =  getImg(widgetName);
         $(this.node).css('background', img + ' no-repeat');
     });
-   
+
 
 });
 

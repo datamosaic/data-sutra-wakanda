@@ -1,8 +1,8 @@
 WAF.define('kb_Input', ['waf-core/widget'], function(widget) {
-	
+
     var kb_Input = widget.create('kb_Input', {
         init: function() {
-        	 
+
 
         }
 
@@ -44,7 +44,7 @@ WAF.define('kb_Input', ['waf-core/widget'], function(widget) {
 			'color'				: 'Color',
 			''					: '---',
 			'textarea'			: 'Text area'
-			
+
 	    },
 	    bindable: false
 	});
@@ -52,8 +52,8 @@ WAF.define('kb_Input', ['waf-core/widget'], function(widget) {
 	    type: "string",
 	    bindable: false
 	});
-    
-    
+
+
     kb_Input.inherit('waf-behavior/layout/container');
     kb_Input.addClass('waf-ui-box');
 
