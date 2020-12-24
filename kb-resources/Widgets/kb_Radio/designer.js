@@ -16,7 +16,7 @@
     	category: "Kabootit",
         title: 'Content',
         description: 'Any html content',
-        multiline: true 
+        multiline: true
     });
 
 
@@ -24,7 +24,7 @@
     kb_Radio.prototype.init = function() {
         this.node.innerHTML = '<div class="kb-label-div"><b>Div:</b> ' + this.kbParent()  + '</div>';
     };
-   
+
 
 });
 

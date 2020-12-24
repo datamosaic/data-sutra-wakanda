@@ -44,7 +44,7 @@ function oneventsourceconnect(httpRequest, httpResponse) {
 		eventsFilter,
 		noComment;
 
-	
+
 	if (httpRequest.urlQuery === 'runTests') {
 	    // test suite
 	    return require('wakanda-eventsource/tests/httpHandler').oneventsourceconnect(httpRequest, httpResponse);
@@ -57,7 +57,7 @@ function oneventsourceconnect(httpRequest, httpResponse) {
 	if (accept.indexOf('application/json') > -1) {
 		headers['Content-Type'] = 'application/json';
 		return JSON.stringify({
-		    started: true, 
+		    started: true,
 		    runTest: false
 		});
 	}
@@ -137,7 +137,7 @@ function oneventsourceconnect(httpRequest, httpResponse) {
 		session: currentSession().ID,
 		user: currentUser().ID
 	});
-	
+
 	if (typeof workerPort.close === 'function') {
 		workerPort.close();
 	}

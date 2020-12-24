@@ -1,8 +1,8 @@
 WAF.define('kb_Div', ['waf-core/widget'], function(widget) {
-	
+
     var kb_Div = widget.create('kb_Div', {
         init: function() {
-        	 
+
 
         }
 
@@ -20,8 +20,8 @@ WAF.define('kb_Div', ['waf-core/widget'], function(widget) {
 	    type: "string",
 	    bindable: false
 	});
-    
-    
+
+
     kb_Div.inherit('waf-behavior/layout/container');
     kb_Div.addClass('waf-ui-box');
 

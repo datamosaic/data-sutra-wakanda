@@ -1,19 +1,19 @@
 
 {
 	"toJSON" : true,
-	"extraProperties" : 
+	"extraProperties" :
 	{
 		"version" : "2",
-		"classes" : 
+		"classes" :
 		{
-			"Group" : 
+			"Group" :
 			{
 				"panelColor" : "#eee",
-				"panel" : 
+				"panel" :
 				{
 					"isOpen" : "true",
 					"pathVisible" : true,
-					"position" : 
+					"position" :
 					{
 						"X" : 25,
 						"Y" : 20
@@ -21,21 +21,21 @@
 				}
 			}
 		},
-		"model" : 
+		"model" :
 		{
 			"scriptMode" : "manual",
 			"workspaceLeft" : 0,
 			"workspaceTop" : 0
 		}
 	},
-	"dataClasses" : 
+	"dataClasses" :
 	[
 		{
 			"name" : "Group",
 			"className" : "Group",
 			"collectionName" : "GroupCollection",
 			"scope" : "public",
-			"attributes" : 
+			"attributes" :
 			[
 				{
 					"name" : "ID",
@@ -55,7 +55,7 @@
 					"type" : "string"
 				}
 			],
-			"key" : 
+			"key" :
 			[
 				{
 					"name" : "ID"

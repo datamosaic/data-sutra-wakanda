@@ -1,8 +1,8 @@
 WAF.define('kb_Container', ['waf-core/widget'], function(widget) {
-	
+
     var kb_Container = widget.create('kb_Container', {
         init: function() {
-        	 
+
 
         }
 
@@ -14,7 +14,7 @@ WAF.define('kb_Container', ['waf-core/widget'], function(widget) {
 	    bindable: false,
 	    onChange: function(newValue) {
             this.node.innerHTML = '<div class="kb-label-container"><b>Container:</b> ' + newValue  + '</div>';
-            
+
             var img =  $('div')
 			.filter(function() {
 			    return this.id.match(/(?=.*Kabootit)(?=.*Layout)/);
@@ -24,7 +24,7 @@ WAF.define('kb_Container', ['waf-core/widget'], function(widget) {
 				return $(this).text() == 'Container';
 			})
 			.css('background-image');
-	        
+
 	 	   $(this.node).css('background', img + ' no-repeat');
         }
 	});
@@ -32,8 +32,8 @@ WAF.define('kb_Container', ['waf-core/widget'], function(widget) {
 	    type: "string",
 	    bindable: false
 	});
-    
-    
+
+
     kb_Container.inherit('waf-behavior/layout/container');
     kb_Container.addClass('waf-ui-box');
 

@@ -1,8 +1,8 @@
 WAF.define('kb_Grid', ['waf-core/widget'], function(widget) {
-	
+
     var kb_Grid = widget.create('kb_Grid', {
         init: function() {
-        	 
+
 
         }
 
@@ -20,8 +20,8 @@ WAF.define('kb_Grid', ['waf-core/widget'], function(widget) {
 	    type: "string",
 	    bindable: false
 	});
-    
-    
+
+
     kb_Grid.inherit('waf-behavior/layout/container');
     kb_Grid.addClass('waf-ui-box');
 

@@ -72,9 +72,9 @@ self.onconnect = function onconnect(msg) {
 			    // event not listened by this connection
 			    return;
 			}
-			
+
 			clientConnection.postMessage({
-				type: sse.PUSH, 
+				type: sse.PUSH,
 				message: data.message
 			});
 		}
@@ -126,7 +126,7 @@ self.onconnect = function onconnect(msg) {
 					if (typeof session === 'string') {
 						return portsMap.session[session];
 					}
-					if (typeof session === 'object' && session && session.ID) { 
+					if (typeof session === 'object' && session && session.ID) {
 						return portsMap.session[session.ID];
 					}
 				});
@@ -141,7 +141,7 @@ self.onconnect = function onconnect(msg) {
 					if (typeof user === 'string' && portsMap.user[user]) {
 						portsMap.user[user].forEach(dispatchData);
 					}
-					if (typeof user === 'object' && user && user.ID && portsMap.user[user.ID]) { 
+					if (typeof user === 'object' && user && user.ID && portsMap.user[user.ID]) {
 						portsMap.user[user.ID].forEach(dispatchData);
 					}
 				});
@@ -177,7 +177,7 @@ self.onconnect = function onconnect(msg) {
 				}
 				if (missedEvents.length) {
 					port.postMessage({
-						type: sse.PUSH, 
+						type: sse.PUSH,
 						message: missedEvents.join(sse.EOL)
 					});
 				}

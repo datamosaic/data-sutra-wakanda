@@ -1,33 +1,33 @@
 
 {
 	"toJSON" : true,
-	"extraProperties" : 
+	"extraProperties" :
 	{
 		"version" : "2",
-		"classes" : 
+		"classes" :
 		{
-			"Peoplez" : 
+			"Peoplez" :
 			{
 				"panelColor" : "#548DD4",
-				"panel" : 
+				"panel" :
 				{
 					"isOpen" : "true",
 					"pathVisible" : true,
-					"position" : 
+					"position" :
 					{
 						"X" : 25,
 						"Y" : 20
 					}
 				}
 			},
-			"Companyz" : 
+			"Companyz" :
 			{
 				"panelColor" : "#E5B9B7",
-				"panel" : 
+				"panel" :
 				{
 					"isOpen" : "true",
 					"pathVisible" : true,
-					"position" : 
+					"position" :
 					{
 						"X" : 317,
 						"Y" : 25
@@ -35,21 +35,21 @@
 				}
 			}
 		},
-		"model" : 
+		"model" :
 		{
 			"scriptMode" : "manual",
 			"workspaceLeft" : 0,
 			"workspaceTop" : 0
 		}
 	},
-	"dataClasses" : 
+	"dataClasses" :
 	[
 		{
 			"name" : "Companyz",
 			"className" : "Companyz",
 			"collectionName" : "CompanyzCollection",
 			"scope" : "public",
-			"attributes" : 
+			"attributes" :
 			[
 				{
 					"name" : "ID",
@@ -78,7 +78,7 @@
 					"path" : "Companyz"
 				}
 			],
-			"key" : 
+			"key" :
 			[
 				{
 					"name" : "ID"
@@ -91,7 +91,7 @@
 			"collectionName" : "PeoplezCollection",
 			"matchTable" : "People",
 			"scope" : "public",
-			"attributes" : 
+			"attributes" :
 			[
 				{
 					"name" : "ID",
@@ -138,7 +138,7 @@
 					"path" : "Companyz"
 				}
 			],
-			"key" : 
+			"key" :
 			[
 				{
 					"name" : "ID"

@@ -1,8 +1,8 @@
 WAF.define('kb_Label', ['waf-core/widget'], function(widget) {
-	
+
     var kb_Label = widget.create('kb_Label', {
         init: function() {
-        	 
+
 
         }
 
@@ -20,8 +20,8 @@ WAF.define('kb_Label', ['waf-core/widget'], function(widget) {
 	    type: "string",
 	    bindable: false
 	});
-    
-    
+
+
     kb_Label.inherit('waf-behavior/layout/container');
     kb_Label.addClass('waf-ui-box');
 

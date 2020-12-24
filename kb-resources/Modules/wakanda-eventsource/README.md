@@ -1,10 +1,10 @@
 #WakandaDB Server-Sent Events#
 
 ##About##
- 
+
 This package is meant to provide an HTTP Push support to [WakandaDB](http://wakandadb.org) / [Wakanda](http://wakanda.org) via the W3C / WHATWG HTML5 Standard called **Server-Sent Events** aka **Event Source**.
 
-This push technology [can be used on all modern platforms](http://caniuse.com/#search=eventsource) natively or via the [EventSource Polyfill](https://github.com/Yaffle/EventSource) for IE 
+This push technology [can be used on all modern platforms](http://caniuse.com/#search=eventsource) natively or via the [EventSource Polyfill](https://github.com/Yaffle/EventSource) for IE
 ##How to use##
 
 ###Start the service###
@@ -15,7 +15,7 @@ Start the service on Wakanda Server. A good place for this code is usually a Wak
 require('wakanda-eventsource').start();
 ```
 
-The default listened pattern is "/eventsource". 
+The default listened pattern is "/eventsource".
 
 ###Push Messages / Events###
 
@@ -29,7 +29,7 @@ If you want to dispatch on the client a specific Server Event you can use `pushE
 
 ```javascript
 require('wakanda-eventsource').pushEvent(
-    'itempurchased', 
+    'itempurchased',
     '5 "DVD" items have been purchased'
 );
 ```
@@ -70,7 +70,7 @@ You can ask the server to only send you specific events
 
 ```javascript
 // ask to receive only "itempurchased" and "ordercancelled" events
-// adding onmessage listener or listener for any other events than the listed 
+// adding onmessage listener or listener for any other events than the listed
 // ones will have no effect
 var sse = new EventSource('/eventsource/itempurchased,ordercancelled');
 ```

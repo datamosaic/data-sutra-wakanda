@@ -1,5 +1,5 @@
 (function(kb_Page) {
-	
+
 	var widgetName = "Page";
 
     /* Default width and height of your widget */
@@ -7,7 +7,7 @@
     kb_Page.setHeight('40');
 
     /* Properties */
-    
+
     // page title
     kb_Page.customizeProperty('kbTitle', {
     	category: "Kabootit",
@@ -45,29 +45,29 @@
 			return $(this).text() == widgetName;
 		})
 		.css('background-image');
-	
+
 		return img;
        }
-	
-	
+
+
 	setTimeout(function(){
-		
+
 		var img = getImg(widgetName);
-		
+
 		// find all widgets of this type
 		var widgets = $('div[data-type="kb_' + widgetName + '"]');
-	
+
 		// set image
 		$( widgets ).each(function( index ) {
 		  	 $(widgets[index]).css('background', img + ' no-repeat');
 		});
-		
+
 	}, 100);
 
-	
+
     kb_Page.doAfter('init', function() {
         this.node.innerHTML = '<div class="kb-label-page"><b>Page:</b> ' + this.kbTitle()  + '</div>';
-        
+
 	    var img =  getImg(widgetName);
         $(this.node).css('background', img + ' no-repeat');
     });

@@ -1,8 +1,8 @@
 WAF.define('kb_Combobox', ['waf-core/widget'], function(widget) {
-	
+
     var kb_Combobox = widget.create('kb_Combobox', {
         init: function() {
-        	 
+
 
         }
 
@@ -20,8 +20,8 @@ WAF.define('kb_Combobox', ['waf-core/widget'], function(widget) {
 	    type: "string",
 	    bindable: false
 	});
-    
-    
+
+
     kb_Combobox.inherit('waf-behavior/layout/container');
     kb_Combobox.addClass('waf-ui-box');
 

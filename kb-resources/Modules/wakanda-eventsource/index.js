@@ -57,7 +57,7 @@ ServerEvent.prototype.send = function send(asJSON, options) {
 	isComment = typeof options === 'object' ? false : Boolean(isComment);
 	workerPort.postMessage({
 		id: this.id,
-		type: sse.PUSH, 
+		type: sse.PUSH,
 		event: this.type,
 		isComment: isComment,
 		message: this.toString(asJSON, isComment),
@@ -120,7 +120,7 @@ sse = exports;
 /**
  * @property WORKER_PATH
  * @type string
- **/ 
+ **/
 sse.WORKER_PATH = BASE_PATH + "eventSource-sharedWorker.js";
 
 
@@ -128,7 +128,7 @@ sse.WORKER_PATH = BASE_PATH + "eventSource-sharedWorker.js";
  * @property WORKER_ID
  * @type string
  * @default "wakanda-eventsource"
- **/ 
+ **/
 sse.WORKER_ID = "wakanda-eventsource";
 
 
@@ -136,14 +136,14 @@ sse.WORKER_ID = "wakanda-eventsource";
  * @property PATTERN
  * @type string
  * @default "/eventsource"
- **/ 
+ **/
 sse.PATTERN = "^/EventSource";
 
 
 /**
  * @property HTTP_HANDLER_PATH
  * @type string
- **/ 
+ **/
 sse.HTTP_HANDLER_MODULE = "wakanda-eventsource/eventSource-httpHandler";
 
 
@@ -151,7 +151,7 @@ sse.HTTP_HANDLER_MODULE = "wakanda-eventsource/eventSource-httpHandler";
  * @property HTTP_HANDLER_NAME
  * @type string
  * @default "oneventsourceconnect"
- **/ 
+ **/
 sse.HTTP_HANDLER_METHOD = "oneventsourceconnect";
 
 
@@ -159,7 +159,7 @@ sse.HTTP_HANDLER_METHOD = "oneventsourceconnect";
  * @property CONNECTION_READY
  * @type string
  * @default "connectionready"
- **/ 
+ **/
 sse.CONNECTION_READY = "connectionready";
 
 
@@ -167,7 +167,7 @@ sse.CONNECTION_READY = "connectionready";
  * @property CONNECTION_READY
  * @type string
  * @default "connectionready"
- **/ 
+ **/
 sse.START_SOCKET_SERVER = "startSocketServer";
 
 
@@ -175,7 +175,7 @@ sse.START_SOCKET_SERVER = "startSocketServer";
  * @property PUSH
  * @type string
  * @default "push"
- **/ 
+ **/
 sse.PUSH = "push";
 
 
@@ -183,7 +183,7 @@ sse.PUSH = "push";
  * @property COMMENT
  * @type string
  * @default ": "
- **/ 
+ **/
 sse.COMMENT = COMMENT;
 
 
@@ -191,7 +191,7 @@ sse.COMMENT = COMMENT;
  * @property EOL
  * @type string
  * @default "\n"
- **/ 
+ **/
 sse.EOL = EOL;
 
 
@@ -199,7 +199,7 @@ sse.EOL = EOL;
  * @property STOP
  * @type string
  * @default "stop"
- **/ 
+ **/
 sse.STOP = "stop";
 
 
@@ -217,13 +217,13 @@ workerPort.onmessage = function onworkermessage(message) {
  *
  * @property ServerEvent
  * @type function
- **/ 
+ **/
 sse.ServerEvent = ServerEvent;
 
 
 /**
  * @method start
- **/ 
+ **/
 sse.start = function start(options) {
 	var
 		pattern,
@@ -259,7 +259,7 @@ sse.start = function start(options) {
 
 /**
  * @method restart
- **/ 
+ **/
 sse.restart = function restart(options) {
 	sse.stop();
 	sse.start(options);
@@ -269,7 +269,7 @@ sse.restart = function restart(options) {
 /**
  * @method pause
  * @param {number} delay
- **/ 
+ **/
 sse.pause = function pause(delay) {
 	application.removeHttpRequestHandler(sse.PATTERN, sse.HTTP_HANDLER_PATH, sse.HTTP_HANDLER_NAME);
 	setTimeout(function () {
@@ -284,7 +284,7 @@ sse.pause = function pause(delay) {
 
 /**
  * @method stop
- **/ 
+ **/
 sse.stop = function stop() {
 	application.removeHttpRequestHandler(sse.PATTERN, sse.HTTP_HANDLER_PATH, sse.HTTP_HANDLER_NAME);
 	workerPort.postMessage({type: 'stop'});
@@ -294,7 +294,7 @@ sse.stop = function stop() {
 /**
  * @method countConnections
  * @results {number}
- **/ 
+ **/
 sse.countConnections = function countConnections(comment, asJSON) {
 	var
 		nbConnections;
@@ -316,7 +316,7 @@ sse.countConnections = function countConnections(comment, asJSON) {
  * @method push
  * @param {mixed} message data to push
  * @param {boolean} [asJSON]
- **/ 
+ **/
 sse.push = function push(message, asJSON) {
 	var
 		temp;
@@ -331,7 +331,7 @@ sse.push = function push(message, asJSON) {
  * @param {string} type event type
  * @param {mixed} message data to push
  * @param {boolean} [asJSON]
- **/ 
+ **/
 sse.pushEvent = function pushEvent(type, message, asJSON) {
 	var
 		temp;
@@ -347,7 +347,7 @@ sse.pushEvent = function pushEvent(type, message, asJSON) {
  * @param {string} type event type
  * @param {mixed} message data to push
  * @param {boolean} [asJSON]
- **/ 
+ **/
 sse.pushEventToSession = function pushEventToSession(sessions, type, message, asJSON) {
 	var
 		temp;
@@ -363,7 +363,7 @@ sse.pushEventToSession = function pushEventToSession(sessions, type, message, as
  * @param {string} type event type
  * @param {mixed} message data to push
  * @param {boolean} [asJSON]
- **/ 
+ **/
 sse.pushEventToUser = function pushEventToUser(users, type, message, asJSON) {
 	var
 		temp,
@@ -399,7 +399,7 @@ sse.pushEventToUser = function pushEventToUser(users, type, message, asJSON) {
  * @param {string} type event type
  * @param {mixed} message data to push
  * @param {boolean} [asJSON]
- **/ 
+ **/
 sse.pushEventToGroup = function pushEventToUser(groups, type, message, asJSON) {
 	var
 		temp,
@@ -433,7 +433,7 @@ sse.pushEventToGroup = function pushEventToUser(groups, type, message, asJSON) {
  * @method pushComment
  * @param {mixed} comment to push
  * @param {boolean} [asJSON]
- **/ 
+ **/
 sse.pushComment = function pushEvent(comment, asJSON) {
 	var
 		temp;
@@ -461,7 +461,7 @@ sse.addListener =  function addListener(event, handler) {
 	};
 
 	if (typeof handler === 'function') {
-	
+
 		listeners = eventListeners[event] || [];
 		eventListeners[event] = listeners;
 
@@ -478,7 +478,7 @@ sse.addListener =  function addListener(event, handler) {
 		listenerProxies.push(listenerProxy);
 
 		workerListeners.push(listenerProxy);
-		
+
 	} else if (Array.isArray(handler)) {
 
 		subscription.handler = handler;
@@ -516,7 +516,7 @@ sse.removeListener =  function removeListener(event, handler) {
 	};
 
 	if (typeof handler === 'function') {
-	
+
 		listeners = eventListeners[event] || [];
 		eventListeners[event] = listeners;
 
@@ -529,7 +529,7 @@ sse.removeListener =  function removeListener(event, handler) {
 		listenerProxies.splice(listenerIndex, 1);
 
 		workerListeners.splice(workerListeners.indexOf(listenerProxy), 1);
-		
+
 	} else if (Array.isArray(handler)) {
 
 		subscription.handler = handler;
