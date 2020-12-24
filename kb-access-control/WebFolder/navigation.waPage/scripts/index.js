@@ -24,7 +24,7 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 		sources.User.save({
 			onSuccess: function(event) {
 				var pass = prompt('Please enter a new password');
-				
+
 				if (pass) {
 					AC.resetUserPassword(
 						sources.User.ID,
@@ -42,8 +42,8 @@ WAF.onAfterInit = function onAfterInit() {// @lock
 		// if identifier on parent, prefill on child
 		sources.NavSetItem.identifier = sources.NavSet.identifier;
 		sources.NavSetItem.order_by = sources.NavSetItem.length;
-		sources.NavSetItem.save( { 
-			onSuccess: function(event){ 
+		sources.NavSetItem.save( {
+			onSuccess: function(event){
 				//TODO: enter name field
 //				$('#grid_navitem .waf-dataGrid-row.waf-state-active .waf-dataGrid-col-name .content').click();
 			}

@@ -1,6 +1,6 @@
 /**
  * Class that helps with login page.
- *	
+ *
  * @param {jQuery.Element[]} $user User name data entry
  * @param {jQuery.Element[]} $pass Password data entry
  * @param {jQuery.Element[]} $loginBtn Button to login
@@ -12,7 +12,7 @@
 function Login($user, $pass, $loginBtn, $loginDiv, $logoutDiv, $userDisplay, effect) {
 	// reference to the class so can access it from other contexts
 	var that = this;
-	
+
 	// check all inputs and prefill with defaults
 	if ($user == undefined) { $user = $('#fld_user') };
 	if ($pass == undefined) { $pass = $('#fld_pass') };
@@ -21,11 +21,11 @@ function Login($user, $pass, $loginBtn, $loginDiv, $logoutDiv, $userDisplay, eff
 	if ($logoutDiv == undefined) { $logoutDiv = $('#signout') };
 	if ($userDisplay == undefined) { $userDisplay = $('.user') };
 	if (effect == undefined) { effect = 'fadeIn' };
-	
+
 	// internal variables
 	var user;
 	var statusPromise;
-	
+
 	/**
 	 * Is current user logged in
 	 *
@@ -35,7 +35,7 @@ function Login($user, $pass, $loginBtn, $loginDiv, $logoutDiv, $userDisplay, eff
 		function currentStatus() {
 			return user.name == 'default guest' ? false : true;
 		};
-		
+
 		// user available, just return current status
 		if (user) {
 			return currentStatus();
@@ -61,21 +61,21 @@ function Login($user, $pass, $loginBtn, $loginDiv, $logoutDiv, $userDisplay, eff
 // 			;
 		}
 	};
-	
+
 	/**
 	 * Expose all jquery elements
 	 */
 	this.getElements = function getJQueryElements() {
 		return {
-			userEntry: $user, 
-			passEntry: $pass, 
-			loginButton: $loginBtn, 
-			loginDiv: $loginDiv, 
-			logoutDiv: $logoutDiv, 
+			userEntry: $user,
+			passEntry: $pass,
+			loginButton: $loginBtn,
+			loginDiv: $loginDiv,
+			logoutDiv: $logoutDiv,
 			userDisplay: $userDisplay
 		}
 	};
-	
+
 	/**
 	 * Attempt to login
 	 * //TODO: could flip around to async with promises, but seems a bit hairy for what we get in return
@@ -84,23 +84,23 @@ function Login($user, $pass, $loginBtn, $loginDiv, $logoutDiv, $userDisplay, eff
 	this.signin = function signin(event) {
 		// don't treat current element as link or button
 		event.preventDefault();
-		
+
 		// current wakanda session
 		var before = LOGIN.session();
-	
+
 		var userName = $user.val();
 		var password = $pass.val();
 		var result = LOGIN.login(userName,password);
-	
+
 		if (result) {
 			// wakanda session after login
 			var after = LOGIN.session();
-			
+
 			// we're logged in as somebody new now
 			if (after.ID != before.ID) {
 				// want to serve by default everything from home (prototype page)
 				// window.location = '/';
-				
+
 				// running in an iframe
 				if (window.parent != window) {
 					// project login completed successfully, navigate to page
@@ -122,7 +122,7 @@ function Login($user, $pass, $loginBtn, $loginDiv, $logoutDiv, $userDisplay, eff
 			alert("Login unsuccessful.");
 		}
 	};
-	
+
 	/**
 	 * Attempt to logout
 	 *
@@ -131,7 +131,7 @@ function Login($user, $pass, $loginBtn, $loginDiv, $logoutDiv, $userDisplay, eff
 	this.signout = function signout(event) {
 		// don't treat current element as link or button
 		event.preventDefault();
-		
+
 		// logout current user
 		LOGIN.logoutAsync({
 			"onSuccess" : function(result) {
@@ -144,7 +144,7 @@ function Login($user, $pass, $loginBtn, $loginDiv, $logoutDiv, $userDisplay, eff
 			"params" : []
 		});
 	};
-	
+
 	/**
 	 * This function will be run when new LOGIN instantiated
 	 */
@@ -152,7 +152,7 @@ function Login($user, $pass, $loginBtn, $loginDiv, $logoutDiv, $userDisplay, eff
 		// grab user/pass
 		function getUser() {
 			var deferred = $.Deferred();
-			
+
 			LOGIN.userAsync({
 				"onSuccess" : function(result) {
 					// some test for good data, we probably have valid data
@@ -170,26 +170,26 @@ function Login($user, $pass, $loginBtn, $loginDiv, $logoutDiv, $userDisplay, eff
 				},
 				"params" : []
 			});
-			
+
 			return deferred.promise();
 		};
-		
+
 		// after current user retrieved, do some stuff
 		$.when( getUser() )
 			// onsuccess of all promises
 			.done(function(userInfo) {
 				// fill user name and pass
 				user = userInfo;
-				
+
 				// if status request waiting, serve up
 				if (statusPromise) {
 					statusPromise.resolve();
 				}
-				
+
 				// show login form or status of who logged in
 				if (user.name == 'default guest') {
 					$loginDiv[effect]();
-					
+
 					// focus user name
 					$user.focus();
 				}
@@ -197,7 +197,7 @@ function Login($user, $pass, $loginBtn, $loginDiv, $logoutDiv, $userDisplay, eff
 				else {
 					// change name to that of logged in
 					$userDisplay.html(user.fullName);
-					
+
 					$logoutDiv[effect]();
 				}
 			})
@@ -206,7 +206,7 @@ function Login($user, $pass, $loginBtn, $loginDiv, $logoutDiv, $userDisplay, eff
 				console.log(error);
 			})
 		;
-		
+
 		// hook up listeners on enter in user/pass
 		$pass.keypress(function(event) {
 			if ( event.which == 13 ) {
@@ -214,7 +214,7 @@ function Login($user, $pass, $loginBtn, $loginDiv, $logoutDiv, $userDisplay, eff
 				$loginBtn.trigger('click');
 			}
 		});
-		
+
 		// attempt to get credentials from parent iframe (running in prototyping mode)
 		if (window.parent != window) {
 			window.parent.postMessage('getCredentials','*')

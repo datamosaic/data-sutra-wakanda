@@ -1,7 +1,7 @@
 body::after {
 	content: "";
-	background: 
-		linear-gradient( 
+	background:
+		linear-gradient(
 			rgba(66, 139, 202, 0.15),
 			rgba(66, 139, 202, 0.25)
 		),
@@ -12,7 +12,7 @@ body::after {
 	bottom: 0;
 	right: 0;
 	position: absolute;
-	z-index: -1;	 
+	z-index: -1;
 }
 .form-signin {
 	max-width: 330px;
@@ -26,7 +26,7 @@ body::after {
 .form-signin p .user {
 	color: #3071a9;
 }
-.form-signin .form-signin-heading, 
+.form-signin .form-signin-heading,
 .form-signin .checkbox {
 	margin-bottom: 10px;
 	margin-left: 20px;
