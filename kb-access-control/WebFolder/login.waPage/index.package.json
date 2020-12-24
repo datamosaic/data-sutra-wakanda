@@ -1,30 +1,59 @@
 {
+
 	"loadDependencies": [
+
 		{
+
 			"id": "Desktop_Core",
+
 			"type": "core",
+
 			"version": "1.0.0"
+
 		},
+
 		{
+
 			"id": "Widget/textField",
+
 			"type": "widget"
+
 		},
+
 		{
+
 			"id": "login.waPage/scripts/index.js",
+
 			"path": "WEBFOLDER",
+
 			"type": "script"
+
 		},
+
         {
+
             "id": "login.waPage/scripts/login.js",
+
             "path": "WEBFOLDER",
+
             "type": "script"
+
         },
+
         {
+
             "id": "login.waPage/scripts/prototype.js",
+
             "path": "WEBFOLDER",
+
             "type": "script"
+
         }
+
 	],
+
 	"name": "Application/login.waPage/index.html",
+
 	"version": "1.0.0"
+
 }
