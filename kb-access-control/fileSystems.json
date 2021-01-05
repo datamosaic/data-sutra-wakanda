@@ -1,1 +1,7 @@
-﻿[    {           "name":"THEMES-KABOOTIT",           "parent":"PROJECT",           "path":"../Themes"    }]
+﻿[
+    {
+           "name":"THEMES-KABOOTIT",
+           "parent":"PROJECT",
+           "path":"../Themes"
+    }
+]
